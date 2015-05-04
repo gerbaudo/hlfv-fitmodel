@@ -1,0 +1,15 @@
+<!DOCTYPE Channel SYSTEM 'HistFactorySchema.dtd'>
+<Channel Name="mue_l1pt2" InputFile="data/simple.root" >
+  <Data InputFile="data/simple.root" HistoPath="" HistoName="Mcoll_data_ME_l1pt2_rebin"/>
+  <Sample Name="Sig_mue_l1pt2" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_signal_ME_l1pt2_rebin">
+    <OverallSys Name="sig_sys" Low="0.9999" High="1.0001"/>
+    <NormFactor Name="halfSig" Val="0.5000" Low="0.4990" High="0.5010" Const="True"/>
+    <NormFactor Name="mu_BR_htm" Val="0" Low="-200" High="200" />
+  </Sample>
+  <Sample Name="wrongSig_mue_l1pt2" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_wrong_signal_ME_l1pt2_rebin">
+    <NormFactor Name="mu_BR_htm" Val="0" Low="-200" High="200" />
+  </Sample>
+  <Sample Name="B0_l1pt2" NormalizeByTheory="False" HistoPath="" HistoName="Base_Bkg_l1pt2">
+    <ShapeFactor Name="B0_l1pt2"/>
+  </Sample>
+</Channel>

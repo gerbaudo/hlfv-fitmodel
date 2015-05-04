@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import ROOT
+import argparse
+
+ifile=sys.argv[1]
+
+os=sys.platform
+if os=="darwin": path = "/opt/local/libexec/root5/share/doc/root/tutorials/roostats/"
+ROOT.gROOT.LoadMacro("%s/ModelInspector.C+" % path)
+
+ROOT.ModelInspector(ifile)
+raw_input()
+

@@ -1,0 +1,1237 @@
+
+Processing FitCrossCheckForLimits.C+(PlotsNuisanceParametersVSmu,0.0,1.0,false,"../results/ws_LFV_combined_AllSYS_model.root","./results/6","combined","ModelConfig","obsData")...
+
+[1mRooFit v3.55 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2012 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+[#0] ERROR:ObjectHandling -- RooWorkspace::loadSnapshot(w) no snapshot with name snapshot_paramsVals_initial is available
+Nuisance parameter names and values
+
+List of model Observables : 
+----------------------------
+RooRealVar::obs_x_mue_0j_l1pt0 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_emu_0j_l1pt0 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_mue_0j_l1pt1 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_emu_0j_l1pt1 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_mue_0j_l1pt2 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_emu_0j_l1pt2 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_mue_0j_l1pt3 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_emu_0j_l1pt3 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_mue_0j_l1pt4 = 18.5  L(0 - 19) B(19) 
+RooRealVar::obs_x_emu_0j_l1pt4 = 18.5  L(0 - 19) B(19) 
+RooRealVar::weightVar = 0  L(-1e+10 - 1e+10) 
+RooCategory::channelCat = emu_0j_l1pt4(idx = 9)
+
+
+List of nuisance parameters : 
+----------------------------
+alpha_l1ptsys_l1pt0 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt1 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt2 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt3 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt4 : 0+/-0     IsNormFactor=0
+gamma_B0_0j_l1pt0_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_10 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_11 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_12 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_13 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_14 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_15 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_16 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_17 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_18 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_4 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_5 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_6 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_7 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_8 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_9 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_10 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_11 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_12 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_13 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_14 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_15 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_16 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_17 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_18 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_4 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_5 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_6 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_7 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_8 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_9 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_10 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_11 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_12 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_13 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_14 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_15 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_16 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_17 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_18 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_4 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_5 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_6 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_7 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_8 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_9 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_10 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_11 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_12 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_13 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_14 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_15 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_16 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_17 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_18 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_4 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_5 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_6 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_7 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_8 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_9 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_10 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_11 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_12 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_13 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_14 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_15 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_16 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_17 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_18 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_4 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_5 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_6 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_7 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_8 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_9 : 1+/-0     IsNormFactor=1
+
+
+Details on channel mue_0j_l1pt0 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (73.9267 weighted)
+RooProdPdf::model_mue_0j_l1pt0[ lumiConstraint * mue_0j_l1pt0_model(obs_x_mue_0j_l1pt0) ] = 0.533215
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -7.14 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |             -36.28 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -2.26 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -1.84 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -0.97 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -1.03 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -0.83 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -2.86 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -1.92 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -1.43 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -0.79 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |             -11.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -6.24 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -7.39 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -5.15 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -3.79 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -3.44 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -3.92 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |              -1.72 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               4.14 |               0.00 |               0.00 |              67.35 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt0 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (67.3545 weighted)
+RooProdPdf::model_emu_0j_l1pt0[ lumiConstraint * alpha_l1ptsys_l1pt0Constraint * emu_0j_l1pt0_model(obs_x_emu_0j_l1pt0) ] = 0.606799
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |              76.65 |              13.40 |             -13.40 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -7.14 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |             -36.28 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -2.26 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -1.84 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -0.97 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -1.03 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -0.83 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -2.86 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -1.92 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -1.43 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -0.79 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |             -11.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -6.24 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -7.39 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -5.15 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -3.79 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -3.44 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -3.92 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |              -1.72 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               0.00 |               0.00 |               0.00 |              76.65 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt1 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (131.057 weighted)
+RooProdPdf::model_mue_0j_l1pt1[ lumiConstraint * mue_0j_l1pt1_model(obs_x_mue_0j_l1pt1) ] = 1.26966
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -3.59 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |             -33.54 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -2.10 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.99 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -2.37 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.34 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -0.97 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -4.10 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.68 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.94 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.04 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |             -10.21 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -6.56 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -8.40 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -7.65 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -4.60 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.37 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -4.56 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |              -1.98 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               7.45 |               0.00 |               0.00 |             122.04 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt1 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (122.041 weighted)
+RooProdPdf::model_emu_0j_l1pt1[ lumiConstraint * alpha_l1ptsys_l1pt1Constraint * emu_0j_l1pt1_model(obs_x_emu_0j_l1pt1) ] = 1.4044
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             135.10 |              10.70 |             -10.70 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -3.59 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |             -33.54 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -2.10 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.99 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -2.37 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.34 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -0.97 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -4.10 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.68 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.94 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.04 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |             -10.21 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -6.56 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -8.40 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -7.65 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -4.60 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.37 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -4.56 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |              -1.98 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               0.00 |               0.00 |               0.00 |             135.10 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt2 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (134.362 weighted)
+RooProdPdf::model_mue_0j_l1pt2[ lumiConstraint * mue_0j_l1pt2_model(obs_x_mue_0j_l1pt2) ] = 1.27225
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -3.35 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |             -26.64 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.49 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.93 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.12 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.48 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -1.56 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -5.49 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.14 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -4.21 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -1.16 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |             -10.90 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -7.63 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -5.41 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -6.40 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -8.38 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.25 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.19 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |              -2.26 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               7.16 |               0.00 |               0.00 |             109.42 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt2 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (109.424 weighted)
+RooProdPdf::model_emu_0j_l1pt2[ lumiConstraint * alpha_l1ptsys_l1pt2Constraint * emu_0j_l1pt2_model(obs_x_emu_0j_l1pt2) ] = 1.23184
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             106.03 |              11.50 |             -11.50 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -3.35 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |             -26.64 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.49 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.93 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.12 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.48 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -1.56 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -5.49 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.14 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -4.21 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -1.16 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |             -10.90 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -7.63 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -5.41 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -6.40 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -8.38 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.25 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.19 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |              -2.26 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               0.00 |               0.00 |               0.00 |             106.03 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt3 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (108.239 weighted)
+RooProdPdf::model_mue_0j_l1pt3[ lumiConstraint * mue_0j_l1pt3_model(obs_x_mue_0j_l1pt3) ] = 0.809488
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -2.26 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |             -20.28 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -4.57 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -5.20 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -1.87 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -2.67 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -3.58 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -7.02 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -4.04 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -4.01 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -1.08 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |             -14.92 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -6.86 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -3.10 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -2.74 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -3.09 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -3.71 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -4.22 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |              -4.76 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               5.70 |               0.00 |               0.00 |              74.56 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt3 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (74.5592 weighted)
+RooProdPdf::model_emu_0j_l1pt3[ lumiConstraint * alpha_l1ptsys_l1pt3Constraint * emu_0j_l1pt3_model(obs_x_emu_0j_l1pt3) ] = 0.666194
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |              61.44 |              11.70 |             -11.70 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -2.26 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |             -20.28 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -4.57 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -5.20 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -1.87 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -2.67 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -3.58 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -7.02 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -4.04 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -4.01 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -1.08 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |             -14.92 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -6.86 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -3.10 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -2.74 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -3.09 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -3.71 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -4.22 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |              -4.76 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               0.00 |               0.00 |               0.00 |              61.44 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt4 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (415.1 weighted)
+RooProdPdf::model_mue_0j_l1pt4[ lumiConstraint * mue_0j_l1pt4_model(obs_x_mue_0j_l1pt4) ] = 23.295
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -1.01 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -5.17 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -6.20 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -4.01 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -4.46 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -4.11 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -3.16 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |             -14.54 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -9.37 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -9.39 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -6.55 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -2.60 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -2.33 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -3.78 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -3.21 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -3.30 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -4.34 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -6.17 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |              12.46 |               0.00 |               0.00 |             355.85 |               0.00 |              -6.31 |
+
+
+Details on channel emu_0j_l1pt4 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt4,obs_x_emu_0j_l1pt4,weight:weightVar] = 19 entries (355.846 weighted)
+RooProdPdf::model_emu_0j_l1pt4[ lumiConstraint * alpha_l1ptsys_l1pt4Constraint * emu_0j_l1pt4_model(obs_x_emu_0j_l1pt4) ] = 21.9662
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             335.56 |               4.30 |              -4.30 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_10         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_11         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt0_bin_12         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt0_bin_13         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt0_bin_14         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt0_bin_15         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt0_bin_16         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt0_bin_17         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt0_bin_18         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt0_bin_4          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt0_bin_5          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt0_bin_6          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt0_bin_7          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt0_bin_8          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt0_bin_9          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  25 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  26 | gamma_B0_0j_l1pt1_bin_10         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  27 | gamma_B0_0j_l1pt1_bin_11         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  28 | gamma_B0_0j_l1pt1_bin_12         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  29 | gamma_B0_0j_l1pt1_bin_13         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  30 | gamma_B0_0j_l1pt1_bin_14         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  31 | gamma_B0_0j_l1pt1_bin_15         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  32 | gamma_B0_0j_l1pt1_bin_16         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  33 | gamma_B0_0j_l1pt1_bin_17         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  34 | gamma_B0_0j_l1pt1_bin_18         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  35 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  36 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  37 | gamma_B0_0j_l1pt1_bin_4          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  38 | gamma_B0_0j_l1pt1_bin_5          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  39 | gamma_B0_0j_l1pt1_bin_6          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  40 | gamma_B0_0j_l1pt1_bin_7          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  41 | gamma_B0_0j_l1pt1_bin_8          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  42 | gamma_B0_0j_l1pt1_bin_9          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  43 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  44 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  45 | gamma_B0_0j_l1pt2_bin_10         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  46 | gamma_B0_0j_l1pt2_bin_11         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  47 | gamma_B0_0j_l1pt2_bin_12         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  48 | gamma_B0_0j_l1pt2_bin_13         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  49 | gamma_B0_0j_l1pt2_bin_14         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  50 | gamma_B0_0j_l1pt2_bin_15         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  51 | gamma_B0_0j_l1pt2_bin_16         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  52 | gamma_B0_0j_l1pt2_bin_17         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  53 | gamma_B0_0j_l1pt2_bin_18         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  54 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  55 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  56 | gamma_B0_0j_l1pt2_bin_4          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  57 | gamma_B0_0j_l1pt2_bin_5          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  58 | gamma_B0_0j_l1pt2_bin_6          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  59 | gamma_B0_0j_l1pt2_bin_7          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  60 | gamma_B0_0j_l1pt2_bin_8          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  61 | gamma_B0_0j_l1pt2_bin_9          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  62 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  63 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  64 | gamma_B0_0j_l1pt3_bin_10         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  65 | gamma_B0_0j_l1pt3_bin_11         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  66 | gamma_B0_0j_l1pt3_bin_12         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  67 | gamma_B0_0j_l1pt3_bin_13         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  68 | gamma_B0_0j_l1pt3_bin_14         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  69 | gamma_B0_0j_l1pt3_bin_15         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  70 | gamma_B0_0j_l1pt3_bin_16         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  71 | gamma_B0_0j_l1pt3_bin_17         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  72 | gamma_B0_0j_l1pt3_bin_18         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  73 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  74 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  75 | gamma_B0_0j_l1pt3_bin_4          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  76 | gamma_B0_0j_l1pt3_bin_5          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  77 | gamma_B0_0j_l1pt3_bin_6          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  78 | gamma_B0_0j_l1pt3_bin_7          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  79 | gamma_B0_0j_l1pt3_bin_8          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  80 | gamma_B0_0j_l1pt3_bin_9          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |               0.00 |
+  81 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -1.01 |
+  82 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -5.17 |
+  83 | gamma_B0_0j_l1pt4_bin_10         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -6.20 |
+  84 | gamma_B0_0j_l1pt4_bin_11         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -4.01 |
+  85 | gamma_B0_0j_l1pt4_bin_12         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -4.46 |
+  86 | gamma_B0_0j_l1pt4_bin_13         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -4.11 |
+  87 | gamma_B0_0j_l1pt4_bin_14         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -3.16 |
+  88 | gamma_B0_0j_l1pt4_bin_15         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |             -14.54 |
+  89 | gamma_B0_0j_l1pt4_bin_16         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -9.37 |
+  90 | gamma_B0_0j_l1pt4_bin_17         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -9.39 |
+  91 | gamma_B0_0j_l1pt4_bin_18         |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -6.55 |
+  92 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -2.60 |
+  93 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -2.33 |
+  94 | gamma_B0_0j_l1pt4_bin_4          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -3.78 |
+  95 | gamma_B0_0j_l1pt4_bin_5          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -3.21 |
+  96 | gamma_B0_0j_l1pt4_bin_6          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -3.30 |
+  97 | gamma_B0_0j_l1pt4_bin_7          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -4.34 |
+  98 | gamma_B0_0j_l1pt4_bin_8          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -6.17 |
+  99 | gamma_B0_0j_l1pt4_bin_9          |               0.00 |               0.00 |               0.00 |             335.56 |               0.00 |              -6.31 |
+
+
+Performing a global fit for mu : can take time ...
+
+
+
+
+==================================================================
+     List of nuisance parameters which deserve more attention     
+===================================================================
+
+
+ === Tension between the NP central value and CP measurement ===
+ ===============================================================
+
+
+
+ === Overconstraint of profiled NP wrt CP measurement ===
+ ========================================================
+
+
+
+===================================================================
+
+
+
+
+
+
+==================================================================
+                          Fit results : status                    
+===================================================================
+
+
+
+==================================================================
+
+
+

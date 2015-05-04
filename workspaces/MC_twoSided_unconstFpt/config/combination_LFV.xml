@@ -1,0 +1,19 @@
+<!DOCTYPE Combination SYSTEM 'HistFactorySchema.dtd'>
+<Combination OutputFilePrefix="./results/ws_LFV" >
+  <Input>config/channel_LFV_emu_l1pt0.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt0.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt1.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt1.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt2.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt2.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt3.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt3.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt4.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt4.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt5.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt5.xml</Input>
+  <Measurement Name="AllSYS" Lumi="1.0000" LumiRelErr="1.0340" ExportOnly="True" >
+    <POI>mu_BR_htm</POI>
+    <ParamSetting Const="True">Lumi MinHalfSig halfSig</ParamSetting>
+  </Measurement>
+</Combination>

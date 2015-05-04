@@ -1,0 +1,245 @@
+#!/usr/bin/env python
+#
+# Prepare the inputs for HistFactory
+#
+# Carlos.Solans@cern.ch
+# January 2014
+
+import ROOT
+import os
+import sys
+#import AtlasStyle
+import array
+
+"""
+Prepare a dataset based on the inputs from Suneet (TH2D l1pt vs Mcoll).
+1. Project the baseline selection histograms on y axis (l1pt)
+2. Compute ratio histograms ME/EM
+3. Extract fl1pt scale factors from ME/EM ratios in bins of l1pt [12,15,20,25,30,200]
+"""
+
+#AtlasStyle.SetAtlasStyle()
+
+### SIGNAL STRENGTH ###
+strength = 0.0
+
+### OUTPUT FILE ###
+fw1 = ROOT.TFile("data/simple.root","RECREATE")
+mem = []
+tln = ROOT.TLine()
+l1b = array.array('d',(12,15,20,25,30,35,1000))
+tla = ROOT.TLatex()
+
+
+#### Get SR Histograms ####
+
+frEM_top = ROOT.TFile("~/SRHistos/top_NOM_sr_emu_os.root")
+frEM_higgs   = ROOT.TFile("~/SRHistos/higgs_NOM_sr_emu_os.root")
+frEM_zjets   = ROOT.TFile("~/SRHistos/zjets_NOM_sr_emu_os.root")
+frEM_diboson   = ROOT.TFile("~/SRHistos/diboson_NOM_sr_emu_os.root")
+frME_signaltaue   = ROOT.TFile("~/SRHistos/signaltaue_NOM_sr_mue_os.root")
+
+h2emOrig_top = frEM_top.Get("h_mcoll_vs_pt1_top_NOM_sr_emu_os").Clone("EM_top")
+h2emOrig_higgs = frEM_higgs.Get("h_mcoll_vs_pt1_higgs_NOM_sr_emu_os").Clone("EM_higgs")
+h2emOrig_zjets = frEM_zjets.Get("h_mcoll_vs_pt1_zjets_NOM_sr_emu_os").Clone("EM_zjets")
+h2emOrig_diboson = frEM_diboson.Get("h_mcoll_vs_pt1_diboson_NOM_sr_emu_os").Clone("EM_diboson")
+h2wrsgOrig = frME_signaltaue.Get("h_mcoll_vs_pt1_signaltaue_NOM_sr_mue_os").Clone("ME_signaltaue")
+
+h2emOrig = h2emOrig_diboson.Clone("EM")
+h2emOrig.Add(h2emOrig_top)
+h2emOrig.Add(h2emOrig_zjets)
+h2emOrig.Add(h2emOrig_higgs)
+
+frME_top   = ROOT.TFile("~/SRHistos/top_NOM_sr_mue_os.root")
+frME_higgs   = ROOT.TFile("~/SRHistos/higgs_NOM_sr_mue_os.root")
+frME_zjets   = ROOT.TFile("~/SRHistos/zjets_NOM_sr_mue_os.root")
+frME_diboson   = ROOT.TFile("~/SRHistos/diboson_NOM_sr_mue_os.root")
+frME_signaltaumu   = ROOT.TFile("~/SRHistos/signaltaumu_NOM_sr_mue_os.root")
+
+h2meOrig_top = frME_top.Get("h_mcoll_vs_pt1_top_NOM_sr_mue_os").Clone("ME_top")
+h2meOrig_higgs = frME_higgs.Get("h_mcoll_vs_pt1_higgs_NOM_sr_mue_os").Clone("ME_higgs")
+h2meOrig_zjets = frME_zjets.Get("h_mcoll_vs_pt1_zjets_NOM_sr_mue_os").Clone("ME_zjets")
+h2meOrig_diboson = frME_diboson.Get("h_mcoll_vs_pt1_diboson_NOM_sr_mue_os").Clone("ME_diboson")
+h2sgOrig = frME_signaltaumu.Get("h_mcoll_vs_pt1_signaltaumu_NOM_sr_mue_os").Clone("ME_signaltaumu")
+
+h2meOrig = h2meOrig_diboson.Clone("ME")
+h2meOrig.Add(h2meOrig_top)
+h2meOrig.Add(h2meOrig_zjets)
+h2meOrig.Add(h2meOrig_higgs)
+
+
+
+## Rebin 2D histos ###
+
+print "Rebinning..."
+xaxis = h2meOrig.GetXaxis()
+yaxis = h2meOrig.GetYaxis()
+
+ybinsnew = array.array('f',(0,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,250,300,400,1000))
+xbinsnew = array.array('f',(12,15,20,25,30,35,1000))
+
+h2me = ROOT.TH2F("h_SR_ME_Rebinned_mcollCorr_x_pt1_sum_MC", "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+h2em = ROOT.TH2F("h_SR_EM_Rebinned_mcollCorr_x_pt1_sum_MC", ";Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+h2sg = ROOT.TH2F("h_SR_Sig_Rebinned_mcollCorr_x_pt1", ";Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+h2wrsg = ROOT.TH2F("h_SR_WrongSig_Rebinned_mcollCorr_x_pt1", ";Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+
+
+for x in range(xaxis.GetNbins()):
+	for y in range(yaxis.GetNbins()):
+		i=x+1
+		j=y+1
+		mevalue = h2meOrig.GetBinContent(i,j)
+		emvalue = h2emOrig.GetBinContent(i,j)
+		sgvalue = h2sgOrig.GetBinContent(i,j)
+		wrsgvalue = h2wrsgOrig.GetBinContent(i,j)
+		h2me.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),mevalue)
+		h2em.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emvalue)
+		h2sg.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),sgvalue)
+		h2wrsg.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),wrsgvalue)
+
+
+
+## Rebin uniformly to indices
+
+nbinsx = h2me.GetXaxis().GetNbins()
+nbinsy = h2me.GetNbinsY()
+
+bpme = array.array('f',(0,)*(nbinsx+1))
+bmme = array.array('f',(0,)*(nbinsy+1))
+
+for j in range(nbinsx+1):
+	bpme[j] = h2me.GetXaxis().GetBinLowEdge(j+1)
+for k in range(nbinsy+1):
+	bmme[k] = h2me.GetYaxis().GetBinLowEdge(k+1)
+
+
+c3 = ROOT.TCanvas("c3","Mcoll",800,800)
+c3.Divide(3,len(l1b)-1)
+nthrow = 2
+for i in range(len(l1b)-1):
+	hme1 = ROOT.TH1F("Mcoll_data_ME_l1pt%i"%(i),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+	hem1 = ROOT.TH1F("Mcoll_data_EM_l1pt%i"%(i),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+	hsg1 = ROOT.TH1F("Mcoll_signal_ME_l1pt%i"%(i),";Mcoll (GeV)",len(bmme)-1,bmme)
+	hwrsg1 = ROOT.TH1F("Mcoll_wrong_signal_ME_l1pt%i"%(i),";Mcoll (GeV)",len(bmme)-1,bmme)
+	mem.append(hme1)
+	mem.append(hem1)
+	mem.append(hsg1)
+	mem.append(hwrsg1)
+	for pt in bpme:
+		htme = ROOT.TH1F("htme","htme",len(bmme)-1,bmme)
+		htem = ROOT.TH1F("htem","htem",len(bmme)-1,bmme)
+		htsg = ROOT.TH1F("htsg","htsg",len(bmme)-1,bmme)
+		htwrsg = ROOT.TH1F("htwrsg","htwrsg",len(bmme)-1,bmme)
+		if pt<l1b[i+1] and pt>=l1b[i]:
+			if False: print "add pt: %.2f" %pt
+			for mass in bmme:
+				if False: print "mass:",mass,"pt:",pt,"pt_bin:",l1b[i]
+				htme.SetBinContent(htme.FindBin(mass),h2me.GetBinContent(h2me.FindBin(pt,mass)))
+				htem.SetBinContent(htem.FindBin(mass),h2em.GetBinContent(h2em.FindBin(pt,mass)))
+				htsg.SetBinContent(htsg.FindBin(mass),h2sg.GetBinContent(h2sg.FindBin(pt,mass)))
+				htwrsg.SetBinContent(htwrsg.FindBin(mass),h2wrsg.GetBinContent(h2wrsg.FindBin(pt,mass)))
+
+				htme.SetBinError(htme.FindBin(mass),h2me.GetBinError(h2me.FindBin(pt,mass)))
+				htem.SetBinError(htem.FindBin(mass),h2em.GetBinError(h2em.FindBin(pt,mass)))
+				htsg.SetBinError(htsg.FindBin(mass),h2sg.GetBinError(h2sg.FindBin(pt,mass)))
+				htwrsg.SetBinError(htwrsg.FindBin(mass),h2wrsg.GetBinError(h2wrsg.FindBin(pt,mass)))
+			hme1.Add(htme)
+			hem1.Add(htem)
+			hsg1.Add(htsg)
+			hwrsg1.Add(htwrsg)
+		htme.Clear()
+		htem.Clear()
+		htsg.Clear()
+		htwrsg.Clear()
+	#### ADD SIGNAL TO SUM MC ###
+	if strength>0:
+		hme1.Add(hsg1,strength)
+		#hem1.Add(hwrsg1,strength)
+	if strength<0:
+		hem1.Add(hsg1,-strength)
+		#hme1.Add(hwrsg1,-strength)
+
+ 
+	####
+	c3.cd(3*i+1)
+	hme1.Draw()
+	#tla.DrawLatexNDC(0.3,0.8,"Mcoll data ME %s l1pt %i-%i"%(jet,l1b[i],l1b[i+1]))
+	c3.cd(3*i+2)
+	hem1.Draw()
+	#tla.DrawLatexNDC(0.3,0.8,"Mcoll data EM %s l1pt %i-%i"%(jet,l1b[i],l1b[i+1]))
+	c3.cd(3*i+3)
+	hsg1.Draw()
+	#tla.DrawLatexNDC(0.3,0.8,"Mcoll signal ME %s l1pt %i-%i"%(jet,l1b[i],l1b[i+1]))
+	fw1.cd()
+	hme1.Write()
+	hem1.Write()
+	hsg1.Write()
+	hwrsg1.Write()
+	if False: print "Rebin histos"
+	##throw away first bins
+	hme2 = ROOT.TH1F("Mcoll_data_ME_l1pt%i_rebin"%(i),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+	hem2 = ROOT.TH1F("Mcoll_data_EM_l1pt%i_rebin"%(i),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+	hsg2 = ROOT.TH1F("Mcoll_signal_ME_l1pt%i_rebin"%(i),";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+	hwrsg2 = ROOT.TH1F("Mcoll_wrong_signal_ME_l1pt%i_rebin"%(i),";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+	mem.append(hme2)
+	mem.append(hem2)
+	mem.append(hsg2)
+	mem.append(hwrsg2)
+	
+	for b in range(len(bmme)-nthrow):
+		if hme1.GetBinContent(b+1+nthrow)>0:
+			hme2.SetBinContent(b+1,hme1.GetBinContent(b+1+nthrow))
+			hme2.SetBinError(b+1,hme1.GetBinError(b+1+nthrow))
+		else:
+			hme2.SetBinContent(b+1,0.001)
+			hme2.SetBinError(b+1,0.00001)
+		if hem1.GetBinContent(b+1+nthrow)>0:
+			hem2.SetBinContent(b+1,hem1.GetBinContent(b+1+nthrow))
+			hem2.SetBinError(b+1,hem1.GetBinError(b+1+nthrow))
+		else:
+			hem2.SetBinContent(b+1,0.001)
+			hem2.SetBinError(b+1,0.00001)
+		if hsg1.GetBinContent(b+1+nthrow)>0:
+			hsg2.SetBinContent(b+1,hsg1.GetBinContent(b+1+nthrow))
+			hsg2.SetBinError(b+1,hsg1.GetBinError(b+1+nthrow))
+		else:
+			hsg2.SetBinContent(b+1,0.001)
+			hsg2.SetBinError(b+1,0.00001)
+		if hwrsg1.GetBinContent(b+1+nthrow)>0:
+                        hwrsg2.SetBinContent(b+1,hwrsg1.GetBinContent(b+1+nthrow))
+                        hwrsg2.SetBinError(b+1,hwrsg1.GetBinError(b+1+nthrow))
+                else:
+                        hwrsg2.SetBinContent(b+1,0.001)
+                        hwrsg2.SetBinError(b+1,0.00001)
+
+
+	h_BaseBkg = hme2.Clone("Base_Bkg_l1pt%i"%(i))
+	h_BaseBkg.Add(hem2)
+	h_BaseBkg.Scale(0.5)
+
+
+	hme2.Write()
+	hem2.Write()
+	h_BaseBkg.Write()
+	hsg2.Write()
+	hwrsg2.Write()
+
+print "Bins : " ,ybinsnew[nthrow:]
+if strength>0 : print "**** Signal of %.2f was added ************" %strength
+		
+#c3.Update()
+c3.SaveAs("data/Mcoll_SR.pdf")
+	
+mem.append(frME)
+mem.append(frEM)
+mem.append(frSig)
+mem.append(c3)
+
+#raw_input()
+
+fw1.Close()
+
+while len(mem)>0:
+	item = mem.pop(0)
+	del item
+	

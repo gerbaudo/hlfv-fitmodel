@@ -1,0 +1,412 @@
+
+Processing FitCrossCheckForLimits.C+(PlotsNuisanceParametersVSmu,0.0,1.0,false,"../toydata/results/ws_LFV_combined_AllSYS_model.root","./results/toydata/6","combined","ModelConfig","obsData")...
+
+[1mRooFit v3.55 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2012 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+[#0] ERROR:ObjectHandling -- RooWorkspace::loadSnapshot(w) no snapshot with name snapshot_paramsVals_initial is available
+Nuisance parameter names and values
+
+List of model Observables : 
+----------------------------
+RooRealVar::obs_x_emu_0j_l1pt0 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt0 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt1 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt1 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt2 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt2 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt3 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt3 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt4 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt4 = 3.5  L(0 - 4) B(4) 
+RooRealVar::weightVar = 0  L(-1e+10 - 1e+10) 
+RooCategory::channelCat = mue_0j_l1pt4(idx = 9)
+
+
+List of nuisance parameters : 
+----------------------------
+alpha_l1ptsys_l1pt0 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt1 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt2 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt3 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt4 : 0+/-0     IsNormFactor=0
+gamma_B0_0j_l1pt0_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_3 : 1+/-0     IsNormFactor=1
+
+
+Details on channel emu_0j_l1pt0 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (1920.02 weighted)
+RooProdPdf::model_emu_0j_l1pt0[ lumiConstraint * alpha_l1ptsys_l1pt0Constraint * emu_0j_l1pt0_model(obs_x_emu_0j_l1pt0) ] = 1800.02
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            2400.02 |              20.00 |             -20.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |              -6.25 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |              -6.25 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |             -12.50 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |             -75.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt0 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (240.002 weighted)
+RooProdPdf::model_mue_0j_l1pt0[ lumiConstraint * mue_0j_l1pt0_model(obs_x_mue_0j_l1pt0) ] = 180.003
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |              -6.25 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |              -6.25 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |             -12.50 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |             -75.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt1 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (3200.07 weighted)
+RooProdPdf::model_emu_0j_l1pt1[ lumiConstraint * alpha_l1ptsys_l1pt1Constraint * emu_0j_l1pt1_model(obs_x_emu_0j_l1pt1) ] = 2400.07
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            3200.07 |               1.80 |              -1.80 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -12.50 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -75.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt1 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (400.009 weighted)
+RooProdPdf::model_mue_0j_l1pt1[ lumiConstraint * mue_0j_l1pt1_model(obs_x_mue_0j_l1pt1) ] = 300.01
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -12.50 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -75.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt2 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (3200.07 weighted)
+RooProdPdf::model_emu_0j_l1pt2[ lumiConstraint * alpha_l1ptsys_l1pt2Constraint * emu_0j_l1pt2_model(obs_x_emu_0j_l1pt2) ] = 2400.07
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            3200.07 |               2.00 |              -1.90 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -12.50 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -75.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt2 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (400.009 weighted)
+RooProdPdf::model_mue_0j_l1pt2[ lumiConstraint * mue_0j_l1pt2_model(obs_x_mue_0j_l1pt2) ] = 300.01
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -12.50 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -75.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt3 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (3200.07 weighted)
+RooProdPdf::model_emu_0j_l1pt3[ lumiConstraint * alpha_l1ptsys_l1pt3Constraint * emu_0j_l1pt3_model(obs_x_emu_0j_l1pt3) ] = 2399.77
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            3199.67 |               1.60 |              -1.60 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |              -6.25 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |              -6.25 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |             -12.50 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |             -75.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt3 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (400.009 weighted)
+RooProdPdf::model_mue_0j_l1pt3[ lumiConstraint * mue_0j_l1pt3_model(obs_x_mue_0j_l1pt3) ] = 300.01
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -12.50 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -75.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt4 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (108779 weighted)
+RooProdPdf::model_emu_0j_l1pt4[ lumiConstraint * alpha_l1ptsys_l1pt4Constraint * emu_0j_l1pt4_model(obs_x_emu_0j_l1pt4) ] = 81582.2
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.10 |              -0.10 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |              -6.25 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |              -6.25 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |             -12.50 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |             -75.00 |
+
+
+Details on channel mue_0j_l1pt4 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (13597.4 weighted)
+RooProdPdf::model_mue_0j_l1pt4[ lumiConstraint * mue_0j_l1pt4_model(obs_x_mue_0j_l1pt4) ] = 10197.8
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |              -6.25 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |              -6.25 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |             -12.50 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |             -75.00 |
+
+
+Performing a global fit for mu : can take time ...
+
+
+
+
+==================================================================
+     List of nuisance parameters which deserve more attention     
+===================================================================
+
+
+ === Tension between the NP central value and CP measurement ===
+ ===============================================================
+
+
+
+ === Overconstraint of profiled NP wrt CP measurement ===
+ ========================================================
+
+
+
+===================================================================
+
+
+
+
+
+
+==================================================================
+                          Fit results : status                    
+===================================================================
+
+
+
+==================================================================
+
+
+

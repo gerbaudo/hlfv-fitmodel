@@ -1,0 +1,396 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import ROOT
+import array
+import subprocess
+import AtlasStyle
+
+atlas_cls={}
+atlas_clsb={}
+atlas_pcl={}
+qmu_mu={}
+atlas_sig={}
+atlas_pval={}
+
+masses=range(100,201,1)
+masses.extend((220,240))
+xmin = masses[0]-6
+xmax = masses[-1]+5
+print xmin, xmax
+
+def DictToArrays(a):
+    arrx = array.array('f')
+    arry = array.array('f')
+    for m in a:
+        arrx.append(m)
+        arry.append(a[m])
+    return (arrx,arry)
+
+def DictToGraph(a):
+    arrx = array.array('f')
+    arry = array.array('f')
+    for m in sorted(a):
+        arrx.append(m)
+        arry.append(a[m])
+    return ROOT.TGraph(len(arrx),arrx,arry)
+
+def DictToGraphErrors(a,al,ah):
+    acx = array.array('f')
+    acy = array.array('f')
+    alx = array.array('f')
+    ahx = array.array('f')
+    aly = array.array('f')
+    ahy = array.array('f')
+    for m in sorted(a):
+        acx.append(m)
+        acy.append(a[m])
+        alx.append(0)
+        ahx.append(0)
+        aly.append(a[m]-al[m])
+        ahy.append(ah[m]-a[m])
+    return ROOT.TGraphAsymmErrors(len(acx),acx,acy,alx,ahx,aly,ahy)
+
+def isTrue(s):
+    r=False
+    if s=="True" or s=="true" or s=="1":
+        r=True
+    print "%s is %s"%(s,r)
+    return r
+
+def GetQuantile(th1, quantile):     #convert th1 to values
+    values = []
+    for i in range(th1.GetNbinsX()):
+        if int(th1.GetBinContent(i+1))<=0: continue
+        for j in range(int(th1.GetBinContent(i+1))):
+            values.append(th1.GetBinLowEdge(i+1))
+    return values[int((len(values)-1)*quantile)]
+
+def GetIntersection(x1,y1,x2,y2,x3,y3,x4,y4):
+    #Get intersection point of two lines: http://en.wikipedia.org/wiki/Line-line_intersection
+    #line 1 between (x1,y1) and (x2,y2)
+    #line 2 between (x3,y3) and (x4,y4)
+    den=(x1-x2)*(y3-y4)-(y1-y2)*(x3-x4)
+    if den==0: return None
+    xnum=(x1*y2-y1*x2)*(x3-x4)-(x1-x2)*(x3*y4-y3*x4)
+    ynum=(x1*y2-y1*x2)*(y3-y4)-(y1-y2)*(x3*y4-y3*x4)
+    return (xnum/den,ynum/den)
+
+def parse():
+    atlas_clsb["obs"]={}
+    atlas_clsb["exp"]={}
+    atlas_clsb["2sm"]={}
+    atlas_clsb["1sm"]={}
+    atlas_clsb["1sp"]={}
+    atlas_clsb["2sp"]={}
+    atlas_cls["obs"]={}
+    atlas_cls["exp"]={}
+    atlas_cls["2sm"]={}
+    atlas_cls["1sm"]={}
+    atlas_cls["1sp"]={}
+    atlas_cls["2sp"]={}
+    atlas_pcl["obs"]={}
+    atlas_pcl["exp"]={}
+    atlas_pcl["2sm"]={}
+    atlas_pcl["1sm"]={}
+    atlas_pcl["1sp"]={}
+    atlas_pcl["2sp"]={}
+    atlas_sig["obs"]={}
+    atlas_sig["med"]={}
+    atlas_pval["obs"]={}
+    atlas_pval["med"]={}
+    for m in masses:
+        ft=ROOT.TFile.Open(fname)
+        if ft==None: continue
+        if ft.Get("%s"%m)==None: continue
+        #qmu vs mu curves for all masses
+        if ft.Get("%i/qmu_mu"%m)!=None: qmu_mu[m]=ft.Get("%i/qmu_mu"%m).Clone()
+        #CLs+b
+        if ft.Get("%i/mu_obs"%m)!=None: atlas_clsb["obs"][m]=ft.Get("%i/mu_obs"%m).GetVal()
+        if ft.Get("%i/mu_exp"%m)!=None: atlas_clsb["exp"][m]=ft.Get("%i/mu_exp"%m).GetVal()
+        if ft.Get("%i/mu_2sm"%m)!=None: atlas_clsb["2sm"][m]=ft.Get("%i/mu_2sm"%m).GetVal()
+        if ft.Get("%i/mu_1sm"%m)!=None: atlas_clsb["1sm"][m]=ft.Get("%i/mu_1sm"%m).GetVal()
+        if ft.Get("%i/mu_1sp"%m)!=None: atlas_clsb["1sp"][m]=ft.Get("%i/mu_1sp"%m).GetVal()
+        if ft.Get("%i/mu_2sp"%m)!=None: atlas_clsb["2sp"][m]=ft.Get("%i/mu_2sp"%m).GetVal()
+        #CLs
+        if ft.Get("%i/mu_obs_cls"%m)!=None: atlas_cls["obs"][m]=ft.Get("%i/mu_obs_cls"%m).GetVal()
+        if ft.Get("%i/mu_exp_cls"%m)!=None: atlas_cls["exp"][m]=ft.Get("%i/mu_exp_cls"%m).GetVal()
+        if ft.Get("%i/mu_2sm_cls"%m)!=None: atlas_cls["2sm"][m]=ft.Get("%i/mu_2sm_cls"%m).GetVal()
+        if ft.Get("%i/mu_1sm_cls"%m)!=None: atlas_cls["1sm"][m]=ft.Get("%i/mu_1sm_cls"%m).GetVal()
+        if ft.Get("%i/mu_1sp_cls"%m)!=None: atlas_cls["1sp"][m]=ft.Get("%i/mu_1sp_cls"%m).GetVal()
+        if ft.Get("%i/mu_2sp_cls"%m)!=None: atlas_cls["2sp"][m]=ft.Get("%i/mu_2sp_cls"%m).GetVal()
+        #PCL
+        if ft.Get("%i/mu_obs"%m)!=None:
+            atlas_pcl["obs"][m]=(atlas_clsb["obs"][m] if atlas_clsb["obs"][m]>atlas_clsb["exp"][m] else atlas_clsb["exp"][m])
+        if ft.Get("%i/mu_exp"%m)!=None: atlas_pcl["exp"][m]=atlas_clsb["exp"][m]
+        if ft.Get("%i/mu_2sm"%m)!=None: atlas_pcl["2sm"][m]=atlas_clsb["2sm"][m]
+        if ft.Get("%i/mu_1sm"%m)!=None: atlas_pcl["1sm"][m]=atlas_clsb["1sm"][m]
+        if ft.Get("%i/mu_1sp"%m)!=None: atlas_pcl["1sp"][m]=atlas_clsb["1sp"][m]
+        if ft.Get("%i/mu_2sp"%m)!=None: atlas_pcl["2sp"][m]=atlas_clsb["2sp"][m]
+        #Sig
+        if ft.Get("%i/sig_obs"%m)!=None: atlas_sig["obs"][m]=ft.Get("%i/sig_obs"%m).GetVal()
+        if ft.Get("%i/sig_med"%m)!=None: atlas_sig["med"][m]=ft.Get("%i/sig_med"%m).GetVal()
+        #Sig
+        if ft.Get("%i/pval_obs"%m)!=None: atlas_pval["obs"][m]=ft.Get("%i/pval_obs"%m).GetVal()
+        if ft.Get("%i/pval_med"%m)!=None: atlas_pval["med"][m]=ft.Get("%i/pval_med"%m).GetVal()
+        #Close
+        ft.Close()
+        
+    if len(atlas_cls["obs"])>0:
+        fw = open(fdir+"/limit.txt","w+")
+        fw.write("CLs\n")
+        fw.write(" Mass  +2s   +1s   Obs   Exp   -1s   -2s\n")
+        for m in sorted(atlas_cls["obs"]):
+            fw.write("%5.0f %5.2f %5.2f %5.2f %5.2f %5.2f %5.2f\n" % (m,
+                                                                      atlas_cls["2sp"][m], atlas_cls["1sp"][m],
+                                                                      atlas_cls["obs"][m], atlas_cls["exp"][m],
+                                                                      atlas_cls["1sm"][m], atlas_cls["2sm"][m]))
+        fw.close()
+        print_file(fdir+"/limit.txt")
+
+    if len(atlas_sig["obs"])>0:
+        fw = open(fdir+"/sig.txt","w+")
+        fw.write("Significance\n")
+        fw.write(" Mass  Obs   Exp\n")
+        for m in sorted(atlas_sig["obs"]):
+            fw.write("%5.0f %5.2f %5.2f \n" % (m,
+                                               atlas_sig["obs"][m], atlas_sig["med"][m]))
+        fw.close()
+        print_file(fdir+"/sig.txt")
+
+    if len(atlas_pval["obs"])>0:
+        fw = open(fdir+"/pval.txt","w+")
+        fw.write("P-values\n")
+        fw.write(" Mass  Obs   Exp\n")
+        for m in sorted(atlas_pval["obs"]):
+            fw.write("%5.0f %5.2f %5.2f \n" % (m,
+                                               atlas_pval["obs"][m], atlas_pval["med"][m]))
+        fw.close()
+        print_file(fdir+"/pval.txt")
+        
+def print_file(filename):
+    print "Print results"
+    fr = open(filename)
+    for line in fr.readlines():
+        print line.strip()
+    
+def plot_tautau():
+    #CLs (could be also PCL)
+    ca=ROOT.TCanvas("c3","ATLAS CLs",800,600)
+    #ca.cd(1).SetLogy()
+    MuIsLine=True
+    hf=ca.DrawFrame(xmin,ymin,xmax,ymax)
+    hf.SetTitle(";m_{H} [GeV];95% CL Limit on #sigma/#sigma_{SM}");
+    #tpcl_e2s = DictToGraphErrors(atlas_pcl["exp"],atlas_pcl["exp"],atlas_pcl["2sp"])
+    #tpcl_e2s.SetFillColor(ROOT.kYellow)
+    #tpcl_e2s.Draw("3")
+    #tpcl_e1s = DictToGraphErrors(atlas_pcl["exp"],atlas_pcl["1sm"],atlas_pcl["1sp"])
+    #tpcl_e1s.SetFillColor(ROOT.kGreen+1)
+    #tpcl_e1s.Draw("3")
+    tcls_e2s = DictToGraphErrors(atlas_cls["exp"],atlas_cls["2sm"],atlas_cls["2sp"])
+    tcls_e2s.SetFillColor(ROOT.kYellow)
+    tcls_e2s.Draw("3")
+    tcls_e1s = DictToGraphErrors(atlas_cls["exp"],atlas_cls["1sm"],atlas_cls["1sp"])
+    tcls_e1s.SetFillColor(ROOT.kGreen+1)
+    tcls_e1s.SetFillColor(ROOT.kSpring-3)
+    tcls_e1s.Draw("3")
+    if MuIsLine:
+        t1 = ROOT.TLine()
+        t1.SetLineColor(13)
+        t1.SetLineWidth(2)
+        t1.SetLineStyle(2)
+        t1.DrawLine(xmin,1,xmax,1)
+    #tmu_e2s = DictToGraphErrors(mu1_med,mu1_m2s,mu1_p2s)
+    #tmu_e2s.SetFillColor(ROOT.kGray+1)
+    #tmu_e2s.Draw("3")
+    #tmu_e1s = DictToGraphErrors(mu1_med,mu1_m1s,mu1_p1s)
+    #tmu_e1s.SetFillColor(ROOT.kGray)
+    #tmu_e1s.Draw("3")
+    #tpcl_exp = DictToGraph(atlas_pcl["exp"])
+    #tpcl_exp.SetLineColor(ROOT.kBlack)
+    #tpcl_exp.SetLineStyle(2)
+    #tpcl_exp.SetLineWidth(2)
+    #tpcl_exp.Draw("L")
+    #tpcl_obs = DictToGraph(atlas_pcl["obs"])
+    #tpcl_obs.SetLineColor(ROOT.kBlue)
+    #tpcl_obs.SetLineStyle(1)
+    #tpcl_obs.SetLineWidth(2)
+    #tpcl_obs.Draw("PL")
+    tcls_exp = DictToGraph(atlas_cls["exp"])
+    tcls_exp.SetLineColor(ROOT.kBlack)
+    tcls_exp.SetMarkerColor(ROOT.kBlack)
+    tcls_exp.SetMarkerStyle(21)
+    tcls_exp.SetLineStyle(2)
+    tcls_exp.SetLineWidth(2)
+    tcls_exp.Draw("L")
+    tcls_obs = DictToGraph(atlas_cls["obs"])
+    tcls_obs.SetLineColor(ROOT.kBlack)
+    tcls_obs.SetMarkerColor(ROOT.kBlack)
+    tcls_obs.SetMarkerStyle(20)
+    tcls_obs.SetLineStyle(1)
+    tcls_obs.SetLineWidth(2)
+    if args.obs:
+        tcls_obs.Draw("PL")
+    ###style
+    tt=ROOT.TLatex()
+    tt.SetTextFont(72);
+    tt.DrawTextNDC(0.18,0.885,"ATLAS")
+    tt.SetTextFont(42);
+    if args.tag:
+        tt.DrawTextNDC(0.31,0.885,args.tag)
+    else:
+        tt.DrawTextNDC(0.31,0.885,"Preliminary")
+    lg4=ROOT.TLegend(0.22,0.60,0.50,0.87)
+    lg4.SetTextSize(0.055)
+    if args.obs:
+        #$CL_{\textrm{S}}$.
+        lg4.AddEntry(tcls_obs,"Observed #it{CL}_{s}","lp")
+    lg4.AddEntry(tcls_exp,"Expected #it{CL}_{s}","l")
+    lg4.AddEntry(tcls_e1s,"#pm 1 #sigma","f")
+    lg4.AddEntry(tcls_e2s,"#pm 2 #sigma","f")
+    #lg4.AddEntry(tpcl_exp,"Expected PCL","l")
+    lg4.SetFillColor(0)
+    lg4.SetFillStyle(0)
+    lg4.SetBorderSize(0)
+    lg4.Draw()
+    tt.SetNDC(True)
+    tt.DrawLatex(0.60,0.88,text)
+    tt.DrawLatex(0.57,0.80,"#int Ldt = %s" % lumi)
+    tt.DrawLatex(0.62,0.72,"#sqrt{s} = 8 TeV")
+    ca.Print(fdir+"/limit_tautau_cls.pdf")
+    ca.Print(fdir+"/limit_tautau_cls.eps")
+    ca.Print(fdir+"/limit_tautau_cls.C")
+    ca.SaveAs(fdir+"/limit_tautau_cls.png")
+
+    if not batch:
+	raw_input("Wait...")
+
+def plot_pval():
+    cp=ROOT.TCanvas("cs","ATLAS p-value",800,600)
+    hf=cp.DrawFrame(xmin,ymin,xmax,ymax)
+    hf.SetTitle(";m_{H} [GeV];Local p-value");
+
+    pval_exp = DictToGraph(atlas_pval["med"])
+    pval_exp.SetLineColor(ROOT.kBlack)
+    pval_exp.SetMarkerColor(ROOT.kBlack)
+    pval_exp.SetMarkerStyle(21)
+    pval_exp.SetLineStyle(2)
+    pval_exp.SetLineWidth(2)
+    pval_exp.SetMaximum(1.9)
+    pval_exp.SetMinimum(0.00001)
+    pval_exp.SetTitle("")
+    pval_exp.Draw("AL")
+
+    tl = ROOT.TLine()
+    tl.SetLineColor(ROOT.kRed)
+    tl.SetLineWidth(2)
+    tl.SetLineStyle(2)
+    tl.DrawLine(100,ROOT.Math.normal_cdf_c(1),151,ROOT.Math.normal_cdf_c(1))
+    tl.DrawLine(100,ROOT.Math.normal_cdf_c(2),151,ROOT.Math.normal_cdf_c(2))
+    tl.DrawLine(100,ROOT.Math.normal_cdf_c(3),151,ROOT.Math.normal_cdf_c(3))
+    tl.DrawLine(100,ROOT.Math.normal_cdf_c(4),151,ROOT.Math.normal_cdf_c(4))
+    tl.DrawLine(100,ROOT.Math.normal_cdf_c(5),151,ROOT.Math.normal_cdf_c(5))
+    tt=ROOT.TLatex()
+    tt.SetTextColor(ROOT.kRed)
+    tt.DrawLatex(156,ROOT.Math.normal_cdf_c(1),"1#sigma")
+    tt.DrawLatex(156,ROOT.Math.normal_cdf_c(2),"2#sigma")
+    tt.DrawLatex(156,ROOT.Math.normal_cdf_c(3),"3#sigma")
+    tt.DrawLatex(156,ROOT.Math.normal_cdf_c(4),"4#sigma")
+    tt.DrawLatex(156,ROOT.Math.normal_cdf_c(5),"5#sigma")
+    tt.SetTextColor(ROOT.kBlack)
+
+    pval_obs = DictToGraph(atlas_pval["obs"])
+    pval_obs.SetLineColor(ROOT.kBlack)
+    pval_obs.SetMarkerColor(ROOT.kBlack)
+    pval_obs.SetMarkerStyle(20)
+    pval_obs.SetLineStyle(1)
+    pval_obs.SetLineWidth(2)
+    if args.obs:
+        pval_obs.Draw("PL,same")
+
+    cp.cd(1).SetLogy()
+
+    ###style
+    tt.SetTextFont(72);
+    tt.DrawTextNDC(0.18,0.885,"ATLAS")
+    tt.SetTextFont(42);
+    if args.tag:
+        tt.DrawTextNDC(0.31,0.885,args.tag)
+    else:
+        tt.DrawTextNDC(0.31,0.885,"Preliminary")
+    lg4=ROOT.TLegend(0.62,0.20,0.90,0.37)
+    lg4.SetTextSize(0.055)
+    if args.obs:
+        lg4.AddEntry(pval_obs,"Observed","lp")
+    lg4.AddEntry(pval_exp,"Expected","l")
+    lg4.SetFillColor(0)
+    lg4.SetFillStyle(0)
+    lg4.SetBorderSize(0)
+    lg4.Draw()
+    tt.SetNDC(True)
+    tt.DrawLatex(0.20,0.38,text)
+    tt.DrawLatex(0.17,0.30,"#int Ldt = %s" % lumi)
+    tt.DrawLatex(0.22,0.22,"#sqrt{s} = 8 TeV")
+    cp.SaveAs(fdir+"/pval.png")
+    cp.Print(fdir+"/pval.pdf")
+    cp.Print(fdir+"/pval.eps")
+    cp.Print(fdir+"/pval.C")
+
+    if not batch:
+	raw_input("Wait...")
+
+if len(sys.argv)<3:
+    print "Usage: %s <filename> <lumi> [text]" % os.path.basename(sys.argv[0])
+    sys.exit(1)
+    
+import argparse
+parser = argparse.ArgumentParser(description="Generate a histofactory XML for a counting experiment")
+parser.add_argument('filename',help='file')
+parser.add_argument('lumi',help='luminosity')
+parser.add_argument('text',help='Label on plot')
+parser.add_argument('batch',help='is-batch')
+parser.add_argument('-xmin',help='xmin',default=90)
+parser.add_argument('-xmax',help='xmax',default=160)
+parser.add_argument('-ymin',help='ymin',default=0)
+parser.add_argument('-ymax',help='ymax',default=20)
+parser.add_argument('-obs',help='obs',action='store_true')
+parser.add_argument('-tag',help='for approval')
+parser.add_argument('-pval',help='plot p-value', action='store_true')
+args = parser.parse_args()
+
+##parser.print_help()
+
+fname=args.filename
+fpat=fname.split(".")[0]
+fdir=os.path.dirname(fname)
+lumi=args.lumi
+text=args.text
+batch=isTrue(args.batch)
+
+xmin=int(args.xmin)
+xmax=int(args.xmax)
+ymin=float(args.ymin)
+ymax=int(args.ymax)
+
+vlumi = lumi.split("-")
+if float(vlumi[0])>1000:
+    for i in range(len(vlumi)):
+        vlumi[i]="%.1f" % (float(vlumi[i])/1000.)
+        print vlumi
+    lumi='-'.join(vlumi)+" fb^{-1}"
+else:
+    lumi="%s pb^{-1}" % '-'.join(vlumi)
+
+if batch:
+    ROOT.gROOT.SetBatch(True)
+
+AtlasStyle.SetAtlasStyle()
+
+parse()
+if args.pval:
+    plot_pval()
+else:
+    plot_tautau()
+
+sys.exit()

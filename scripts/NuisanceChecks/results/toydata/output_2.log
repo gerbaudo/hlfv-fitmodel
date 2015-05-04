@@ -1,0 +1,1677 @@
+
+Processing FitCrossCheckForLimits.C+(PlotHistosAfterFitEachSubChannel,0.0,1.0,false,"../toydata/results/ws_LFV_combined_AllSYS_model.root","./results/toydata/2","combined","ModelConfig","obsData")...
+
+[1mRooFit v3.55 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2012 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+[#0] ERROR:ObjectHandling -- RooWorkspace::loadSnapshot(w) no snapshot with name snapshot_paramsVals_initial is available
+Nuisance parameter names and values
+
+List of model Observables : 
+----------------------------
+RooRealVar::obs_x_emu_0j_l1pt0 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt0 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt1 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt1 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt2 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt2 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt3 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt3 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_emu_0j_l1pt4 = 3.5  L(0 - 4) B(4) 
+RooRealVar::obs_x_mue_0j_l1pt4 = 3.5  L(0 - 4) B(4) 
+RooRealVar::weightVar = 0  L(-1e+10 - 1e+10) 
+RooCategory::channelCat = mue_0j_l1pt4(idx = 9)
+
+
+List of nuisance parameters : 
+----------------------------
+alpha_l1ptsys_l1pt0 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt1 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt2 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt3 : 0+/-0     IsNormFactor=0
+alpha_l1ptsys_l1pt4 : 0+/-0     IsNormFactor=0
+gamma_B0_0j_l1pt0_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt0_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt1_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt2_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt3_bin_3 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_0 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_1 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_2 : 1+/-0     IsNormFactor=1
+gamma_B0_0j_l1pt4_bin_3 : 1+/-0     IsNormFactor=1
+
+
+Details on channel emu_0j_l1pt0 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (1920.02 weighted)
+RooProdPdf::model_emu_0j_l1pt0[ lumiConstraint * alpha_l1ptsys_l1pt0Constraint * emu_0j_l1pt0_model(obs_x_emu_0j_l1pt0) ] = 1800.02
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            2400.02 |              20.00 |             -20.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |              -6.25 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |              -6.25 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |             -12.50 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |             -75.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            2400.02 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt0 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (240.002 weighted)
+RooProdPdf::model_mue_0j_l1pt0[ lumiConstraint * mue_0j_l1pt0_model(obs_x_mue_0j_l1pt0) ] = 180.003
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |              -6.25 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |              -6.25 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |             -12.50 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |             -75.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             240.00 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt1 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (3200.07 weighted)
+RooProdPdf::model_emu_0j_l1pt1[ lumiConstraint * alpha_l1ptsys_l1pt1Constraint * emu_0j_l1pt1_model(obs_x_emu_0j_l1pt1) ] = 2400.07
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            3200.07 |               1.80 |              -1.80 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -12.50 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -75.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt1 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (400.009 weighted)
+RooProdPdf::model_mue_0j_l1pt1[ lumiConstraint * mue_0j_l1pt1_model(obs_x_mue_0j_l1pt1) ] = 300.01
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -12.50 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -75.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt2 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (3200.07 weighted)
+RooProdPdf::model_emu_0j_l1pt2[ lumiConstraint * alpha_l1ptsys_l1pt2Constraint * emu_0j_l1pt2_model(obs_x_emu_0j_l1pt2) ] = 2400.07
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            3200.07 |               2.00 |              -1.90 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |              -6.25 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -12.50 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |             -75.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            3200.07 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt2 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (400.009 weighted)
+RooProdPdf::model_mue_0j_l1pt2[ lumiConstraint * mue_0j_l1pt2_model(obs_x_mue_0j_l1pt2) ] = 300.01
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -12.50 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -75.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt3 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (3200.07 weighted)
+RooProdPdf::model_emu_0j_l1pt3[ lumiConstraint * alpha_l1ptsys_l1pt3Constraint * emu_0j_l1pt3_model(obs_x_emu_0j_l1pt3) ] = 2399.77
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |            3199.67 |               1.60 |              -1.60 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |              -6.25 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |              -6.25 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |             -12.50 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |             -75.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |            3199.67 |               0.00 |               0.00 |
+
+
+Details on channel mue_0j_l1pt3 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (400.009 weighted)
+RooProdPdf::model_mue_0j_l1pt3[ lumiConstraint * mue_0j_l1pt3_model(obs_x_mue_0j_l1pt3) ] = 300.01
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |              -6.25 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -12.50 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |             -75.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |             400.01 |               0.00 |               0.00 |
+
+
+Details on channel emu_0j_l1pt4 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (108779 weighted)
+RooProdPdf::model_emu_0j_l1pt4[ lumiConstraint * alpha_l1ptsys_l1pt4Constraint * emu_0j_l1pt4_model(obs_x_emu_0j_l1pt4) ] = 81582.2
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |          108779.09 |               0.10 |              -0.10 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |              -6.25 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |              -6.25 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |             -12.50 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |          108779.09 |               0.00 |             -75.00 |
+
+
+Details on channel mue_0j_l1pt4 : 
+----------------------------------------------------------
+RooDataSet::obsData[channelCat,obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weight:weightVar] = 4 entries (13597.4 weighted)
+RooProdPdf::model_mue_0j_l1pt4[ lumiConstraint * mue_0j_l1pt4_model(obs_x_mue_0j_l1pt4) ] = 10197.8
+     | Nuisance Parameter               |      Signal events |   % Change (+1sig) |   % Change (-1sig) |  Background events |   % Change (+1sig) |   % Change (-1sig) |
+   0 | alpha_l1ptsys_l1pt0              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   1 | alpha_l1ptsys_l1pt1              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   2 | alpha_l1ptsys_l1pt2              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   3 | alpha_l1ptsys_l1pt3              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   4 | alpha_l1ptsys_l1pt4              |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   5 | gamma_B0_0j_l1pt0_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   6 | gamma_B0_0j_l1pt0_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   7 | gamma_B0_0j_l1pt0_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   8 | gamma_B0_0j_l1pt0_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+   9 | gamma_B0_0j_l1pt1_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  10 | gamma_B0_0j_l1pt1_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  11 | gamma_B0_0j_l1pt1_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  12 | gamma_B0_0j_l1pt1_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  13 | gamma_B0_0j_l1pt2_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  14 | gamma_B0_0j_l1pt2_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  15 | gamma_B0_0j_l1pt2_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  16 | gamma_B0_0j_l1pt2_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  17 | gamma_B0_0j_l1pt3_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  18 | gamma_B0_0j_l1pt3_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  19 | gamma_B0_0j_l1pt3_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  20 | gamma_B0_0j_l1pt3_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |               0.00 |
+  21 | gamma_B0_0j_l1pt4_bin_0          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |              -6.25 |
+  22 | gamma_B0_0j_l1pt4_bin_1          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |              -6.25 |
+  23 | gamma_B0_0j_l1pt4_bin_2          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |             -12.50 |
+  24 | gamma_B0_0j_l1pt4_bin_3          |               0.00 |               0.00 |               0.00 |           13597.39 |               0.00 |             -75.00 |
+
+Plotting Histos After Fit in Each Subchannel
+
+
+ -- On category emu_0j_l1pt0 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  0
+initial parameters
+  1) 0x4a60dc0 RooRealVar::     alpha_l1ptsys_l1pt0 = 0  L(-5 - 5)  "alpha_l1ptsys_l1pt0"
+  2) 0x4a54890 RooRealVar:: gamma_B0_0j_l1pt0_bin_0 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_0"
+  3) 0x4a57ff0 RooRealVar:: gamma_B0_0j_l1pt0_bin_1 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_1"
+  4) 0x4a58d50 RooRealVar:: gamma_B0_0j_l1pt0_bin_2 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_2"
+  5) 0x4a59a90 RooRealVar:: gamma_B0_0j_l1pt0_bin_3 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_3"
+INITIAL NLL = -10964.2
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0.918939
+MnSeedGenerator: Initial state:   - FCN =  0.9189385332047 Edm =      53.0952 NCalls =     21
+MnSeedGenerator: Negative G2 found - new state:   - FCN =  -49.89203761688 Edm =     0.591559 NCalls =     40
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =  -49.89203761688 Edm =     0.591559 NCalls =     40
+VariableMetric: Iteration #   1 - FCN =  -50.19056023888 Edm =   0.00235329 NCalls =     52
+VariableMetric: Iteration #   2 - FCN =   -50.6353168119 Edm =   0.00568444 NCalls =     69
+VariableMetric: Iteration #   3 - FCN =  -50.64568899893 Edm =  0.000250008 NCalls =     81
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = -50.645688998933295
+Edm   = 0.000250007948382621574
+Nfcn  = 81
+alpha_l1ptsys_l1pt0	  = -0.0156831	 +/-  1.12925	(limited)
+gamma_B0_0j_l1pt0_bin_0	  = 0.802969	 +/-  0.225293	(limited)
+gamma_B0_0j_l1pt0_bin_1	  = 0.802969	 +/-  0.225293	(limited)
+gamma_B0_0j_l1pt0_bin_2	  = 0.802969	 +/-  0.217811	(limited)
+gamma_B0_0j_l1pt0_bin_3	  = 0.802969	 +/-  0.211374	(limited)
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 0.000167364
+ -- Real time 0:00:00, CP time 0.030
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.030
+
+
+Unconditionnal fit : mu is fitted
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "mu_BR_htm" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+    Bin Width : 1
+
+
+ -- On category mue_0j_l1pt0 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  0
+initial parameters
+  1) 0x4a54890 RooRealVar:: gamma_B0_0j_l1pt0_bin_0 = 1 +/- 0.196167  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_0"
+  2) 0x4a57ff0 RooRealVar:: gamma_B0_0j_l1pt0_bin_1 = 1 +/- 0.196167  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_1"
+  3) 0x4a58d50 RooRealVar:: gamma_B0_0j_l1pt0_bin_2 = 1 +/- 0.189191  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_2"
+  4) 0x4a59a90 RooRealVar:: gamma_B0_0j_l1pt0_bin_3 = 1 +/- 0.183171  L(0 - 1000)  "gamma_B0_0j_l1pt0_bin_3"
+  5) 0x4b4d650 RooRealVar::               mu_BR_htm = 0  L(0 - 200)  "mu_BR_htm"
+INITIAL NLL = -878.019
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0.000857782
+MnSeedGenerator: Initial state:   - FCN = 0.0008577816030311 Edm =    0.0017197 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN = 0.0008577816030311 Edm =    0.0017197 NCalls =     21
+VariableMetric: Iteration #   1 - FCN = 2.431707571304e-06 Edm =  4.25319e-06 NCalls =     33
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = 2.43170757130428683e-06
+Edm   = 4.25319041368450686e-06
+Nfcn  = 33
+gamma_B0_0j_l1pt0_bin_0	  = 0.996409	 +/-  0.246306	(limited)
+gamma_B0_0j_l1pt0_bin_1	  = 0.996409	 +/-  0.246306	(limited)
+gamma_B0_0j_l1pt0_bin_2	  = 0.998206	 +/-  0.17844	(limited)
+gamma_B0_0j_l1pt0_bin_3	  = 0.999701	 +/-  0.0742578	(limited)
+mu_BR_htm	  = 48.5398	 +/-  109.469	(limited)
+Info in <Minuit2>: matrix forced pos-def by adding to diagonal : padd = 0.0246905
+Info in <Minuit2>: MnHesse: matrix was forced pos. def. 
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 2.62153e-06
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt0_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category emu_0j_l1pt1 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  48.5398
+initial parameters
+  1) 0x4b38dc0 RooRealVar::     alpha_l1ptsys_l1pt1 = 0  L(-5 - 5)  "alpha_l1ptsys_l1pt1"
+  2) 0x4b42b30 RooRealVar:: gamma_B0_0j_l1pt1_bin_0 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_0"
+  3) 0x4b46290 RooRealVar:: gamma_B0_0j_l1pt1_bin_1 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_1"
+  4) 0x4b46f10 RooRealVar:: gamma_B0_0j_l1pt1_bin_2 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_2"
+  5) 0x4b47d30 RooRealVar:: gamma_B0_0j_l1pt1_bin_3 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_3"
+INITIAL NLL = -19995.3
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0.918939
+MnSeedGenerator: Initial state:   - FCN =  0.9189385332083 Edm =   2.2467e-11 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =  0.9189385332083 Edm =   2.2467e-11 NCalls =     21
+Info in <Minuit2>: VariableMetricBuilder: no improvement in line search
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = 0.918938533208310648
+Edm   = 2.24670142721874022e-11
+Nfcn  = 22
+alpha_l1ptsys_l1pt1	  = 0	 +/-  0.698344	(limited)
+gamma_B0_0j_l1pt1_bin_0	  = 1	 +/-  0.0707105	(limited)
+gamma_B0_0j_l1pt1_bin_1	  = 1	 +/-  0.0707105	(limited)
+gamma_B0_0j_l1pt1_bin_2	  = 1	 +/-  0.0500001	(limited)
+gamma_B0_0j_l1pt1_bin_3	  = 1	 +/-  0.0204121	(limited)
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 3.31433e-11
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "mu_BR_htm" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category mue_0j_l1pt1 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  48.5398
+initial parameters
+  1) 0x4b42b30 RooRealVar:: gamma_B0_0j_l1pt1_bin_0 = 1 +/- 0.0728875  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_0"
+  2) 0x4b46290 RooRealVar:: gamma_B0_0j_l1pt1_bin_1 = 1 +/- 0.0728875  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_1"
+  3) 0x4b46f10 RooRealVar:: gamma_B0_0j_l1pt1_bin_2 = 1 +/- 0.0530341  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_2"
+  4) 0x4b47d30 RooRealVar:: gamma_B0_0j_l1pt1_bin_3 = 1 +/- 0.0270048  L(0 - 1000)  "gamma_B0_0j_l1pt1_bin_3"
+  5) 0x4b4d650 RooRealVar::               mu_BR_htm = 48.5398 +/- 175.377  L(0 - 200)  "mu_BR_htm"
+INITIAL NLL = -1667.73
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0
+MnSeedGenerator: Initial state:   - FCN =                0 Edm =  0.000212472 NCalls =     19
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =                0 Edm =  0.000212472 NCalls =     19
+VariableMetric: Iteration #   1 - FCN = -0.0001215647441768 Edm =  4.48454e-08 NCalls =     31
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = -0.000121564744176794193
+Edm   = 4.48453805477272818e-08
+Nfcn  = 31
+gamma_B0_0j_l1pt1_bin_0	  = 0.998827	 +/-  0.190917	(limited)
+gamma_B0_0j_l1pt1_bin_1	  = 0.998827	 +/-  0.190917	(limited)
+gamma_B0_0j_l1pt1_bin_2	  = 0.999414	 +/-  0.138252	(limited)
+gamma_B0_0j_l1pt1_bin_3	  = 0.999902	 +/-  0.0575208	(limited)
+mu_BR_htm	  = 28.5492	 +/-  180.093	(limited)
+Info in <Minuit2>: matrix forced pos-def by adding to diagonal : padd = 0.0153728
+Info in <Minuit2>: MnHesse: matrix was forced pos. def. 
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 2.97526e-08
+ -- Real time 0:00:00, CP time 0.010
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.010
+
+
+Unconditionnal fit : mu is fitted
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt1_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category emu_0j_l1pt2 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  28.5492
+initial parameters
+  1) 0x4b6a840 RooRealVar::     alpha_l1ptsys_l1pt2 = 0  L(-5 - 5)  "alpha_l1ptsys_l1pt2"
+  2) 0x4b5e310 RooRealVar:: gamma_B0_0j_l1pt2_bin_0 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_0"
+  3) 0x4b61a70 RooRealVar:: gamma_B0_0j_l1pt2_bin_1 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_1"
+  4) 0x4b626f0 RooRealVar:: gamma_B0_0j_l1pt2_bin_2 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_2"
+  5) 0x4b63510 RooRealVar:: gamma_B0_0j_l1pt2_bin_3 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_3"
+INITIAL NLL = -19995.3
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0.918939
+MnSeedGenerator: Initial state:   - FCN =  0.9189385332083 Edm =  8.63048e-11 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =  0.9189385332083 Edm =  8.63048e-11 NCalls =     21
+Info in <Minuit2>: VariableMetricBuilder: no improvement in line search
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = 0.918938533208310648
+Edm   = 8.63047705594813812e-11
+Nfcn  = 22
+alpha_l1ptsys_l1pt2	  = 0	 +/-  0.66971	(limited)
+gamma_B0_0j_l1pt2_bin_0	  = 1	 +/-  0.0707105	(limited)
+gamma_B0_0j_l1pt2_bin_1	  = 1	 +/-  0.0707105	(limited)
+gamma_B0_0j_l1pt2_bin_2	  = 1	 +/-  0.0500001	(limited)
+gamma_B0_0j_l1pt2_bin_3	  = 1	 +/-  0.0204121	(limited)
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 2.27797e-10
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "mu_BR_htm" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category mue_0j_l1pt2 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  28.5492
+initial parameters
+  1) 0x4b5e310 RooRealVar:: gamma_B0_0j_l1pt2_bin_0 = 1 +/- 0.0735402  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_0"
+  2) 0x4b61a70 RooRealVar:: gamma_B0_0j_l1pt2_bin_1 = 1 +/- 0.0735402  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_1"
+  3) 0x4b626f0 RooRealVar:: gamma_B0_0j_l1pt2_bin_2 = 1 +/- 0.0539277  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_2"
+  4) 0x4b63510 RooRealVar:: gamma_B0_0j_l1pt2_bin_3 = 1 +/- 0.02872  L(0 - 1000)  "gamma_B0_0j_l1pt2_bin_3"
+  5) 0x4b4d650 RooRealVar::               mu_BR_htm = 28.5492 +/- 108.361  L(0 - 200)  "mu_BR_htm"
+INITIAL NLL = -1667.73
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0
+MnSeedGenerator: Initial state:   - FCN =                0 Edm =  7.18116e-05 NCalls =     19
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =                0 Edm =  7.18116e-05 NCalls =     19
+VariableMetric: Iteration #   1 - FCN = -4.207784650134e-05 Edm =  7.64132e-09 NCalls =     31
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = -4.20778465013427194e-05
+Edm   = 7.64132322072276613e-09
+Nfcn  = 31
+gamma_B0_0j_l1pt2_bin_0	  = 0.999295	 +/-  0.191008	(limited)
+gamma_B0_0j_l1pt2_bin_1	  = 0.999295	 +/-  0.191008	(limited)
+gamma_B0_0j_l1pt2_bin_2	  = 0.999648	 +/-  0.138282	(limited)
+gamma_B0_0j_l1pt2_bin_3	  = 0.999941	 +/-  0.0575227	(limited)
+mu_BR_htm	  = 17.2983	 +/-  173.043	(limited)
+Info in <Minuit2>: matrix forced pos-def by adding to diagonal : padd = 0.0195549
+Info in <Minuit2>: MnHesse: matrix was forced pos. def. 
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 7.08571e-09
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt2_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category emu_0j_l1pt3 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  17.2983
+initial parameters
+  1) 0x4bf3440 RooRealVar::     alpha_l1ptsys_l1pt3 = 0  L(-5 - 5)  "alpha_l1ptsys_l1pt3"
+  2) 0x4be6f10 RooRealVar:: gamma_B0_0j_l1pt3_bin_0 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_0"
+  3) 0x4bea670 RooRealVar:: gamma_B0_0j_l1pt3_bin_1 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_1"
+  4) 0x4beb2f0 RooRealVar:: gamma_B0_0j_l1pt3_bin_2 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_2"
+  5) 0x4bec110 RooRealVar:: gamma_B0_0j_l1pt3_bin_3 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_3"
+INITIAL NLL = -19995.3
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0.918939
+MnSeedGenerator: Initial state:   - FCN =  0.9189385332047 Edm =  3.56963e-05 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =  0.9189385332047 Edm =  3.56963e-05 NCalls =     21
+VariableMetric: Iteration #   1 - FCN =  0.9189160034279 Edm =  8.15853e-07 NCalls =     35
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = 0.918916003427902028
+Edm   = 8.15853175892327683e-07
+Nfcn  = 35
+alpha_l1ptsys_l1pt3	  = 0.00210947	 +/-  0.621415	(limited)
+gamma_B0_0j_l1pt3_bin_0	  = 1.00008	 +/-  0.070466	(limited)
+gamma_B0_0j_l1pt3_bin_1	  = 1.00008	 +/-  0.070466	(limited)
+gamma_B0_0j_l1pt3_bin_2	  = 1.00008	 +/-  0.0496501	(limited)
+gamma_B0_0j_l1pt3_bin_3	  = 1.00008	 +/-  0.0195315	(limited)
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 2.47311e-06
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "mu_BR_htm" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category mue_0j_l1pt3 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  17.2983
+initial parameters
+  1) 0x4be6f10 RooRealVar:: gamma_B0_0j_l1pt3_bin_0 = 1 +/- 0.0724771  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_0"
+  2) 0x4bea670 RooRealVar:: gamma_B0_0j_l1pt3_bin_1 = 1 +/- 0.0724771  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_1"
+  3) 0x4beb2f0 RooRealVar:: gamma_B0_0j_l1pt3_bin_2 = 1 +/- 0.0524641  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_2"
+  4) 0x4bec110 RooRealVar:: gamma_B0_0j_l1pt3_bin_3 = 1 +/- 0.0258604  L(0 - 1000)  "gamma_B0_0j_l1pt3_bin_3"
+  5) 0x4b4d650 RooRealVar::               mu_BR_htm = 17.2983 +/- 126.103  L(0 - 200)  "mu_BR_htm"
+INITIAL NLL = -1667.73
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0
+MnSeedGenerator: Initial state:   - FCN =                0 Edm =  2.61194e-05 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =                0 Edm =  2.61194e-05 NCalls =     21
+VariableMetric: Iteration #   1 - FCN = -1.545265422465e-05 Edm =  1.81668e-09 NCalls =     33
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = -1.54526542246458121e-05
+Edm   = 1.81667831896680875e-09
+Nfcn  = 33
+gamma_B0_0j_l1pt3_bin_0	  = 0.999569	 +/-  0.191043	(limited)
+gamma_B0_0j_l1pt3_bin_1	  = 0.999569	 +/-  0.191043	(limited)
+gamma_B0_0j_l1pt3_bin_2	  = 0.999784	 +/-  0.138293	(limited)
+gamma_B0_0j_l1pt3_bin_3	  = 0.999964	 +/-  0.0575233	(limited)
+mu_BR_htm	  = 10.6132	 +/-  174.689	(limited)
+Info in <Minuit2>: matrix forced pos-def by adding to diagonal : padd = 0.0277536
+Info in <Minuit2>: MnHesse: matrix was forced pos. def. 
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 7.3386e-09
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt4_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt3_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt4_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category emu_0j_l1pt4 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  10.6132
+initial parameters
+  1) 0x4c76050 RooRealVar::     alpha_l1ptsys_l1pt4 = 0  L(-5 - 5)  "alpha_l1ptsys_l1pt4"
+  2) 0x4c69b20 RooRealVar:: gamma_B0_0j_l1pt4_bin_0 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_0"
+  3) 0x4c6d280 RooRealVar:: gamma_B0_0j_l1pt4_bin_1 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_1"
+  4) 0x4c6df00 RooRealVar:: gamma_B0_0j_l1pt4_bin_2 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_2"
+  5) 0x4c6ed20 RooRealVar:: gamma_B0_0j_l1pt4_bin_3 = 1  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_3"
+INITIAL NLL = -1.06329e+06
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = 0.918939
+MnSeedGenerator: Initial state:   - FCN =  0.9189385332047 Edm =   2.7275e-11 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN =  0.9189385332047 Edm =   2.7275e-11 NCalls =     21
+Info in <Minuit2>: VariableMetricBuilder: no improvement in line search
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = 0.91893853320467267
+Edm   = 2.72749974169875264e-11
+Nfcn  = 22
+alpha_l1ptsys_l1pt4	  = 0	 +/-  0.943842	(limited)
+gamma_B0_0j_l1pt4_bin_0	  = 1	 +/-  0.0121272	(limited)
+gamma_B0_0j_l1pt4_bin_1	  = 1	 +/-  0.0121272	(limited)
+gamma_B0_0j_l1pt4_bin_2	  = 1	 +/-  0.00857561	(limited)
+gamma_B0_0j_l1pt4_bin_3	  = 1	 +/-  0.00350108	(limited)
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 2.99571e-11
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "mu_BR_htm" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_emu_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+ -- On category mue_0j_l1pt4 
+
+=== Using the following for ModelConfig ===
+Observables:             RooArgSet:: = (obs_x_emu_0j_l1pt0,obs_x_mue_0j_l1pt0,obs_x_emu_0j_l1pt1,obs_x_mue_0j_l1pt1,obs_x_emu_0j_l1pt2,obs_x_mue_0j_l1pt2,obs_x_emu_0j_l1pt3,obs_x_mue_0j_l1pt3,obs_x_emu_0j_l1pt4,obs_x_mue_0j_l1pt4,weightVar,channelCat)
+Parameters of Interest:  RooArgSet:: = (mu_BR_htm)
+Nuisance Parameters:     RooArgSet:: = (alpha_l1ptsys_l1pt0,alpha_l1ptsys_l1pt1,alpha_l1ptsys_l1pt2,alpha_l1ptsys_l1pt3,alpha_l1ptsys_l1pt4,gamma_B0_0j_l1pt0_bin_0,gamma_B0_0j_l1pt0_bin_1,gamma_B0_0j_l1pt0_bin_2,gamma_B0_0j_l1pt0_bin_3,gamma_B0_0j_l1pt1_bin_0,gamma_B0_0j_l1pt1_bin_1,gamma_B0_0j_l1pt1_bin_2,gamma_B0_0j_l1pt1_bin_3,gamma_B0_0j_l1pt2_bin_0,gamma_B0_0j_l1pt2_bin_1,gamma_B0_0j_l1pt2_bin_2,gamma_B0_0j_l1pt2_bin_3,gamma_B0_0j_l1pt3_bin_0,gamma_B0_0j_l1pt3_bin_1,gamma_B0_0j_l1pt3_bin_2,gamma_B0_0j_l1pt3_bin_3,gamma_B0_0j_l1pt4_bin_0,gamma_B0_0j_l1pt4_bin_1,gamma_B0_0j_l1pt4_bin_2,gamma_B0_0j_l1pt4_bin_3)
+Global Observables:      RooArgSet:: = (nom_alpha_l1ptsys_l1pt0,nom_alpha_l1ptsys_l1pt1,nom_alpha_l1ptsys_l1pt2,nom_alpha_l1ptsys_l1pt3,nom_alpha_l1ptsys_l1pt4)
+PDF:                     RooSimultaneous::simPdf[ indexCat=channelCat emu_0j_l1pt0=model_emu_0j_l1pt0 emu_0j_l1pt1=model_emu_0j_l1pt1 emu_0j_l1pt2=model_emu_0j_l1pt2 emu_0j_l1pt3=model_emu_0j_l1pt3 emu_0j_l1pt4=model_emu_0j_l1pt4 mue_0j_l1pt0=model_mue_0j_l1pt0 mue_0j_l1pt1=model_mue_0j_l1pt1 mue_0j_l1pt2=model_mue_0j_l1pt2 mue_0j_l1pt3=model_mue_0j_l1pt3 mue_0j_l1pt4=model_mue_0j_l1pt4 ] = 1019.78
+
+Constatnt POI 0
+Value of POI  10.6132
+initial parameters
+  1) 0x4c69b20 RooRealVar:: gamma_B0_0j_l1pt4_bin_0 = 1 +/- 0.0121683  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_0"
+  2) 0x4c6d280 RooRealVar:: gamma_B0_0j_l1pt4_bin_1 = 1 +/- 0.0121683  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_1"
+  3) 0x4c6df00 RooRealVar:: gamma_B0_0j_l1pt4_bin_2 = 1 +/- 0.00863365  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_2"
+  4) 0x4c6ed20 RooRealVar:: gamma_B0_0j_l1pt4_bin_3 = 1 +/- 0.00364093  L(0 - 1000)  "gamma_B0_0j_l1pt4_bin_3"
+  5) 0x4b4d650 RooRealVar::               mu_BR_htm = 10.6132 +/- 106.801  L(0 - 200)  "mu_BR_htm"
+INITIAL NLL = -104636
+
+
+
+Fit try n°1
+======================
+
+Minuit2Minimizer: Minimize with max-calls 2500 convergence for edm < 1 strategy 0
+MnSeedGenerator: for initial parameters FCN = -1.45519e-11
+MnSeedGenerator: Initial state:   - FCN = -1.455191522837e-11 Edm =  2.94203e-07 NCalls =     21
+VariableMetric: start iterating until Edm is < 0.001
+VariableMetric: Initial state   - FCN = -1.455191522837e-11 Edm =  2.94203e-07 NCalls =     21
+VariableMetric: Iteration #   1 - FCN = -1.711741788313e-07 Edm =  8.53516e-10 NCalls =     33
+Minuit2Minimizer : Valid minimum - status = 0
+FVAL  = -1.71174178831279278e-07
+Edm   = 8.53516070739289916e-10
+Nfcn  = 33
+gamma_B0_0j_l1pt4_bin_0	  = 0.999992	 +/-  0.032566	(limited)
+gamma_B0_0j_l1pt4_bin_1	  = 0.999992	 +/-  0.032566	(limited)
+gamma_B0_0j_l1pt4_bin_2	  = 0.999996	 +/-  0.0236495	(limited)
+gamma_B0_0j_l1pt4_bin_3	  = 0.999999	 +/-  0.00986174	(limited)
+mu_BR_htm	  = 6.50179	 +/-  102.915	(limited)
+Info in <Minuit2>: matrix forced pos-def by adding to diagonal : padd = 0.192237
+Info in <Minuit2>: MnHesse: matrix was forced pos. def. 
+
+
+
+***********************************************************
+         FIT FINALIZED SUCCESSFULLY : 
+            - minuit status 0
+            - hess status 0
+            - Edm = 5.01642e-07
+ -- Real time 0:00:00, CP time 0.000
+***********************************************************
+
+
+
+Real time 0:00:00, CP time 0.000
+
+
+Unconditionnal fit : mu is fitted
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_mu_BR_htm
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: alpha_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "alpha_l1ptsys_l1pt4" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_l1ptsys_l1pt4
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt0_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt0_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt1_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt1_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt2_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt2_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_0" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_0
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_1" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_1
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_2" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_2
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:plotOn: WARNING: variable is not an explicit dependent: gamma_B0_0j_l1pt3_bin_3
+[#0] ERROR:Plotting -- RooAddition::nll_model_mue_0j_l1pt4_obsData_with_constr:createPlotProjection: "gamma_B0_0j_l1pt3_bin_3" is not a dependent and will be ignored.
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt3_bin_3
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_0
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_1
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_2
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: NLLscan_B0_0j_l1pt4_bin_3
+    Bin Width : 1
+
+
+
+==================================================================
+     List of nuisance parameters which deserve more attention     
+===================================================================
+
+
+ === Tension between the NP central value and CP measurement ===
+ ===============================================================
+
+
+
+ === Overconstraint of profiled NP wrt CP measurement ===
+ ========================================================
+
+
+
+===================================================================
+
+
+
+
+
+
+==================================================================
+                          Fit results : status                    
+===================================================================
+
+
+emu_0j_l1pt0_unconditionnal_mu0  :  minuit status = 0
+emu_0j_l1pt1_unconditionnal_mu0  :  minuit status = 0
+emu_0j_l1pt2_unconditionnal_mu0  :  minuit status = 0
+emu_0j_l1pt3_unconditionnal_mu0  :  minuit status = 0
+emu_0j_l1pt4_unconditionnal_mu0  :  minuit status = 0
+mue_0j_l1pt0_unconditionnal_mu0  :  minuit status = 0
+mue_0j_l1pt1_unconditionnal_mu0  :  minuit status = 0
+mue_0j_l1pt2_unconditionnal_mu0  :  minuit status = 0
+mue_0j_l1pt3_unconditionnal_mu0  :  minuit status = 0
+mue_0j_l1pt4_unconditionnal_mu0  :  minuit status = 0
+
+==================================================================
+
+
+

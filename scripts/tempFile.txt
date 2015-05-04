@@ -1,0 +1,11 @@
+obs_x_emu_0j_l1pt0 =  18.500 L(0 - 19) B(19) 
+obs_x_emu_0j_l1pt1 =  18.500 L(0 - 19) B(19) 
+obs_x_emu_0j_l1pt2 =  18.500 L(0 - 19) B(19) 
+obs_x_emu_0j_l1pt3 =  18.500 L(0 - 19) B(19) 
+obs_x_emu_0j_l1pt4 =  18.500 L(0 - 19) B(19) 
+obs_x_mue_0j_l1pt0 =  18.500 L(0 - 19) B(19) 
+obs_x_mue_0j_l1pt1 =  18.500 L(0 - 19) B(19) 
+obs_x_mue_0j_l1pt2 =  18.500 L(0 - 19) B(19) 
+obs_x_mue_0j_l1pt3 =  18.500 L(0 - 19) B(19) 
+obs_x_mue_0j_l1pt4 =  18.500 L(0 - 19) B(19) 
+channelCat = emu_0j_l1pt4

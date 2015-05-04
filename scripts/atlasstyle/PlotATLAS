@@ -1,0 +1,6 @@
+TFile* f = new TFile(HTM.root);
+TH1D* h1 = (TH1D*)f->Get("nom/ME_noS_McollHiggs_Unblind");
+TH1D* h2 = (TH1D*)f->Get("nom/ME_McollHiggs_Unblind");
+h1->Draw("e1")
+h2->Draw("e1 sames")
+
