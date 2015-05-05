@@ -1,0 +1,22 @@
+<!DOCTYPE Channel SYSTEM 'HistFactorySchema.dtd'>
+<Channel Name="emu_l1pt1" InputFile="data/simple.root" >
+  <Data InputFile="data/simple.root" HistoPath="" HistoName="Mcoll_data_EM_l1pt1_rebin"/>
+  <Sample Name="Sig_mue_onEmu_l1pt1" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_signal_ME_l1pt1_rebin">
+    <NormFactor Name="MinHalfSig" Val="-0.5000" Low="-0.5010" High="-0.4990" Const="True"/>
+    <NormFactor Name="mu_BR_htm" Val="0" Low="-200" High="200" />
+  </Sample>
+  <Sample Name="Fakes_emu_l1pt1" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_Fakes_EM_l1pt1_rebin">
+    <OverallSys Name="Fakes_EL_RE" Low="0.9930" High="1.0040"/>
+    <OverallSys Name="Fakes_EL_FR" Low="0.9790" High="1.0160"/>
+    <OverallSys Name="Fakes_MU_RE" Low="1.0020" High="0.9980"/>
+    <OverallSys Name="Fakes_MU_FR" Low="0.9830" High="1.0180"/>
+    <HistoSys Name="Fakes_EL_RE" HistoNameHigh="Mcoll_Fakes_EL_RE_UP_EM_l1pt1_rebin" HistoNameLow="Mcoll_Fakes_EL_RE_DOWN_EM_l1pt1_rebin"/>
+    <HistoSys Name="Fakes_EL_FR" HistoNameHigh="Mcoll_Fakes_EL_FR_UP_EM_l1pt1_rebin" HistoNameLow="Mcoll_Fakes_EL_FR_DOWN_EM_l1pt1_rebin"/>
+    <HistoSys Name="Fakes_MU_RE" HistoNameHigh="Mcoll_Fakes_MU_RE_UP_EM_l1pt1_rebin" HistoNameLow="Mcoll_Fakes_MU_RE_DOWN_EM_l1pt1_rebin"/>
+    <HistoSys Name="Fakes_MU_FR" HistoNameHigh="Mcoll_Fakes_MU_FR_UP_EM_l1pt1_rebin" HistoNameLow="Mcoll_Fakes_MU_FR_DOWN_EM_l1pt1_rebin"/>
+  </Sample>
+  <Sample Name="B0_l1pt1" NormalizeByTheory="False" HistoPath="" HistoName="Base_Bkg_l1pt1">
+    <NormFactor Name="fl1pt_l1pt1" Val="1.0000" Low="0.0100" High="10.0000" Const="False"/>
+    <ShapeFactor Name="B0_l1pt1"/>
+  </Sample>
+</Channel>

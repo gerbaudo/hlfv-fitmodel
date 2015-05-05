@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+import os
+import sys
+import ROOT
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-check', action='store_true')
+args = parser.parse_args()
+
+models = ["AllSYS",]
+for model in models:
+	fname="results/ws_LFV_combined_%s_model.root"%model
+	if not os.path.exists(fname): continue
+	cmd = 'root -l ../../scripts/runAsymptoticsCLs.C+\''\
+		  '("%s","combined","ModelConfig","obsData","","limits_%s","126",0.95)\'' % (fname,model)
+	os.system(cmd)
+	
+	cmd = 'root -l ../../scripts/StandardHypoTestDemo.C+\'("%s","combined","ModelConfig","","obsData",2)\'' % (fname)
+	os.system(cmd)
+
+	fr = ROOT.TFile.Open("ws_out.root")
+	ws = fr.Get("combined")
+	mc = ws.obj("ModelConfig")
+	data = ws.data("obsData")
+	
+	simPdf = mc.GetPdf()
+	numCats = simPdf.indexCat().numTypes()
+	#ws.Print()
+	ws.loadSnapshot("conditionalNuis_0")
+    
+	nuis = mc.GetNuisanceParameters()
+	it = nuis.createIterator()
+	nui=it.Next()
+	while nui:
+		print "%30s %7.3f" % (nui.GetName(), nui.getVal())
+		nui=it.Next()
+        
+
+        
