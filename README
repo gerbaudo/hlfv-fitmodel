@@ -38,7 +38,7 @@ For Limits:
 
 go to FitModel/scripts
 
-COMMAND:  
+COMMAND example (change the workspace dir):  
 root -l 
 .x runAsymptoticsCLs.C+("../workspaces/Data_unconstrainedFpt_withJets/results/ws_LFV_combined_AllSYS_model.root","combined","ModelConfig","obsData","","FOLDERNAME","126",0.95)
 	
