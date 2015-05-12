@@ -1,0 +1,44 @@
+### instructions to run the scripts of the Fit model ###
+
+Each workspace directory (under FitModel/workspaces/) includes the following two scripts:
+
+
+0. step0
+
+	Description: this script reads 2D histograms from files and creates from them a file with rebinned 1D histograms for all of the channels (for each jet selection, for each l1pt selection, EM & ME histograms for Data, Fakes, Fake systematics, Signal, and Base Bkg - average of EM and ME). The output is at "data/simple.root". It also calculated and prints out the scale factors associated with the systematics.
+ 
+	Configuration: 
+	* Change INPUT DIR to where the root files are
+	* You may also want to change the binning and the jet selection
+	* The script assumes the Signal histograms are normalized to 1% BR
+
+	COMMAND: python -i step0
+
+
+
+
+
+
+1. step1
+
+	Description: this script defines the components of the model. It uses the scripts 'make_histfactory_channel.py' and 'make_histfactory_combination.py' to generate .xml files for each channel and for the combination, and creates a workspace file. The .xml files are put under "config/". The workspace file is under "results/".
+
+	Configuration:
+	* You may need to change the values for the systematics scale factors, if they do not match the print out of the previous script.
+
+	COMMAND: python -i step1
+
+
+
+
+
+After the first steps there is a workspace root file under "results/ws_LFV_combined_AllSYS_model.root" on which you can run several standard scripts.
+
+For Limits:  
+
+go to FitModel/scripts
+
+COMMAND:  
+root -l 
+.x runAsymptoticsCLs.C+("../workspaces/Data_unconstrainedFpt_withJets/results/ws_LFV_combined_AllSYS_model.root","combined","ModelConfig","obsData","","FOLDERNAME","126",0.95)
+	

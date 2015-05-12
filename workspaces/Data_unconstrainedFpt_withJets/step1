@@ -14,9 +14,13 @@ print "Copy DTD"
 os.system("get_histfactory_schema.py config/")
 
 chans=[]
-jetbins=[""]
+jetbins=["","_jets"]
+#jetbins=[""]
 l1ptbins=["l1pt0","l1pt1","l1pt2","l1pt3","l1pt4","l1pt5"]
 
+### values for Systematics ###############
+
+### FAKE SYSTEMATICS
 emu_EL_RE = {'':{'l1pt0':{'UPvalue':1.002322,'DNvalue':0.995928},
 		'l1pt1':{'UPvalue':1.003880,'DNvalue':0.993061},
 		'l1pt2':{'UPvalue':1.014695,'DNvalue':0.974285},
@@ -147,11 +151,43 @@ mue_MU_FR = {'':{'l1pt0':{'UPvalue':1.052617,'DNvalue':0.977827},
 	}
 
 
-### SET VALUES FOR FAKE SYSTEMATIC ###
+### SIGNAL SYSTEMATICS ##########################
+
+#ATLAS_MU_SCALE = {'':{'l1pt0':{'UPvalue':0.995362,'DNvalue':1.000509},
+#		'l1pt1':{'UPvalue':1.003028,'DNvalue':0.998340},
+#		'l1pt2':{'UPvalue':1.000896,'DNvalue':1.000227},
+#		'l1pt3':{'UPvalue':1.002674,'DNvalue':1.002269},
+#		'l1pt4':{'UPvalue':1.006613,'DNvalue':1.002782},
+#		'l1pt5':{'UPvalue':1.000575,'DNvalue':0.999515},
+#		},
+#	}
+
+##################################################
+Fpt_params = {'':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt1':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt2':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt3':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt4':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt5':{'lower':1.0,'upper':1.0,'const':"True"},
+			},
+		'_jets':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt1':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt2':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt3':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt4':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt5':{'lower':1.0,'upper':1.0,'const':"True"},
+                	},
+		}
+
+
+### SET VALUES ###
 for jetbin in jetbins:
 	for l1ptbin in l1ptbins:
 		cdic = {'jet':jetbin,
 			'l1pt':l1ptbin,
+			'fptlow':Fpt_params[jetbin][l1ptbin]['lower'],
+			'fpthigh':Fpt_params[jetbin][l1ptbin]['upper'],
+			'fptconst':Fpt_params[jetbin][l1ptbin]['const'],
         	        'emu_DNval_EL_RE':emu_EL_RE[jetbin][l1ptbin]['DNvalue'],
 			'emu_UPval_EL_RE':emu_EL_RE[jetbin][l1ptbin]['UPvalue'],
 			'emu_DNval_EL_FR':emu_EL_FR[jetbin][l1ptbin]['DNvalue'],
@@ -168,6 +204,10 @@ for jetbin in jetbins:
 	                'mue_UPval_MU_RE':mue_MU_RE[jetbin][l1ptbin]['UPvalue'],
 	                'mue_DNval_MU_FR':mue_MU_FR[jetbin][l1ptbin]['DNvalue'],
 	                'mue_UPval_MU_FR':mue_MU_FR[jetbin][l1ptbin]['UPvalue'],
+			#'DNval_ATLAS_MU_SCALE':ATLAS_MU_SCALE[jetbin][l1ptbin]['DNvalue'],
+			#'UPval_ATLAS_MU_SCALE':ATLAS_MU_SCALE[jetbin][l1ptbin]['UPvalue'],
+			#'DNval_ATLAS_MET_RESOSOFT':ATLAS_MET_RESOSOFT[jetbin][l1ptbin]['DNvalue'],
+			#'UPval_ATLAS_MET_RESOSOFT':ATLAS_MET_RESOSOFT[jetbin][l1ptbin]['UPvalue'],
 			}
 
 
@@ -178,7 +218,7 @@ for jetbin in jetbins:
 	                  "-sig Sig_mue_onEmu_%(l1pt)s%(jet)s:Mcoll_signal_ME_%(l1pt)s%(jet)s_rebin "\
 			  "-sca MinHalfSig:Sig_mue_onEmu_%(l1pt)s%(jet)s:-0.5:-0.501:-0.499:True "\
 			  "-ddb B0_%(l1pt)s%(jet)s:Base_Bkg_%(l1pt)s%(jet)s "\
-	                  "-sca fl1pt_%(l1pt)s%(jet)s:B0_%(l1pt)s%(jet)s:1.0:0.01:10.0:False "\
+	                  "-sca fl1pt_%(l1pt)s%(jet)s:B0_%(l1pt)s%(jet)s:1.0:%(fptlow).3f:%(fpthigh).3f:%(fptconst)s "\
 	                  "-ssc B0_%(l1pt)s%(jet)s:B0_%(l1pt)s%(jet)s "\
 			  "-bkg Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_EM_%(l1pt)s%(jet)s_rebin "\
 			  "-histosys Fakes_EL_RE:Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_RE_DOWN_EM_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_RE_UP_EM_%(l1pt)s%(jet)s_rebin "\
@@ -189,26 +229,18 @@ for jetbin in jetbins:
 	                  "-sys Fakes_MU_RE:Fakes_emu_%(l1pt)s%(jet)s:%(emu_DNval_MU_RE).3f:%(emu_UPval_MU_RE).3f "\
 	                  "-histosys Fakes_MU_FR:Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_FR_DOWN_EM_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_FR_UP_EM_%(l1pt)s%(jet)s_rebin "\
 	                  "-sys Fakes_MU_FR:Fakes_emu_%(l1pt)s%(jet)s:%(emu_DNval_MU_FR).3f:%(emu_UPval_MU_FR).3f "\
+                          "-sys ATLAS_MU_EEF:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.977963:1.02204 "\
+                          "-sys pdf_Higgs_gg:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.925:1.075 "\
+                          "-sys QCDscale_ggH:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.92:1.08 "\
+			  "-sys ATLAS_LUMI_2012:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.972:1.028 "\
 			  "config/channel_LFV_emu_%(l1pt)s%(jet)s.xml" % cdic
 	        chans.append("config/channel_LFV_emu_%s%s.xml" % (l1ptbin,jetbin))
 	        print " Executing: %s" % cmd
 	        os.system(cmd)
 	
 	
-	#"-wrsig wrongSig_mue_onEmu_%(l1pt)s:Mcoll_wrong_signal_ME_%(l1pt)s_rebin "\
-	#                  "-sca fl1pt_%(l1pt)s:wrongSig_mue_onEmu_%(l1pt)s:1.0:0.01:10.0:False "\
-	#                  "-sca halfSig:wrongSig_mue_onEmu_%(l1pt)s:0.5:0.499:0.501:True "\
-	
-	#"-bkg Fakes_emu_%(l1pt)s:Mcoll_Fakes_EM_%(l1pt)s_rebin "\
-	#                  "-histosys Fakes_EL_RE:Fakes_emu_%(l1pt)s:Mcoll_Fakes_EL_RE_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_EL_RE_UP_EM_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_EL_RE:Fakes_emu_%(l1pt)s:%(emu_DNval_EL_RE).3f:%(emu_UPval_EL_RE).3f "\
-	#                  "-histosys Fakes_EL_FR:Fakes_emu_%(l1pt)s:Mcoll_Fakes_EL_FR_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_EL_FR_UP_EM_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_EL_FR:Fakes_emu_%(l1pt)s:%(emu_DNval_EL_FR).3f:%(emu_UPval_EL_FR).3f "\
-	#                  "-histosys Fakes_MU_RE:Fakes_emu_%(l1pt)s:Mcoll_Fakes_MU_RE_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_MU_RE_UP_EM_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_MU_RE:Fakes_emu_%(l1pt)s:%(emu_DNval_MU_RE).3f:%(emu_UPval_MU_RE).3f "\
-	#                  "-histosys Fakes_MU_FR:Fakes_emu_%(l1pt)s:Mcoll_Fakes_MU_FR_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_MU_FR_UP_EM_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_MU_FR:Fakes_emu_%(l1pt)s:%(emu_DNval_MU_FR).3f:%(emu_UPval_MU_FR).3f "\
-	
+#"-histosys ATLAS_MU_SCALE:Sig_mue_onEmu_%(l1pt)s%(jet)s:Mcoll_ATLAS_MU_SCALE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_ATLAS_MU_SCALE_UP_ME_%(l1pt)s%(jet)s_rebin "\
+ #                         "-sys ATLAS_MU_SCALE:Sig_mue_onEmu_%(l1pt)s%(jet)s:%(DNval_ATLAS_MU_SCALE).3f:%(UPval_ATLAS_MU_SCALE).3f "\
 	
 		print "Generate channel mue %s%s" % (l1ptbin,jetbin)
 		cmd = "./make_histfactory_channel.py mue_%(l1pt)s%(jet)s "\
@@ -221,30 +253,25 @@ for jetbin in jetbins:
 			  "-histosys Fakes_EL_RE:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_RE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_RE_UP_ME_%(l1pt)s%(jet)s_rebin "\
 	                  "-sys Fakes_EL_RE:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_EL_RE).3f:%(mue_UPval_EL_RE).3f "\
 	                  "-histosys Fakes_EL_FR:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_FR_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_FR_UP_ME_%(l1pt)s%(jet)s_rebin "\
-	                  "-sys Fakes_EL_FR:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_EL_FR).3f:%(mue_UPval_EL_FR).3f "\
+			  "-sys Fakes_EL_FR:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_EL_FR).3f:%(mue_UPval_EL_FR).3f "\
 	                  "-histosys Fakes_MU_RE:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_RE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_RE_UP_ME_%(l1pt)s%(jet)s_rebin "\
 	                  "-sys Fakes_MU_RE:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_MU_RE).3f:%(mue_UPval_MU_RE).3f "\
 	                  "-histosys Fakes_MU_FR:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_FR_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_FR_UP_ME_%(l1pt)s%(jet)s_rebin "\
 	                  "-sys Fakes_MU_FR:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_MU_FR).3f:%(mue_UPval_MU_FR).3f "\
+                          "-sys ATLAS_MU_EEF:Sig_mue_%(l1pt)s%(jet)s:0.977963:1.02204 "\
+                          "-sys pdf_Higgs_gg:Sig_mue_%(l1pt)s%(jet)s:0.925:1.075 "\
+                          "-sys QCDscale_ggH:Sig_mue_%(l1pt)s%(jet)s:0.92:1.08 "\
+                          "-sys ATLAS_LUMI_2012:Sig_mue_%(l1pt)s%(jet)s:0.972:1.028 "\
 			  "config/channel_LFV_mue_%(l1pt)s%(jet)s.xml" % cdic
 			
 		chans.append("config/channel_LFV_mue_%s%s.xml" % (l1ptbin,jetbin))
 		print " Executing: %s" % cmd
 		os.system(cmd)
+
+#"-histosys ATLAS_MU_SCALE:Sig_mue_%(l1pt)s%(jet)s:Mcoll_ATLAS_MU_SCALE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_ATLAS_MU_SCALE_UP_ME_%(l1pt)s%(jet)s_rebin "\
+ #                         "-sys ATLAS_MU_SCALE:Sig_mue_%(l1pt)s%(jet)s:%(DNval_ATLAS_MU_SCALE).3f:%(UPval_ATLAS_MU_SCALE).3f "\
 	
-	
-	
-	
-	#"-bkg Fakes_mue_%(l1pt)s:Mcoll_Fakes_ME_%(l1pt)s_rebin "\
-	#                  "-histosys Fakes_EL_RE:Fakes_mue_%(l1pt)s:Mcoll_Fakes_EL_RE_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_EL_RE_UP_ME_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_EL_RE:Fakes_mue_%(l1pt)s:%(mue_DNval_EL_RE).3f:%(mue_UPval_EL_RE).3f "\
-	#                  "-histosys Fakes_EL_FR:Fakes_mue_%(l1pt)s:Mcoll_Fakes_EL_FR_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_EL_FR_UP_ME_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_EL_FR:Fakes_mue_%(l1pt)s:%(mue_DNval_EL_FR).3f:%(mue_UPval_EL_FR).3f "\
-	#                  "-histosys Fakes_MU_RE:Fakes_mue_%(l1pt)s:Mcoll_Fakes_MU_RE_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_MU_RE_UP_ME_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_MU_RE:Fakes_mue_%(l1pt)s:%(mue_DNval_MU_RE).3f:%(mue_UPval_MU_RE).3f "\
-	#                  "-histosys Fakes_MU_FR:Fakes_mue_%(l1pt)s:Mcoll_Fakes_MU_FR_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_MU_FR_UP_ME_%(l1pt)s_rebin "\
-	#                  "-sys Fakes_MU_FR:Fakes_mue_%(l1pt)s:%(mue_DNval_MU_FR).3f:%(mue_UPval_MU_FR).3f "\
-	
+
 	
 dic={}
 dic["chans"]=' '.join(chans)

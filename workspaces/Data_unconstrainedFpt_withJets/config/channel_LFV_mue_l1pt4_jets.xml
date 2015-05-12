@@ -2,6 +2,10 @@
 <Channel Name="mue_l1pt4_jets" InputFile="data/simple.root" >
   <Data InputFile="data/simple.root" HistoPath="" HistoName="Mcoll_data_ME_l1pt4_jets_rebin"/>
   <Sample Name="Sig_mue_l1pt4_jets" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_signal_ME_l1pt4_jets_rebin">
+    <OverallSys Name="ATLAS_MU_EEF" Low="0.9780" High="1.0220"/>
+    <OverallSys Name="pdf_Higgs_gg" Low="0.9250" High="1.0750"/>
+    <OverallSys Name="QCDscale_ggH" Low="0.9200" High="1.0800"/>
+    <OverallSys Name="ATLAS_LUMI_2012" Low="0.9720" High="1.0280"/>
     <NormFactor Name="halfSig" Val="0.5000" Low="0.4990" High="0.5010" Const="True"/>
     <NormFactor Name="mu_BR_htm" Val="0" Low="-200" High="200" />
   </Sample>

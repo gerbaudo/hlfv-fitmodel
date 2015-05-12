@@ -14,175 +14,265 @@ print "Copy DTD"
 os.system("get_histfactory_schema.py config/")
 
 chans=[]
-
+#jetbins=["","_jets"]
+jetbins=[""]
 l1ptbins=["l1pt0","l1pt1","l1pt2","l1pt3","l1pt4","l1pt5"]
 
-emu_EL_RE = {'l1pt0':{'UPvalue':1.002322,'DNvalue':0.995928},
+### values for Systematics ###############
+
+### FAKE SYSTEMATICS
+emu_EL_RE = {'':{'l1pt0':{'UPvalue':1.002322,'DNvalue':0.995928},
 		'l1pt1':{'UPvalue':1.003880,'DNvalue':0.993061},
 		'l1pt2':{'UPvalue':1.014695,'DNvalue':0.974285},
 		'l1pt3':{'UPvalue':1.016214,'DNvalue':0.971293},
 		'l1pt4':{'UPvalue':1.030615,'DNvalue':0.946051},
 		'l1pt5':{'UPvalue':1.014868,'DNvalue':0.973419},
-		}
+		},
+	    '_jets':{'l1pt0':{'UPvalue':0.999662,'DNvalue':1.001053},
+		'l1pt1':{'UPvalue':1.002355,'DNvalue':0.995975},
+		'l1pt2':{'UPvalue':1.006311,'DNvalue':0.988549},
+		'l1pt3':{'UPvalue':0.999566,'DNvalue':1.000814},
+		'l1pt4':{'UPvalue':1.019369,'DNvalue':0.965051},
+		'l1pt5':{'UPvalue':1.022439,'DNvalue':0.959844},
+		},
+	    }
 
-emu_EL_FR = {'l1pt0':{'UPvalue':1.009608,'DNvalue':0.987954},
+emu_EL_FR = {'':{'l1pt0':{'UPvalue':1.009608,'DNvalue':0.987954},
 		'l1pt1':{'UPvalue':1.016492,'DNvalue':0.979312},
 		'l1pt2':{'UPvalue':1.019051,'DNvalue':0.969388},
 		'l1pt3':{'UPvalue':1.021144,'DNvalue':0.965472},
 		'l1pt4':{'UPvalue':1.039665,'DNvalue':0.936135},
 		'l1pt5':{'UPvalue':1.026588,'DNvalue':0.913753},
-		}		
+		},
+	    '_jets':{'l1pt0':{'UPvalue':0.998480,'DNvalue':1.004761},
+		'l1pt1':{'UPvalue':1.010617,'DNvalue':0.986718},
+		'l1pt2':{'UPvalue':1.009162,'DNvalue':0.985527},
+		'l1pt3':{'UPvalue':0.999903,'DNvalue':1.000413},
+		'l1pt4':{'UPvalue':1.021292,'DNvalue':0.964081},
+		'l1pt5':{'UPvalue':1.039339,'DNvalue':0.873836},
+		},
+	}		
 
-emu_MU_RE = {'l1pt0':{'UPvalue':0.998837,'DNvalue':1.001112},
+emu_MU_RE = {'':{'l1pt0':{'UPvalue':0.998837,'DNvalue':1.001112},
 		'l1pt1':{'UPvalue':0.998419,'DNvalue':1.001509},
 		'l1pt2':{'UPvalue':0.999697,'DNvalue':1.000366},
 		'l1pt3':{'UPvalue':1.012723,'DNvalue':0.987740},
 		'l1pt4':{'UPvalue':1.018250,'DNvalue':0.982556},
 		'l1pt5':{'UPvalue':1.005139,'DNvalue':0.995082},
-		}		
+		},
+	'_jets':{'l1pt0':{'UPvalue':0.999755,'DNvalue':1.000457},
+		'l1pt1':{'UPvalue':1.006582,'DNvalue':0.993629},
+		'l1pt2':{'UPvalue':1.004975,'DNvalue':0.995141},
+		'l1pt3':{'UPvalue':1.002890,'DNvalue':0.997174},
+		'l1pt4':{'UPvalue':1.045403,'DNvalue':0.957137},
+		'l1pt5':{'UPvalue':1.009479,'DNvalue':0.990876},
+		},
+	}		
 
-emu_MU_FR = {'l1pt0':{'UPvalue':1.018467,'DNvalue':0.981791},
+emu_MU_FR = {'':{'l1pt0':{'UPvalue':1.018467,'DNvalue':0.981791},
 		'l1pt1':{'UPvalue':1.017527,'DNvalue':0.982720},
 		'l1pt2':{'UPvalue':1.115141,'DNvalue':0.894679},
 		'l1pt3':{'UPvalue':1.101712,'DNvalue':0.906168},
 		'l1pt4':{'UPvalue':1.097406,'DNvalue':0.909866},
 		'l1pt5':{'UPvalue':2.096548,'DNvalue':0.536525},
-		}		
+		},
+	'_jets':{'l1pt0':{'UPvalue':1.018524,'DNvalue':0.981763},
+		'l1pt1':{'UPvalue':1.016160,'DNvalue':0.984065},
+		'l1pt2':{'UPvalue':1.121163,'DNvalue':0.888121},
+		'l1pt3':{'UPvalue':1.116307,'DNvalue':0.891576},
+		'l1pt4':{'UPvalue':1.113747,'DNvalue':0.895704},
+		'l1pt5':{'UPvalue':2.007412,'DNvalue':0.598183},
+		},
+	}		
 
-mue_EL_RE = {'l1pt0':{'UPvalue':1.012022,'DNvalue':0.985508},
+mue_EL_RE = {'':{'l1pt0':{'UPvalue':1.012022,'DNvalue':0.985508},
 		'l1pt1':{'UPvalue':1.015715,'DNvalue':0.981033},
 		'l1pt2':{'UPvalue':1.010617,'DNvalue':0.985354},	
 		'l1pt3':{'UPvalue':1.009680,'DNvalue':0.986458},
 		'l1pt4':{'UPvalue':1.018714,'DNvalue':0.974089},
 		'l1pt5':{'UPvalue':1.016152,'DNvalue':0.971271},
-		}		
+		},
+	'_jets':{'l1pt0':{'UPvalue':1.007275,'DNvalue':0.991317},
+		'l1pt1':{'UPvalue':1.009672,'DNvalue':0.988301},
+		'l1pt2':{'UPvalue':1.007038,'DNvalue':0.990026},
+		'l1pt3':{'UPvalue':1.004965,'DNvalue':0.993113},
+		'l1pt4':{'UPvalue':1.008228,'DNvalue':0.988156},
+		'l1pt5':{'UPvalue':1.023034,'DNvalue':0.958145},
+		},
+	}
+				
 
-mue_EL_FR = {'l1pt0':{'UPvalue':1.010489,'DNvalue':0.964592},
+mue_EL_FR = {'':{'l1pt0':{'UPvalue':1.010489,'DNvalue':0.964592},
 		'l1pt1':{'UPvalue':1.013567,'DNvalue':0.955107},
 		'l1pt2':{'UPvalue':1.019220,'DNvalue':0.934756},
 		'l1pt3':{'UPvalue':1.019358,'DNvalue':0.935352},
 		'l1pt4':{'UPvalue':1.034732,'DNvalue':0.882748},
 		'l1pt5':{'UPvalue':1.030275,'DNvalue':0.897463},
-		}
+		},
+	'_jets':{'l1pt0':{'UPvalue':1.007725,'DNvalue':0.973600},	
+		'l1pt1':{'UPvalue':1.007377,'DNvalue':0.974180},
+		'l1pt2':{'UPvalue':1.014744,'DNvalue':0.960437},
+		'l1pt3':{'UPvalue':1.009588,'DNvalue':0.968472},
+		'l1pt4':{'UPvalue':1.017519,'DNvalue':0.957195},
+		'l1pt5':{'UPvalue':1.041240,'DNvalue':0.855502},
+		},
+	}
 
-mue_MU_RE = {'l1pt0':{'UPvalue':1.011649,'DNvalue':0.988401},
+mue_MU_RE = {'':{'l1pt0':{'UPvalue':1.011649,'DNvalue':0.988401},
 		'l1pt1':{'UPvalue':1.009533,'DNvalue':0.990508},
 		'l1pt2':{'UPvalue':1.022973,'DNvalue':0.977324},
 		'l1pt3':{'UPvalue':1.023721,'DNvalue':0.976626},
 		'l1pt4':{'UPvalue':1.024070,'DNvalue':0.976285},
 		'l1pt5':{'UPvalue':1.061146,'DNvalue':0.941153},
-		}
+		},
+	'_jets':{'l1pt0':{'UPvalue':1.011620,'DNvalue':0.988434},
+		'l1pt1':{'UPvalue':1.008955,'DNvalue':0.991083},
+		'l1pt2':{'UPvalue':1.026894,'DNvalue':0.973469},
+		'l1pt3':{'UPvalue':1.025117,'DNvalue':0.975223},
+		'l1pt4':{'UPvalue':1.024674,'DNvalue':0.975672},
+		'l1pt5':{'UPvalue':1.064906,'DNvalue':0.937564},
+		},
+	}
 
-mue_MU_FR = {'l1pt0':{'UPvalue':1.052617,'DNvalue':0.977827},
+mue_MU_FR = {'':{'l1pt0':{'UPvalue':1.052617,'DNvalue':0.977827},
 		'l1pt1':{'UPvalue':1.277875,'DNvalue':0.882703},
 		'l1pt2':{'UPvalue':1.215912,'DNvalue':0.908019},
 		'l1pt3':{'UPvalue':1.256100,'DNvalue':0.890794},
 		'l1pt4':{'UPvalue':1.246269,'DNvalue':0.898580},
 		'l1pt5':{'UPvalue':1.176679,'DNvalue':0.931055},
+		},
+	'_jets':{'l1pt0':{'UPvalue':1.145016,'DNvalue':0.938239},
+		'l1pt1':{'UPvalue':1.374978,'DNvalue':0.846111},
+		'l1pt2':{'UPvalue':1.181496,'DNvalue':0.923500},
+		'l1pt3':{'UPvalue':1.223380,'DNvalue':0.904864},
+		'l1pt4':{'UPvalue':1.326062,'DNvalue':0.869091},
+		'l1pt5':{'UPvalue':1.130615,'DNvalue':0.944383},
+		},
+	}
+
+
+### SIGNAL SYSTEMATICS ##########################
+
+#ATLAS_MU_SCALE = {'':{'l1pt0':{'UPvalue':0.995362,'DNvalue':1.000509},
+#		'l1pt1':{'UPvalue':1.003028,'DNvalue':0.998340},
+#		'l1pt2':{'UPvalue':1.000896,'DNvalue':1.000227},
+#		'l1pt3':{'UPvalue':1.002674,'DNvalue':1.002269},
+#		'l1pt4':{'UPvalue':1.006613,'DNvalue':1.002782},
+#		'l1pt5':{'UPvalue':1.000575,'DNvalue':0.999515},
+#		},
+#	}
+
+##################################################
+Fpt_params = {'':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt1':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt2':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt3':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt4':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt5':{'lower':1.0,'upper':1.0,'const':"True"},
+			},
+		'_jets':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt1':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt2':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt3':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt4':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt5':{'lower':1.0,'upper':1.0,'const':"True"},
+                	},
 		}
 
-### SET VALUES FOR FAKE SYSTEMATIC ###
-for l1ptbin in l1ptbins:
-        cdic = {'l1pt':l1ptbin,
-                'emu_DNval_EL_RE':emu_EL_RE[l1ptbin]['DNvalue'],
-		'emu_UPval_EL_RE':emu_EL_RE[l1ptbin]['UPvalue'],
-		'emu_DNval_EL_FR':emu_EL_FR[l1ptbin]['DNvalue'],
-                'emu_UPval_EL_FR':emu_EL_FR[l1ptbin]['UPvalue'],                
-		'emu_DNval_MU_RE':emu_MU_RE[l1ptbin]['DNvalue'],
-                'emu_UPval_MU_RE':emu_MU_RE[l1ptbin]['UPvalue'],
-		'emu_DNval_MU_FR':emu_MU_FR[l1ptbin]['DNvalue'],
-                'emu_UPval_MU_FR':emu_MU_FR[l1ptbin]['UPvalue'],
-		'mue_DNval_EL_RE':mue_EL_RE[l1ptbin]['DNvalue'],
-                'mue_UPval_EL_RE':mue_EL_RE[l1ptbin]['UPvalue'],
-                'mue_DNval_EL_FR':mue_EL_FR[l1ptbin]['DNvalue'],
-                'mue_UPval_EL_FR':mue_EL_FR[l1ptbin]['UPvalue'], 
-                'mue_DNval_MU_RE':mue_MU_RE[l1ptbin]['DNvalue'],
-                'mue_UPval_MU_RE':mue_MU_RE[l1ptbin]['UPvalue'],
-                'mue_DNval_MU_FR':mue_MU_FR[l1ptbin]['DNvalue'],
-                'mue_UPval_MU_FR':mue_MU_FR[l1ptbin]['UPvalue'],
-		}
+
+### SET VALUES ###
+for jetbin in jetbins:
+	for l1ptbin in l1ptbins:
+		cdic = {'jet':jetbin,
+			'l1pt':l1ptbin,
+			'fptlow':Fpt_params[jetbin][l1ptbin]['lower'],
+			'fpthigh':Fpt_params[jetbin][l1ptbin]['upper'],
+			'fptconst':Fpt_params[jetbin][l1ptbin]['const'],
+        	        'emu_DNval_EL_RE':emu_EL_RE[jetbin][l1ptbin]['DNvalue'],
+			'emu_UPval_EL_RE':emu_EL_RE[jetbin][l1ptbin]['UPvalue'],
+			'emu_DNval_EL_FR':emu_EL_FR[jetbin][l1ptbin]['DNvalue'],
+        	        'emu_UPval_EL_FR':emu_EL_FR[jetbin][l1ptbin]['UPvalue'],                
+			'emu_DNval_MU_RE':emu_MU_RE[jetbin][l1ptbin]['DNvalue'],
+	                'emu_UPval_MU_RE':emu_MU_RE[jetbin][l1ptbin]['UPvalue'],
+			'emu_DNval_MU_FR':emu_MU_FR[jetbin][l1ptbin]['DNvalue'],
+	                'emu_UPval_MU_FR':emu_MU_FR[jetbin][l1ptbin]['UPvalue'],
+			'mue_DNval_EL_RE':mue_EL_RE[jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_EL_RE':mue_EL_RE[jetbin][l1ptbin]['UPvalue'],
+	                'mue_DNval_EL_FR':mue_EL_FR[jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_EL_FR':mue_EL_FR[jetbin][l1ptbin]['UPvalue'], 
+	                'mue_DNval_MU_RE':mue_MU_RE[jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_MU_RE':mue_MU_RE[jetbin][l1ptbin]['UPvalue'],
+	                'mue_DNval_MU_FR':mue_MU_FR[jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_MU_FR':mue_MU_FR[jetbin][l1ptbin]['UPvalue'],
+			#'DNval_ATLAS_MU_SCALE':ATLAS_MU_SCALE[jetbin][l1ptbin]['DNvalue'],
+			#'UPval_ATLAS_MU_SCALE':ATLAS_MU_SCALE[jetbin][l1ptbin]['UPvalue'],
+			#'DNval_ATLAS_MET_RESOSOFT':ATLAS_MET_RESOSOFT[jetbin][l1ptbin]['DNvalue'],
+			#'UPval_ATLAS_MET_RESOSOFT':ATLAS_MET_RESOSOFT[jetbin][l1ptbin]['UPvalue'],
+			}
 
 
-### DEFINE ME AND EM CHANNELS ###
-        print "Generate channel emu %s" % (l1ptbin)
-        cmd = "./make_histfactory_channel.py emu_%(l1pt)s "\
-                  "-obs Obs_emu_%(l1pt)s:data/simple.root:Mcoll_data_EM_%(l1pt)s_rebin "\
-                  "-sig Sig_mue_onEmu_%(l1pt)s:Mcoll_signal_ME_%(l1pt)s_rebin "\
-		  "-sca MinHalfSig:Sig_mue_onEmu_%(l1pt)s:-0.5:-0.501:-0.499:True "\
-		  "-ddb B0_%(l1pt)s:Base_Bkg_%(l1pt)s "\
-                  "-sca fl1pt_%(l1pt)s:B0_%(l1pt)s:1.0:0.01:10.0:False "\
-                  "-ssc B0_%(l1pt)s:B0_%(l1pt)s "\
-		  "-wrsig wrongSig_mue_onEmu_%(l1pt)s:Mcoll_wrong_signal_ME_%(l1pt)s_rebin "\
-                  "-sca fl1pt_%(l1pt)s:wrongSig_mue_onEmu_%(l1pt)s:1.0:0.01:10.0:False "\
-                  "-sca halfSig:wrongSig_mue_onEmu_%(l1pt)s:0.5:0.499:0.501:True "\
-		  "-bkg Fakes_emu_%(l1pt)s:Mcoll_Fakes_EM_%(l1pt)s_rebin "\
-		  "-histosys Fakes_EL_RE:Fakes_emu_%(l1pt)s:Mcoll_Fakes_EL_RE_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_EL_RE_UP_EM_%(l1pt)s_rebin "\
-                  "-sys Fakes_EL_RE:Fakes_emu_%(l1pt)s:%(emu_DNval_EL_RE).3f:%(emu_UPval_EL_RE).3f "\
-                  "-histosys Fakes_EL_FR:Fakes_emu_%(l1pt)s:Mcoll_Fakes_EL_FR_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_EL_FR_UP_EM_%(l1pt)s_rebin "\
-                  "-sys Fakes_EL_FR:Fakes_emu_%(l1pt)s:%(emu_DNval_EL_FR).3f:%(emu_UPval_EL_FR).3f "\
-                  "-histosys Fakes_MU_RE:Fakes_emu_%(l1pt)s:Mcoll_Fakes_MU_RE_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_MU_RE_UP_EM_%(l1pt)s_rebin "\
-                  "-sys Fakes_MU_RE:Fakes_emu_%(l1pt)s:%(emu_DNval_MU_RE).3f:%(emu_UPval_MU_RE).3f "\
-                  "-histosys Fakes_MU_FR:Fakes_emu_%(l1pt)s:Mcoll_Fakes_MU_FR_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_MU_FR_UP_EM_%(l1pt)s_rebin "\
-                  "-sys Fakes_MU_FR:Fakes_emu_%(l1pt)s:%(emu_DNval_MU_FR).3f:%(emu_UPval_MU_FR).3f "\
-		  "config/channel_LFV_emu_%(l1pt)s.xml" % cdic
-        chans.append("config/channel_LFV_emu_%s.xml" % (l1ptbin))
-        print " Executing: %s" % cmd
-        os.system(cmd)
+	### DEFINE ME AND EM CHANNELS ###
+        	print "Generate channel emu %s%s" % (l1ptbin,jetbin)
+	        cmd = "./make_histfactory_channel.py emu_%(l1pt)s%(jet)s "\
+	                  "-obs Obs_emu_%(l1pt)s%(jet)s:data/simple.root:Mcoll_data_EM_%(l1pt)s%(jet)s_rebin "\
+	                  "-sig Sig_mue_onEmu_%(l1pt)s%(jet)s:Mcoll_signal_ME_%(l1pt)s%(jet)s_rebin "\
+			  "-sca MinHalfSig:Sig_mue_onEmu_%(l1pt)s%(jet)s:-0.5:-0.501:-0.499:True "\
+			  "-ddb B0_%(l1pt)s%(jet)s:Base_Bkg_%(l1pt)s%(jet)s "\
+	                  "-sca fl1pt_%(l1pt)s%(jet)s:B0_%(l1pt)s%(jet)s:1.0:%(fptlow).3f:%(fpthigh).3f:%(fptconst)s "\
+	                  "-ssc B0_%(l1pt)s%(jet)s:B0_%(l1pt)s%(jet)s "\
+			  "-bkg Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_EM_%(l1pt)s%(jet)s_rebin "\
+			  "-histosys Fakes_EL_RE:Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_RE_DOWN_EM_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_RE_UP_EM_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_EL_RE:Fakes_emu_%(l1pt)s%(jet)s:%(emu_DNval_EL_RE).3f:%(emu_UPval_EL_RE).3f "\
+	                  "-histosys Fakes_EL_FR:Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_FR_DOWN_EM_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_FR_UP_EM_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_EL_FR:Fakes_emu_%(l1pt)s%(jet)s:%(emu_DNval_EL_FR).3f:%(emu_UPval_EL_FR).3f "\
+	                  "-histosys Fakes_MU_RE:Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_RE_DOWN_EM_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_RE_UP_EM_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_MU_RE:Fakes_emu_%(l1pt)s%(jet)s:%(emu_DNval_MU_RE).3f:%(emu_UPval_MU_RE).3f "\
+	                  "-histosys Fakes_MU_FR:Fakes_emu_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_FR_DOWN_EM_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_FR_UP_EM_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_MU_FR:Fakes_emu_%(l1pt)s%(jet)s:%(emu_DNval_MU_FR).3f:%(emu_UPval_MU_FR).3f "\
+                          "-sys ATLAS_MU_EEF:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.977963:1.02204 "\
+                          "-sys pdf_Higgs_gg:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.925:1.075 "\
+                          "-sys QCDscale_ggH:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.92:1.08 "\
+			  "-sys ATLAS_LUMI_2012:Sig_mue_onEmu_%(l1pt)s%(jet)s:0.972:1.028 "\
+			  "config/channel_LFV_emu_%(l1pt)s%(jet)s.xml" % cdic
+	        chans.append("config/channel_LFV_emu_%s%s.xml" % (l1ptbin,jetbin))
+	        print " Executing: %s" % cmd
+	        os.system(cmd)
+	
+	
+#"-histosys ATLAS_MU_SCALE:Sig_mue_onEmu_%(l1pt)s%(jet)s:Mcoll_ATLAS_MU_SCALE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_ATLAS_MU_SCALE_UP_ME_%(l1pt)s%(jet)s_rebin "\
+ #                         "-sys ATLAS_MU_SCALE:Sig_mue_onEmu_%(l1pt)s%(jet)s:%(DNval_ATLAS_MU_SCALE).3f:%(UPval_ATLAS_MU_SCALE).3f "\
+	
+		print "Generate channel mue %s%s" % (l1ptbin,jetbin)
+		cmd = "./make_histfactory_channel.py mue_%(l1pt)s%(jet)s "\
+			  "-obs Obs_mue_%(l1pt)s%(jet)s:data/simple.root:Mcoll_data_ME_%(l1pt)s%(jet)s_rebin "\
+			  "-sig Sig_mue_%(l1pt)s%(jet)s:Mcoll_signal_ME_%(l1pt)s%(jet)s_rebin "\
+			  "-sca halfSig:Sig_mue_%(l1pt)s%(jet)s:0.5:0.499:0.501:True "\
+			  "-ddb B0_%(l1pt)s%(jet)s:Base_Bkg_%(l1pt)s%(jet)s "\
+			  "-ssc B0_%(l1pt)s%(jet)s:B0_%(l1pt)s%(jet)s "\
+			  "-bkg Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_ME_%(l1pt)s%(jet)s_rebin "\
+			  "-histosys Fakes_EL_RE:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_RE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_RE_UP_ME_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_EL_RE:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_EL_RE).3f:%(mue_UPval_EL_RE).3f "\
+	                  "-histosys Fakes_EL_FR:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_EL_FR_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_EL_FR_UP_ME_%(l1pt)s%(jet)s_rebin "\
+			  "-sys Fakes_EL_FR:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_EL_FR).3f:%(mue_UPval_EL_FR).3f "\
+	                  "-histosys Fakes_MU_RE:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_RE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_RE_UP_ME_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_MU_RE:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_MU_RE).3f:%(mue_UPval_MU_RE).3f "\
+	                  "-histosys Fakes_MU_FR:Fakes_mue_%(l1pt)s%(jet)s:Mcoll_Fakes_MU_FR_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_Fakes_MU_FR_UP_ME_%(l1pt)s%(jet)s_rebin "\
+	                  "-sys Fakes_MU_FR:Fakes_mue_%(l1pt)s%(jet)s:%(mue_DNval_MU_FR).3f:%(mue_UPval_MU_FR).3f "\
+                          "-sys ATLAS_MU_EEF:Sig_mue_%(l1pt)s%(jet)s:0.977963:1.02204 "\
+                          "-sys pdf_Higgs_gg:Sig_mue_%(l1pt)s%(jet)s:0.925:1.075 "\
+                          "-sys QCDscale_ggH:Sig_mue_%(l1pt)s%(jet)s:0.92:1.08 "\
+                          "-sys ATLAS_LUMI_2012:Sig_mue_%(l1pt)s%(jet)s:0.972:1.028 "\
+			  "config/channel_LFV_mue_%(l1pt)s%(jet)s.xml" % cdic
+			
+		chans.append("config/channel_LFV_mue_%s%s.xml" % (l1ptbin,jetbin))
+		print " Executing: %s" % cmd
+		os.system(cmd)
 
+#"-histosys ATLAS_MU_SCALE:Sig_mue_%(l1pt)s%(jet)s:Mcoll_ATLAS_MU_SCALE_DOWN_ME_%(l1pt)s%(jet)s_rebin:Mcoll_ATLAS_MU_SCALE_UP_ME_%(l1pt)s%(jet)s_rebin "\
+ #                         "-sys ATLAS_MU_SCALE:Sig_mue_%(l1pt)s%(jet)s:%(DNval_ATLAS_MU_SCALE).3f:%(UPval_ATLAS_MU_SCALE).3f "\
+	
 
-#"-wrsig wrongSig_mue_onEmu_%(l1pt)s:Mcoll_wrong_signal_ME_%(l1pt)s_rebin "\
-#                  "-sca fl1pt_%(l1pt)s:wrongSig_mue_onEmu_%(l1pt)s:1.0:0.01:10.0:False "\
-#                  "-sca halfSig:wrongSig_mue_onEmu_%(l1pt)s:0.5:0.499:0.501:True "\
-
-#"-bkg Fakes_emu_%(l1pt)s:Mcoll_Fakes_EM_%(l1pt)s_rebin "\
-#                  "-histosys Fakes_EL_RE:Fakes_emu_%(l1pt)s:Mcoll_Fakes_EL_RE_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_EL_RE_UP_EM_%(l1pt)s_rebin "\
-#                  "-sys Fakes_EL_RE:Fakes_emu_%(l1pt)s:%(emu_DNval_EL_RE).3f:%(emu_UPval_EL_RE).3f "\
-#                  "-histosys Fakes_EL_FR:Fakes_emu_%(l1pt)s:Mcoll_Fakes_EL_FR_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_EL_FR_UP_EM_%(l1pt)s_rebin "\
-#                  "-sys Fakes_EL_FR:Fakes_emu_%(l1pt)s:%(emu_DNval_EL_FR).3f:%(emu_UPval_EL_FR).3f "\
-#                  "-histosys Fakes_MU_RE:Fakes_emu_%(l1pt)s:Mcoll_Fakes_MU_RE_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_MU_RE_UP_EM_%(l1pt)s_rebin "\
-#                  "-sys Fakes_MU_RE:Fakes_emu_%(l1pt)s:%(emu_DNval_MU_RE).3f:%(emu_UPval_MU_RE).3f "\
-#                  "-histosys Fakes_MU_FR:Fakes_emu_%(l1pt)s:Mcoll_Fakes_MU_FR_DOWN_EM_%(l1pt)s_rebin:Mcoll_Fakes_MU_FR_UP_EM_%(l1pt)s_rebin "\
-#                  "-sys Fakes_MU_FR:Fakes_emu_%(l1pt)s:%(emu_DNval_MU_FR).3f:%(emu_UPval_MU_FR).3f "\
-
-
-	print "Generate channel mue %s" % (l1ptbin)
-	cmd = "./make_histfactory_channel.py mue_%(l1pt)s "\
-		  "-obs Obs_mue_%(l1pt)s:data/simple.root:Mcoll_data_ME_%(l1pt)s_rebin "\
-		  "-sig Sig_mue_%(l1pt)s:Mcoll_signal_ME_%(l1pt)s_rebin "\
-		  "-sca halfSig:Sig_mue_%(l1pt)s:0.5:0.499:0.501:True "\
-		  "-ddb B0_%(l1pt)s:Base_Bkg_%(l1pt)s "\
-		  "-ssc B0_%(l1pt)s:B0_%(l1pt)s "\
-		  "-wrsig wrongSig_mue_%(l1pt)s:Mcoll_wrong_signal_ME_%(l1pt)s_rebin "\
-                  "-sca MinHalfSig:wrontSig_mue_%(l1pt)s:-0.5:-0.501:-0.499:True "\
-		  "-bkg Fakes_mue_%(l1pt)s:Mcoll_Fakes_ME_%(l1pt)s_rebin "\
-		  "-histosys Fakes_EL_RE:Fakes_mue_%(l1pt)s:Mcoll_Fakes_EL_RE_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_EL_RE_UP_ME_%(l1pt)s_rebin "\
-                  "-sys Fakes_EL_RE:Fakes_mue_%(l1pt)s:%(mue_DNval_EL_RE).3f:%(mue_UPval_EL_RE).3f "\
-                  "-histosys Fakes_EL_FR:Fakes_mue_%(l1pt)s:Mcoll_Fakes_EL_FR_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_EL_FR_UP_ME_%(l1pt)s_rebin "\
-                  "-sys Fakes_EL_FR:Fakes_mue_%(l1pt)s:%(mue_DNval_EL_FR).3f:%(mue_UPval_EL_FR).3f "\
-                  "-histosys Fakes_MU_RE:Fakes_mue_%(l1pt)s:Mcoll_Fakes_MU_RE_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_MU_RE_UP_ME_%(l1pt)s_rebin "\
-                  "-sys Fakes_MU_RE:Fakes_mue_%(l1pt)s:%(mue_DNval_MU_RE).3f:%(mue_UPval_MU_RE).3f "\
-                  "-histosys Fakes_MU_FR:Fakes_mue_%(l1pt)s:Mcoll_Fakes_MU_FR_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_MU_FR_UP_ME_%(l1pt)s_rebin "\
-                  "-sys Fakes_MU_FR:Fakes_mue_%(l1pt)s:%(mue_DNval_MU_FR).3f:%(mue_UPval_MU_FR).3f "\
-		  "config/channel_LFV_mue_%(l1pt)s.xml" % cdic
-		
-	chans.append("config/channel_LFV_mue_%s.xml" % (l1ptbin))
-	print " Executing: %s" % cmd
-	os.system(cmd)
-
-
-
-
-#"-bkg Fakes_mue_%(l1pt)s:Mcoll_Fakes_ME_%(l1pt)s_rebin "\
-#                  "-histosys Fakes_EL_RE:Fakes_mue_%(l1pt)s:Mcoll_Fakes_EL_RE_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_EL_RE_UP_ME_%(l1pt)s_rebin "\
-#                  "-sys Fakes_EL_RE:Fakes_mue_%(l1pt)s:%(mue_DNval_EL_RE).3f:%(mue_UPval_EL_RE).3f "\
-#                  "-histosys Fakes_EL_FR:Fakes_mue_%(l1pt)s:Mcoll_Fakes_EL_FR_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_EL_FR_UP_ME_%(l1pt)s_rebin "\
-#                  "-sys Fakes_EL_FR:Fakes_mue_%(l1pt)s:%(mue_DNval_EL_FR).3f:%(mue_UPval_EL_FR).3f "\
-#                  "-histosys Fakes_MU_RE:Fakes_mue_%(l1pt)s:Mcoll_Fakes_MU_RE_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_MU_RE_UP_ME_%(l1pt)s_rebin "\
-#                  "-sys Fakes_MU_RE:Fakes_mue_%(l1pt)s:%(mue_DNval_MU_RE).3f:%(mue_UPval_MU_RE).3f "\
-#                  "-histosys Fakes_MU_FR:Fakes_mue_%(l1pt)s:Mcoll_Fakes_MU_FR_DOWN_ME_%(l1pt)s_rebin:Mcoll_Fakes_MU_FR_UP_ME_%(l1pt)s_rebin "\
-#                  "-sys Fakes_MU_FR:Fakes_mue_%(l1pt)s:%(mue_DNval_MU_FR).3f:%(mue_UPval_MU_FR).3f "\
-
-
+	
 dic={}
 dic["chans"]=' '.join(chans)
 print "Generate combination histfactory"

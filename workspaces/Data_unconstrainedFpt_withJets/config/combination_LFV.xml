@@ -12,8 +12,20 @@
   <Input>config/channel_LFV_mue_l1pt4.xml</Input>
   <Input>config/channel_LFV_emu_l1pt5.xml</Input>
   <Input>config/channel_LFV_mue_l1pt5.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt0_jets.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt0_jets.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt1_jets.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt1_jets.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt2_jets.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt2_jets.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt3_jets.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt3_jets.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt4_jets.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt4_jets.xml</Input>
+  <Input>config/channel_LFV_emu_l1pt5_jets.xml</Input>
+  <Input>config/channel_LFV_mue_l1pt5_jets.xml</Input>
   <Measurement Name="AllSYS" Lumi="1.0000" LumiRelErr="1.0340" ExportOnly="True" >
     <POI>mu_BR_htm</POI>
-    <ParamSetting Const="True">Lumi MinHalfSig halfSig</ParamSetting>
+    <ParamSetting Const="True">Lumi MinHalfSig halfSig fl1pt_l1pt5 fl1pt_l1pt5_jets</ParamSetting>
   </Measurement>
 </Combination>
