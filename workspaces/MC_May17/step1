@@ -1,0 +1,277 @@
+#!/usr/bin/env python
+#
+# Create a roostats workspace for LFV analysis
+#
+# http://root.cern.ch/svn/root/tags/v5-34-00/roofit/histfactory/doc/README
+#
+# Carlos.Solans@cern.ch
+# October 2014
+
+import os
+import sys
+
+print "Copy DTD"
+os.system("get_histfactory_schema.py config/")
+
+chans=[]
+jetbins=["0j","jets"]
+#jetbins=[""]
+l1ptbins=["l1pt0","l1pt1","l1pt2","l1pt3","l1pt4","l1pt5"]
+
+### SIGNAL SYSTEMATICS ##########################
+
+ATLAS_MS = {'0j':{'l1pt0':{'UPvalue':1.000000,'DNvalue':1.00000},
+		'l1pt1':{'UPvalue':1.000000,'DNvalue':0.997476},
+		'l1pt2':{'UPvalue':1.002760,'DNvalue':0.996015},
+		'l1pt3':{'UPvalue':1.003290,'DNvalue':1.003194},
+		'l1pt4':{'UPvalue':1.003705,'DNvalue':1.005393},
+		'l1pt5':{'UPvalue':1.000945,'DNvalue':1.000071},
+		},
+		'jets':{'l1pt0':{'UPvalue':0.989012,'DNvalue':1.028596},
+                'l1pt1':{'UPvalue':1.000230,'DNvalue':1.000000},
+                'l1pt2':{'UPvalue':1.022024,'DNvalue':1.000000},
+		'l1pt3':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt4':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt5':{'UPvalue':1.022910,'DNvalue':0.992710},
+		},
+	}
+
+
+ATLAS_EESZ = {'0j':{'l1pt0':{'UPvalue':1.010796,'DNvalue':0.997608},
+		'l1pt1':{'UPvalue':0.996584,'DNvalue':1.013676},
+		'l1pt2':{'UPvalue':1.002543,'DNvalue':0.989410},
+		'l1pt3':{'UPvalue':0.979088,'DNvalue':1.006409},
+		'l1pt4':{'UPvalue':1.004489,'DNvalue':1.029325},
+		'l1pt5':{'UPvalue':1.018042,'DNvalue':0.983864},
+		},
+		'jets':{'l1pt0':{'UPvalue':0.957424,'DNvalue':0.981422},
+		'l1pt1':{'UPvalue':1.026222,'DNvalue':1.021048},
+		'l1pt2':{'UPvalue':0.957167,'DNvalue':0.999791},
+		'l1pt3':{'UPvalue':1.020631,'DNvalue':0.997128},
+		'l1pt4':{'UPvalue':0.979472,'DNvalue':1.045667},
+		'l1pt5':{'UPvalue':1.019553,'DNvalue':0.959709},
+		},
+	}		
+
+ATLAS_EER = {'0j':{'l1pt0':{'UPvalue':1.004449,'DNvalue':1.035474},
+		'l1pt1':{'UPvalue':1.008387,'DNvalue':0.978033},
+		'l1pt2':{'UPvalue':0.994009,'DNvalue':1.012096},
+		'l1pt3':{'UPvalue':0.976533,'DNvalue':0.995660},
+		'l1pt4':{'UPvalue':1.027153,'DNvalue':0.985362},
+		'l1pt5':{'UPvalue':0.998965,'DNvalue':1.015645},
+		},
+		'jets':{'l1pt0':{'UPvalue':0.999509,'DNvalue':0.952035},
+		'l1pt1':{'UPvalue':1.000039,'DNvalue':1.017833},
+		'l1pt2':{'UPvalue':1.016932,'DNvalue':1.036637},
+		'l1pt3':{'UPvalue':0.985523,'DNvalue':0.979226},
+		'l1pt4':{'UPvalue':0.980871,'DNvalue':1.006923},
+		'l1pt5':{'UPvalue':1.016614,'DNvalue':0.995353},
+		},
+	}		
+
+ATLAS_EESLOW = {'0j':{'l1pt0':{'UPvalue':1.015023,'DNvalue':0.990513},
+		'l1pt1':{'UPvalue':1.015758,'DNvalue':0.987869},
+		'l1pt2':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt3':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt4':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt5':{'UPvalue':1.000000,'DNvalue':1.000000},
+		},
+		'jets':{'l1pt0':{'UPvalue':0.976570,'DNvalue':0.985701},
+		'l1pt1':{'UPvalue':1.012142,'DNvalue':1.005592},
+		'l1pt2':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt3':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt4':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt5':{'UPvalue':1.000000,'DNvalue':1.000000},
+		},
+	}
+
+ATLAS_EESMAT = {'0j':{'l1pt0':{'UPvalue':0.992432,'DNvalue':1.005445},
+		'l1pt1':{'UPvalue':0.998053,'DNvalue':0.997535},
+		'l1pt2':{'UPvalue':0.999810,'DNvalue':1.004614},
+		'l1pt3':{'UPvalue':1.004330,'DNvalue':1.002416},
+		'l1pt4':{'UPvalue':0.996135,'DNvalue':1.006370},
+		'l1pt5':{'UPvalue':0.996572,'DNvalue':1.002320},
+		},
+		'jets':{'l1pt0':{'UPvalue':0.984663,'DNvalue':0.976349},
+		'l1pt1':{'UPvalue':1.006085,'DNvalue':1.012380},
+		'l1pt2':{'UPvalue':1.000194,'DNvalue':0.957685},
+		'l1pt3':{'UPvalue':0.999835,'DNvalue':1.034526},
+		'l1pt4':{'UPvalue':1.000131,'DNvalue':1.000021},
+		'l1pt5':{'UPvalue':0.999783,'DNvalue':0.999979},
+		},
+	}
+	
+ATLAS_EESPS = {'0j':{'l1pt0':{'UPvalue':1.010745,'DNvalue':1.002081},
+		'l1pt1':{'UPvalue':1.000986,'DNvalue':0.997857},
+		'l1pt2':{'UPvalue':0.999754,'DNvalue':1.000091},
+		'l1pt3':{'UPvalue':1.000535,'DNvalue':1.002720},
+		'l1pt4':{'UPvalue':1.003135,'DNvalue':0.993189},
+		'l1pt5':{'UPvalue':1.000166,'DNvalue':1.000000},
+		},
+		 'jets':{'l1pt0':{'UPvalue':1.000000,'DNvalue':0.980360},
+                'l1pt1':{'UPvalue':1.000128,'DNvalue':0.999981},
+                'l1pt2':{'UPvalue':0.979003,'DNvalue':1.000000},
+                'l1pt3':{'UPvalue':1.017878,'DNvalue':1.000000},
+                'l1pt4':{'UPvalue':1.000000,'DNvalue':1.000129},
+                'l1pt5':{'UPvalue':1.000000,'DNvalue':0.999783},
+                },
+        }
+
+ATLAS_ID = {'0j':{'l1pt0':{'UPvalue':1.000000,'DNvalue':0.998405},
+		'l1pt1':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt2':{'UPvalue':1.000000,'DNvalue':1.002857},
+		'l1pt3':{'UPvalue':1.003290,'DNvalue':0.997722},
+		'l1pt4':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt5':{'UPvalue':1.002240,'DNvalue':0.999117},
+		},
+		'jets':{'l1pt0':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt1':{'UPvalue':0.992636,'DNvalue':0.990417},
+		'l1pt2':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt3':{'UPvalue':1.000000,'DNvalue':1.000000},
+		'l1pt4':{'UPvalue':1.001977,'DNvalue':1.000000},
+		'l1pt5':{'UPvalue':1.018345,'DNvalue':1.000000},
+		},
+	}
+
+
+##################################################
+Fpt_params = {'0j':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt1':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt2':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt3':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt4':{'lower':0.01,'upper':10.0,'const':"False"},
+			'l1pt5':{'lower':1.0,'upper':1.0,'const':"True"},
+			},
+		'jets':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt1':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt2':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt3':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt4':{'lower':0.01,'upper':10.0,'const':"False"},
+                	'l1pt5':{'lower':1.0,'upper':1.0,'const':"True"},
+                	},
+		}
+
+QCDscale_ggH = {'0j':{'lower':0.93,'upper':1.07},
+		'jets':{'lower':1.18,'upper':0.8586}
+		}
+
+### SET VALUES ###
+for jetbin in jetbins:
+	for l1ptbin in l1ptbins:
+		cdic = {'jet':jetbin,
+			'l1pt':l1ptbin,
+			'fptlow':Fpt_params[jetbin][l1ptbin]['lower'],
+			'fpthigh':Fpt_params[jetbin][l1ptbin]['upper'],
+			'fptconst':Fpt_params[jetbin][l1ptbin]['const'],
+			'DNval_ATLAS_MS':ATLAS_MS[jetbin][l1ptbin]['DNvalue'],
+			'UPval_ATLAS_MS':ATLAS_MS[jetbin][l1ptbin]['UPvalue'],
+			'DNval_ATLAS_EESZ':ATLAS_EESZ[jetbin][l1ptbin]['DNvalue'],
+                        'UPval_ATLAS_EESZ':ATLAS_EESZ[jetbin][l1ptbin]['UPvalue'],
+			'DNval_ATLAS_EER':ATLAS_EER[jetbin][l1ptbin]['DNvalue'],
+                        'UPval_ATLAS_EER':ATLAS_EER[jetbin][l1ptbin]['UPvalue'],
+			'DNval_ATLAS_EESLOW':ATLAS_EESLOW[jetbin][l1ptbin]['DNvalue'],
+                        'UPval_ATLAS_EESLOW':ATLAS_EESLOW[jetbin][l1ptbin]['UPvalue'],
+			'DNval_ATLAS_EESMAT':ATLAS_EESMAT[jetbin][l1ptbin]['DNvalue'],
+                        'UPval_ATLAS_EESMAT':ATLAS_EESMAT[jetbin][l1ptbin]['UPvalue'],
+			'DNval_ATLAS_EESPS':ATLAS_EESPS[jetbin][l1ptbin]['DNvalue'],
+                        'UPval_ATLAS_EESPS':ATLAS_EESPS[jetbin][l1ptbin]['UPvalue'],
+			'DNval_ATLAS_ID':ATLAS_ID[jetbin][l1ptbin]['DNvalue'],
+                        'UPval_ATLAS_ID':ATLAS_ID[jetbin][l1ptbin]['UPvalue'],
+			'QCDscale_Low':QCDscale_ggH[jetbin]['lower'],
+			'QCDscale_High':QCDscale_ggH[jetbin]['upper'],
+			}
+
+
+	### DEFINE ME AND EM CHANNELS ###
+        	print "Generate channel emu %s_%s" % (l1ptbin,jetbin)
+	        cmd = "./make_histfactory_channel.py emu_%(l1pt)s_%(jet)s "\
+	                  "-obs Obs_emu_%(l1pt)s_%(jet)s:data/simple.root:Mcoll_data_EM_%(l1pt)s_%(jet)s_rebin "\
+	                  "-sig Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_signal_ME_%(l1pt)s_%(jet)s_rebin "\
+			  "-sca fl1pt_%(l1pt)s_%(jet)s:Sig_mue_onEmu_%(l1pt)s_%(jet)s:1.0:%(fptlow).3f:%(fpthigh).3f:%(fptconst)s "\
+			  "-sca MinHalfSig:Sig_mue_onEmu_%(l1pt)s_%(jet)s:-0.5:-0.501:-0.499:True "\
+			  "-wrsig wrongSig_mue_onEmu_%(l1pt)s:Mcoll_wrong_signal_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sca fl1pt_%(l1pt)s_%(jet)s:wrongSig_mue_onEmu_%(l1pt)s:1.0:%(fptlow).3f:%(fpthigh).3f:%(fptconst)s "\
+                          "-sca halfSig:wrongSig_mue_onEmu_%(l1pt)s:0.5:0.499:0.501:True "\
+			  "-ddb B0_%(l1pt)s_%(jet)s:Base_Bkg_%(l1pt)s_%(jet)s "\
+	                  "-sca fl1pt_%(l1pt)s_%(jet)s:B0_%(l1pt)s_%(jet)s:1.0:%(fptlow).3f:%(fpthigh).3f:%(fptconst)s "\
+	                  "-ssc B0_%(l1pt)s_%(jet)s:B0_%(l1pt)s_%(jet)s "\
+                          "-sys ATLAS_MU_EEF:Sig_mue_onEmu_%(l1pt)s_%(jet)s:0.977963:1.02204 "\
+                          "-sys pdf_Higgs_gg:Sig_mue_onEmu_%(l1pt)s_%(jet)s:0.925:1.075 "\
+			  "-sys ATLAS_LUMI_2012:Sig_mue_onEmu_%(l1pt)s_%(jet)s:0.972:1.028 "\
+			  "-sys QCDscale_ggH:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(QCDscale_Low).3f:%(QCDscale_High).3f "\
+			  "-histosys ATLAS_MS:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_MS_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_MS_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_MS:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_MS).3f:%(UPval_ATLAS_MS).3f "\
+			  "-histosys ATLAS_EESZ:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESZ_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESZ_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESZ:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESZ).3f:%(UPval_ATLAS_EESZ).3f "\
+			  "-histosys ATLAS_EER:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EER_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EER_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EER:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EER).3f:%(UPval_ATLAS_EER).3f "\
+			  "-histosys ATLAS_EESLOW:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESLOW_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESLOW_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESLOW:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESLOW).3f:%(UPval_ATLAS_EESLOW).3f "\
+			  "-histosys ATLAS_EESMAT:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESMAT_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESMAT_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESMAT:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESMAT).3f:%(UPval_ATLAS_EESMAT).3f "\
+			  "-histosys ATLAS_EESPS:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESPS_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESPS_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESPS:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESPS).3f:%(UPval_ATLAS_EESPS).3f "\
+			  "-histosys ATLAS_ID:Sig_mue_onEmu_%(l1pt)s_%(jet)s:Mcoll_ATLAS_ID_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_ID_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_ID:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(DNval_ATLAS_ID).3f:%(UPval_ATLAS_ID).3f "\
+			  "config/channel_LFV_emu_%(l1pt)s_%(jet)s.xml" % cdic
+	        chans.append("config/channel_LFV_emu_%s_%s.xml" % (l1ptbin,jetbin))
+	        print " Executing: %s" % cmd
+	        os.system(cmd)
+	
+#"-sys QCDscale_ggH:Sig_mue_onEmu_%(l1pt)s_%(jet)s:%(QCDscale_Low).3f:%(QCDscale_High).3f "\
+	
+	
+		print "Generate channel mue %s_%s" % (l1ptbin,jetbin)
+		cmd = "./make_histfactory_channel.py mue_%(l1pt)s_%(jet)s "\
+			  "-obs Obs_mue_%(l1pt)s_%(jet)s:data/simple.root:Mcoll_data_ME_%(l1pt)s_%(jet)s_rebin "\
+			  "-sig Sig_mue_%(l1pt)s_%(jet)s:Mcoll_signal_ME_%(l1pt)s_%(jet)s_rebin "\
+			  "-sca halfSig:Sig_mue_%(l1pt)s_%(jet)s:0.5:0.499:0.501:True "\
+			  "-wrsig wrongSig_mue_%(l1pt)s:Mcoll_wrong_signal_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sca MinHalfSig:wrongSig_mue_%(l1pt)s:-0.5:-0.501:-0.499:True "\
+			  "-ddb B0_%(l1pt)s_%(jet)s:Base_Bkg_%(l1pt)s_%(jet)s "\
+			  "-ssc B0_%(l1pt)s_%(jet)s:B0_%(l1pt)s_%(jet)s "\
+                          "-sys ATLAS_MU_EEF:Sig_mue_%(l1pt)s_%(jet)s:0.977963:1.02204 "\
+                          "-sys pdf_Higgs_gg:Sig_mue_%(l1pt)s_%(jet)s:0.925:1.075 "\
+                          "-sys ATLAS_LUMI_2012:Sig_mue_%(l1pt)s_%(jet)s:0.972:1.028 "\
+			  "-sys QCDscale_ggH:Sig_mue_%(l1pt)s_%(jet)s:%(QCDscale_Low).3f:%(QCDscale_High).3f "\
+			  "-histosys ATLAS_MS:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_MS_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_MS_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_MS:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_MS).3f:%(UPval_ATLAS_MS).3f "\
+			  "-histosys ATLAS_EESZ:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESZ_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESZ_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESZ:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESZ).3f:%(UPval_ATLAS_EESZ).3f "\
+			  "-histosys ATLAS_EER:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EER_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EER_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EER:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EER).3f:%(UPval_ATLAS_EER).3f "\
+			  "-histosys ATLAS_EESLOW:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESLOW_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESLOW_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESLOW:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESLOW).3f:%(UPval_ATLAS_EESLOW).3f "\
+			  "-histosys ATLAS_EESMAT:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESMAT_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESMAT_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESMAT:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESMAT).3f:%(UPval_ATLAS_EESMAT).3f "\
+			  "-histosys ATLAS_EESPS:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_EESPS_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_EESPS_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_EESPS:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_EESPS).3f:%(UPval_ATLAS_EESPS).3f "\
+			  "-histosys ATLAS_ID:Sig_mue_%(l1pt)s_%(jet)s:Mcoll_ATLAS_ID_DOWN_ME_%(l1pt)s_%(jet)s_rebin:Mcoll_ATLAS_ID_UP_ME_%(l1pt)s_%(jet)s_rebin "\
+                          "-sys ATLAS_ID:Sig_mue_%(l1pt)s_%(jet)s:%(DNval_ATLAS_ID).3f:%(UPval_ATLAS_ID).3f "\
+			  "config/channel_LFV_mue_%(l1pt)s_%(jet)s.xml" % cdic
+			
+		chans.append("config/channel_LFV_mue_%s_%s.xml" % (l1ptbin,jetbin))
+		print " Executing: %s" % cmd
+		os.system(cmd)
+
+#"-sys QCDscale_ggH:Sig_mue_%(l1pt)s_%(jet)s:%(QCDscale_Low).3f:%(QCDscale_High).3f "\
+
+	
+dic={}
+dic["chans"]=' '.join(chans)
+print "Generate combination histfactory"
+print "**********************************************"
+
+cmd = "./make_histfactory_combination.py -prefix ws_LFV -combinelumi 1 1.034 "\
+      "config/combination_LFV.xml "\
+      "%(chans)s" % dic
+print " Executing: %s" % cmd
+os.system(cmd)
+
+
+cmd = "hist2workspace config/combination_LFV.xml" 
+print " Executing: %s" % cmd
+os.system(cmd)
+
+    
+

@@ -1,0 +1,67 @@
+import ROOT
+import os
+import sys
+import array
+
+
+print "bla bla"
+
+### Get nominal and variation histos ###
+
+SigfileEM = ROOT.TFile(SignalSys_filename_EM)
+h_signal_nominal_EM = SigfileEM.Get(histo_nominal_EM).Clone("nominalSig_EM")
+
+## ATLAS_MU_SCALE_DOWN
+h_Sys_ATLAS_MU_SCALE_DOWN_EM = SigfileEM.Get(histo_ATLAS_MU_SCALE_DOWN_EM).Clone("ATLAS_MU_SCALE_DOWN_EM")
+h_Sys_ATLAS_MU_SCALE_UP_EM = SigfileEM.Get(histo_ATLAS_MU_SCALE_UP_EM).Clone("ATLAS_MU_SCALE_UP_EM") 
+## ATLAS_MET_RESOSOFT
+h_Sys_ATLAS_MET_RESOSOFT_DOWN_EM = SigfileEM.Get(histo_ATLAS_MET_RESOSOFT_DOWN_EM).Clone("ATLAS_MET_RESOSOFT_DOWN_EM")
+h_Sys_ATLAS_MET_RESOSOFT_UP_EM = SigfileEM.Get(histo_ATLAS_MET_RESOSOFT_UP_EM).Clone("ATLAS_MET_RESOSOFT_UP_EM")
+
+SigfileME = ROOT.TFile(SignalSys_filename_ME)
+h_signal_nominal_ME = SigfileME.Get(histo_nominal_ME).Clone("nominalSig_ME")
+h_Sys_ATLAS_MU_SCALE_DOWN_ME = SigfileME.Get(histo_ATLAS_MU_SCALE_DOWN_ME).Clone("ATLAS_MU_SCALE_DOWN_ME")
+h_Sys_ATLAS_MU_SCALE_UP_ME = SigfileME.Get(histo_ATLAS_MU_SCALE_UP_ME).Clone("ATLAS_MU_SCALE_UP_ME")
+h_Sys_ATLAS_MET_RESOSOFT_DOWN_ME = SigfileME.Get(histo_ATLAS_MET_RESOSOFT_DOWN_ME).Clone("ATLAS_MET_RESOSOFT_DOWN_ME")
+h_Sys_ATLAS_MET_RESOSOFT_UP_ME = SigfileME.Get(histo_ATLAS_MET_RESOSOFT_UP_ME).Clone("ATLAS_MET_RESOSOFT_UP_ME")
+
+
+### scalealize variation histos to nominal yield
+
+nomEM = h_signal_nominal_EM.Integral()
+yield_ATLAS_MU_SCALE_DOWN_EM = h_Sys_ATLAS_MU_SCALE_DOWN_EM.Integral()
+yield_ATLAS_MU_SCALE_UP_EM = h_Sys_ATLAS_MU_SCALE_UP_EM.Integral()
+yield__ATLAS_MET_RESOSOFT_DOWN_EM = h_Sys_ATLAS_MET_RESOSOFT_DOWN_EM.Integral()
+yield__ATLAS_MET_RESOSOFTUP_EM = h_Sys_ATLAS_MET_RESOSOFT_UP_EM.Integral()
+
+scale_ATLAS_MU_SCALE_DOWN_EM = yield_ATLAS_MU_SCALE_DOWN_EM/nomEM
+scale_ATLAS_MU_SCALE_UP_EM = yield_ATLAS_MU_SCALE_UP_EM/nomEM
+scale_ATLAS_MET_RESOSOFT_DOWN_EM = yield_ATLAS_MET_RESOSOFT_DOWN_EM/nomEM
+scale_ATLAS_MET_RESOSOFT_UP_EM = yield_ATLAS_MET_RESOSOFT_UP_EM/nomEM
+
+h_Sys_ATLAS_MU_SCALE_DOWN_EM.Scale(1./scale_ATLAS_MU_SCALE_DOWN_EM)
+h_Sys_ATLAS_MU_SCALE_UP_EM.Scale(1./scale_ATLAS_MU_SCALE_UP_EM)
+h_Sys_ATLAS_MET_RESOSOFT_DOWN_EM.Scale(1./scale_ATLAS_MET_RESOSOFT_DOWN_EM)
+h_Sys_ATLAS_MET_RESOSOFT_UP_EM.Scale(1./scale_ATLAS_MET_RESOSOFT_UP_EM)
+
+
+nomME = h_signal_nominal_ME.Integral()
+yield_ATLAS_MU_SCALE_DOWN_ME = h_Sys_ATLAS_MU_SCALE_DOWN_ME.Integral()
+yield_ATLAS_MU_SCALE_UP_ME = h_Sys_ATLAS_MU_SCALE_UP_ME.Integral()
+yield__ATLAS_MET_RESOSOFT_DOWN_ME = h_Sys_ATLAS_MET_RESOSOFT_DOWN_ME.Integral()
+yield__ATLAS_MET_RESOSOFTUP_ME = h_Sys_ATLAS_MET_RESOSOFT_UP_ME.Integral()
+
+scale_ATLAS_MU_SCALE_DOWN_ME = yield_ATLAS_MU_SCALE_DOWN_ME/nomME
+scale_ATLAS_MU_SCALE_UP_ME = yield_ATLAS_MU_SCALE_UP_ME/nomME
+scale_ATLAS_MET_RESOSOFT_DOWN_ME = yield_ATLAS_MET_RESOSOFT_DOWN_ME/nomME
+scale_ATLAS_MET_RESOSOFT_UP_ME = yield_ATLAS_MET_RESOSOFT_UP_ME/nomME
+
+h_Sys_ATLAS_MU_SCALE_DOWN_ME.Scale(1./scale_ATLAS_MU_SCALE_DOWN_ME)
+h_Sys_ATLAS_MU_SCALE_UP_ME.Scale(1./scale_ATLAS_MU_SCALE_UP_ME)
+h_Sys_ATLAS_MET_RESOSOFT_DOWN_ME.Scale(1./scale_ATLAS_MET_RESOSOFT_DOWN_ME)
+h_Sys_ATLAS_MET_RESOSOFT_UP_ME.Scale(1./scale_ATLAS_MET_RESOSOFT_UP_ME)
+
+
+### print OverallSys scale factors
+
+print "ATLAS_MU_SCALE_DOWN_EM = %, ATLAS_MU_SCALE_UP_EM = %" %(scale_ATLAS_MU_SCALE_DOWN_EM,scale_ATLAS_MU_SCALE_UP_EM)

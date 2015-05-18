@@ -1,0 +1,33 @@
+<!DOCTYPE Channel SYSTEM 'HistFactorySchema.dtd'>
+<Channel Name="mue_l1pt2_jets" InputFile="data/simple.root" >
+  <Data InputFile="data/simple.root" HistoPath="" HistoName="Mcoll_data_ME_l1pt2_jets_rebin"/>
+  <Sample Name="Sig_mue_l1pt2_jets" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_signal_ME_l1pt2_jets_rebin">
+    <NormFactor Name="halfSig" Val="0.5000" Low="0.4990" High="0.5010" Const="True"/>
+    <OverallSys Name="ATLAS_MU_EEF" Low="0.9780" High="1.0220"/>
+    <OverallSys Name="pdf_Higgs_gg" Low="0.9250" High="1.0750"/>
+    <OverallSys Name="ATLAS_LUMI_2012" Low="0.9720" High="1.0280"/>
+    <OverallSys Name="QCDscale_ggH" Low="1.1800" High="0.8590"/>
+    <OverallSys Name="ATLAS_MS" Low="1.0000" High="1.0220"/>
+    <OverallSys Name="ATLAS_EESZ" Low="1.0000" High="0.9570"/>
+    <OverallSys Name="ATLAS_EER" Low="1.0370" High="1.0170"/>
+    <OverallSys Name="ATLAS_EESLOW" Low="1.0000" High="1.0000"/>
+    <OverallSys Name="ATLAS_EESMAT" Low="0.9580" High="1.0000"/>
+    <OverallSys Name="ATLAS_EESPS" Low="1.0000" High="0.9790"/>
+    <OverallSys Name="ATLAS_ID" Low="1.0000" High="1.0000"/>
+    <HistoSys Name="ATLAS_MS" HistoNameHigh="Mcoll_ATLAS_MS_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_MS_DOWN_ME_l1pt2_jets_rebin"/>
+    <HistoSys Name="ATLAS_EESZ" HistoNameHigh="Mcoll_ATLAS_EESZ_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_EESZ_DOWN_ME_l1pt2_jets_rebin"/>
+    <HistoSys Name="ATLAS_EER" HistoNameHigh="Mcoll_ATLAS_EER_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_EER_DOWN_ME_l1pt2_jets_rebin"/>
+    <HistoSys Name="ATLAS_EESLOW" HistoNameHigh="Mcoll_ATLAS_EESLOW_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_EESLOW_DOWN_ME_l1pt2_jets_rebin"/>
+    <HistoSys Name="ATLAS_EESMAT" HistoNameHigh="Mcoll_ATLAS_EESMAT_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_EESMAT_DOWN_ME_l1pt2_jets_rebin"/>
+    <HistoSys Name="ATLAS_EESPS" HistoNameHigh="Mcoll_ATLAS_EESPS_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_EESPS_DOWN_ME_l1pt2_jets_rebin"/>
+    <HistoSys Name="ATLAS_ID" HistoNameHigh="Mcoll_ATLAS_ID_UP_ME_l1pt2_jets_rebin" HistoNameLow="Mcoll_ATLAS_ID_DOWN_ME_l1pt2_jets_rebin"/>
+    <NormFactor Name="mu_BR_htm" Val="0" Low="-200" High="200" />
+  </Sample>
+  <Sample Name="wrongSig_mue_l1pt2" NormalizeByTheory="True" HistoPath="" HistoName="Mcoll_wrong_signal_ME_l1pt2_jets_rebin">
+    <NormFactor Name="MinHalfSig" Val="-0.5000" Low="-0.5010" High="-0.4990" Const="True"/>
+    <NormFactor Name="mu_BR_htm" Val="0" Low="-200" High="200" />
+  </Sample>
+  <Sample Name="B0_l1pt2_jets" NormalizeByTheory="False" HistoPath="" HistoName="Base_Bkg_l1pt2_jets">
+    <ShapeFactor Name="B0_l1pt2_jets"/>
+  </Sample>
+</Channel>

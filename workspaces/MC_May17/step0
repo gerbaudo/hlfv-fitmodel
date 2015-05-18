@@ -1,0 +1,686 @@
+#!/usr/bin/env python
+#
+# Prepare the inputs for HistFactory
+#
+# Carlos.Solans@cern.ch
+# January 2014
+
+import ROOT
+import os
+import sys
+#import AtlasStyle
+import array
+
+"""
+Prepare a dataset based on the inputs from Suneet (TH2D l1pt vs Mcoll).
+"""
+
+#AtlasStyle.SetAtlasStyle()
+
+### INPUT DIR ##################
+
+DIR = "~/HistosMay13/"
+
+### SIGNAL STRENGTH ###########
+strength = 0.0
+
+### OUTPUT FILE ##############
+fw1 = ROOT.TFile("data/simple.root","RECREATE")
+mem = []
+tln = ROOT.TLine()
+l1b = array.array('d',(12,15,20,25,30,35,1000))
+tla = ROOT.TLatex()
+
+
+for jet in ('0j','jets'):
+#for jet in('0j',):
+
+### FINAL BINNING ############
+	### Mcoll Binning for jets sample
+	#ybinsnew = array.array('f',(0,60,80,100,120,130,140,150,160,180,200,230,260,300,350,400,450))
+        ybinsnew = array.array('f',(0,60,80,100,110,120,130,140,150,170,200,240,300,450))
+	### Mcoll Binning for 0j sample
+	if jet=='0j':
+                #ybinsnew = array.array('f',(0,60,70,80,85,90,100,105,110,115,120,125,130,135,140,145,150,160,170,180,190,200,220,240,270,300,450))
+        	ybinsnew = array.array('f',(0,60,80,100,110,120,130,140,150,170,200,240,300,450))
+	### l1pt binning
+	xbinsnew = array.array('f',(12,15,20,25,30,35,1000))
+
+#############################
+
+	BASENAME_ME_FILE = "SR_%s_ME_mcollCorr_x_lept1Pt"%jet
+	BASENAME_EM_FILE = "SR_%s_EM_mcollCorr_x_lept1Pt"%jet
+	BASENAME = "SR_mcollCorr_x_lept1Pt"
+	if jet=='jets':
+		BASENAME = "SR_jets_mcollCorr_x_lept1Pt"
+
+	#### Get EM Files ####
+
+	frEM_top = ROOT.TFile(DIR+BASENAME_EM_FILE+"_Top.root")
+	frEM_higgs   = ROOT.TFile(DIR+BASENAME_EM_FILE+"_Higgs.root")
+	frEM_zjets   = ROOT.TFile(DIR+BASENAME_EM_FILE+"_Zjets.root")
+	frEM_zv   = ROOT.TFile(DIR+BASENAME_EM_FILE+"_ZV.root")
+	frEM_ww   = ROOT.TFile(DIR+BASENAME_EM_FILE+"_WW.root")
+	frME_signaltaue   = ROOT.TFile(DIR+BASENAME_ME_FILE+"_189894.root")
+
+	### Get EM histograms
+	h2emOrig_top = frEM_top.Get("h_"+BASENAME+"_Top_CENTRAL").Clone("EM_top_%s"%jet)
+	h2emOrig_higgs = frEM_higgs.Get("h_"+BASENAME+"_Higgs_CENTRAL").Clone("EM_higgs_%s"%jet)
+	h2emOrig_zjets = frEM_zjets.Get("h_"+BASENAME+"_Zjets_CENTRAL").Clone("EM_zjets_%s"%jet)
+	h2emOrig_zv = frEM_zv.Get("h_"+BASENAME+"_ZV_CENTRAL").Clone("EM_zv_%s"%jet)
+	h2emOrig_ww = frEM_ww.Get("h_"+BASENAME+"_WW_CENTRAL").Clone("EM_ww_%s"%jet)
+	h2wrsgOrig = frME_signaltaue.Get("h_"+BASENAME+"_189894_CENTRAL").Clone("ME_signaltaue_%s"%jet)
+
+	h2emOrig = h2emOrig_ww.Clone("EM_%s"%jet)
+	h2emOrig.Add(h2emOrig_top)
+	h2emOrig.Add(h2emOrig_zjets)
+	h2emOrig.Add(h2emOrig_zv)
+	h2emOrig.Add(h2emOrig_higgs)
+
+	### Get ME files
+
+	frME_top = ROOT.TFile(DIR+BASENAME_ME_FILE+"_Top.root")
+        frME_higgs   = ROOT.TFile(DIR+BASENAME_ME_FILE+"_Higgs.root")
+        frME_zjets   = ROOT.TFile(DIR+BASENAME_ME_FILE+"_Zjets.root")
+        frME_zv   = ROOT.TFile(DIR+BASENAME_ME_FILE+"_ZV.root")
+        frME_ww   = ROOT.TFile(DIR+BASENAME_ME_FILE+"_WW.root")
+
+	frME_signaltaumu   = ROOT.TFile(DIR+BASENAME_ME_FILE+"_189890.root")
+
+	### Get ME histograms
+
+	h2meOrig_top = frME_top.Get("h_"+BASENAME+"_Top_CENTRAL").Clone("ME_top_%s"%jet)
+        h2meOrig_higgs = frME_higgs.Get("h_"+BASENAME+"_Higgs_CENTRAL").Clone("ME_higgs_%s"%jet)
+        h2meOrig_zjets = frME_zjets.Get("h_"+BASENAME+"_Zjets_CENTRAL").Clone("ME_zjets_%s"%jet)
+        h2meOrig_zv = frME_zv.Get("h_"+BASENAME+"_ZV_CENTRAL").Clone("ME_zv_%s"%jet)
+        h2meOrig_ww = frME_ww.Get("h_"+BASENAME+"_WW_CENTRAL").Clone("ME_ww_%s"%jet)
+        h2sgOrig = frME_signaltaumu.Get("h_"+BASENAME+"_189890_CENTRAL").Clone("ME_signaltaumu_%s"%jet)
+
+        h2meOrig = h2meOrig_ww.Clone("ME_%s"%jet)
+        h2meOrig.Add(h2meOrig_top)
+        h2meOrig.Add(h2meOrig_zjets)
+        h2meOrig.Add(h2meOrig_zv)
+        h2meOrig.Add(h2meOrig_higgs)
+	
+	### Signal Systematics
+	h2meOrig_ATLAS_MS_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_MSDOWN").Clone("ME_ATLAS_MS_DOWN_%s"%jet)
+	h2meOrig_ATLAS_MS_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_MSUP").Clone("ME_ATLAS_MS_UP_%s"%jet)	
+	h2meOrig_ATLAS_EESZ_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESZDOWN").Clone("ME_ATLAS_EESZ_DOWN_%s"%jet)
+        h2meOrig_ATLAS_EESZ_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESZUP").Clone("ME_ATLAS_EESZ_UP_%s"%jet)
+	h2meOrig_ATLAS_EER_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EERDOWN").Clone("ME_ATLAS_EER_DOWN_%s"%jet)
+        h2meOrig_ATLAS_EER_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EERUP").Clone("ME_ATLAS_EER_UP_%s"%jet)
+	h2meOrig_ATLAS_EESLOW_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESLOWDOWN").Clone("ME_ATLAS_EESLOW_DOWN_%s"%jet)
+        h2meOrig_ATLAS_EESLOW_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESLOWUP").Clone("ME_ATLAS_EESLOW_UP_%s"%jet)
+	h2meOrig_ATLAS_EESMAT_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESMATDOWN").Clone("ME_ATLAS_EESMAT_DOWN_%s"%jet)
+        h2meOrig_ATLAS_EESMAT_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESMATUP").Clone("ME_ATLAS_EESMAT_UP_%s"%jet)
+	h2meOrig_ATLAS_EESPS_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESPSDOWN").Clone("ME_ATLAS_EESPS_DOWN_%s"%jet)
+        h2meOrig_ATLAS_EESPS_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_EESPSUP").Clone("ME_ATLAS_EESPS_UP_%s"%jet)
+	h2meOrig_ATLAS_ID_DOWN = frME_signaltaumu.Get("h_"+BASENAME+"_189890_IDDOWN").Clone("ME_ATLAS_ID_DOWN_%s"%jet)
+        h2meOrig_ATLAS_ID_UP = frME_signaltaumu.Get("h_"+BASENAME+"_189890_IDUP").Clone("ME_ATLAS_ID_UP_%s"%jet)
+
+
+	## Rebin 2D histos ###
+
+	print "Rebinning..."
+	xaxis = h2meOrig.GetXaxis()
+	yaxis = h2meOrig.GetYaxis()
+	
+	Sig_xaxis = h2sgOrig.GetXaxis()
+	Sig_yaxis = h2sgOrig.GetYaxis()
+
+	### SET TO 1% BR ############################################
+	### ONLY IF INPUT IS 100% BR
+	for i in range(Sig_xaxis.GetNbins()):
+        	for j in range(Sig_yaxis.GetNbins()):
+                	h2sgOrig.SetBinContent(i+1,j+1,h2sgOrig.GetBinContent(i+1,j+1)*0.01)
+                	h2wrsgOrig.SetBinContent(i+1,j+1,h2wrsgOrig.GetBinContent(i+1,j+1)*0.01)
+			h2sgOrig.SetBinError(i+1,j+1,h2sgOrig.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_MS_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_MS_DOWN.GetBinContent(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_MS_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_MS_DOWN.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_MS_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_MS_UP.GetBinContent(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_MS_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_MS_UP.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_EESZ_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESZ_DOWN.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESZ_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESZ_DOWN.GetBinError(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESZ_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESZ_UP.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESZ_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESZ_UP.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_EER_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EER_DOWN.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EER_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_EER_DOWN.GetBinError(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EER_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EER_UP.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EER_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_EER_UP.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_EESLOW_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESLOW_DOWN.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESLOW_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESLOW_DOWN.GetBinError(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESLOW_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESLOW_UP.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESLOW_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESLOW_UP.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_EESMAT_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESMAT_DOWN.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESMAT_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESMAT_DOWN.GetBinError(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESMAT_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESMAT_UP.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESMAT_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESMAT_UP.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_EESPS_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESPS_DOWN.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESPS_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESPS_DOWN.GetBinError(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESPS_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_EESPS_UP.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_EESPS_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_EESPS_UP.GetBinError(i+1,j+1)*0.01)
+			h2meOrig_ATLAS_ID_DOWN.SetBinContent(i+1,j+1,h2meOrig_ATLAS_ID_DOWN.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_ID_DOWN.SetBinError(i+1,j+1,h2meOrig_ATLAS_ID_DOWN.GetBinError(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_ID_UP.SetBinContent(i+1,j+1,h2meOrig_ATLAS_ID_UP.GetBinContent(i+1,j+1)*0.01)
+                        h2meOrig_ATLAS_ID_UP.SetBinError(i+1,j+1,h2meOrig_ATLAS_ID_UP.GetBinError(i+1,j+1)*0.01)
+
+
+	#############################################################
+
+
+	h2me = ROOT.TH2F("h_SR_ME_Rebinned_mcollCorr_x_pt1_Data_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2em = ROOT.TH2F("h_SR_EM_Rebinned_mcollCorr_x_pt1_Data_%s"%jet, ";Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2sg = ROOT.TH2F("h_SR_Sig_Rebinned_mcollCorr_x_pt1%s"%jet, ";Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2wrsg = ROOT.TH2F("h_SR_WrongSig_Rebinned_mcollCorr_x_pt1%s"%jet, ";Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	
+
+	h2me_ATLAS_MS_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_MS_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2me_ATLAS_MS_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_MS_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)	
+	h2me_ATLAS_EESZ_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESZ_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+        h2me_ATLAS_EESZ_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESZ_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2me_ATLAS_EER_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_EER_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+        h2me_ATLAS_EER_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_EER_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2me_ATLAS_EESLOW_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESLOW_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+        h2me_ATLAS_EESLOW_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESLOW_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2me_ATLAS_EESMAT_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESMAT_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+        h2me_ATLAS_EESMAT_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESMAT_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2me_ATLAS_EESPS_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESPS_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+        h2me_ATLAS_EESPS_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_EESPS_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	h2me_ATLAS_ID_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_ID_DOWN_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+        h2me_ATLAS_ID_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_ID_UP_%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
+	
+
+
+	for x in range(xaxis.GetNbins()):
+		for y in range(yaxis.GetNbins()):
+			i=x+1
+			j=y+1
+			mevalue = h2meOrig.GetBinContent(i,j)
+			emvalue = h2emOrig.GetBinContent(i,j)
+			sgvalue = h2sgOrig.GetBinContent(i,j)
+			wrsgvalue = h2wrsgOrig.GetBinContent(i,j)
+			
+			ATLAS_MS_DOWN_value = h2meOrig_ATLAS_MS_DOWN.GetBinContent(i,j)
+			ATLAS_MS_UP_value = h2meOrig_ATLAS_MS_UP.GetBinContent(i,j)
+			ATLAS_EESZ_DOWN_value = h2meOrig_ATLAS_EESZ_DOWN.GetBinContent(i,j)
+                        ATLAS_EESZ_UP_value = h2meOrig_ATLAS_EESZ_UP.GetBinContent(i,j)
+			ATLAS_EER_DOWN_value = h2meOrig_ATLAS_EER_DOWN.GetBinContent(i,j)
+                        ATLAS_EER_UP_value = h2meOrig_ATLAS_EER_UP.GetBinContent(i,j)
+			ATLAS_EESLOW_DOWN_value = h2meOrig_ATLAS_EESLOW_DOWN.GetBinContent(i,j)
+                        ATLAS_EESLOW_UP_value = h2meOrig_ATLAS_EESLOW_UP.GetBinContent(i,j)
+			ATLAS_EESMAT_DOWN_value = h2meOrig_ATLAS_EESMAT_DOWN.GetBinContent(i,j)
+                        ATLAS_EESMAT_UP_value = h2meOrig_ATLAS_EESMAT_UP.GetBinContent(i,j)
+			ATLAS_EESPS_DOWN_value = h2meOrig_ATLAS_EESPS_DOWN.GetBinContent(i,j)
+                        ATLAS_EESPS_UP_value = h2meOrig_ATLAS_EESPS_UP.GetBinContent(i,j)
+			ATLAS_ID_DOWN_value = h2meOrig_ATLAS_ID_DOWN.GetBinContent(i,j)
+                        ATLAS_ID_UP_value = h2meOrig_ATLAS_ID_UP.GetBinContent(i,j)
+
+			
+			h2me.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),mevalue)
+			h2em.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emvalue)
+			h2sg.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),sgvalue)
+			h2wrsg.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),wrsgvalue)
+			
+			h2me_ATLAS_MS_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_MS_DOWN_value)
+			h2me_ATLAS_MS_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_MS_UP_value)
+			h2me_ATLAS_EESZ_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESZ_DOWN_value)
+                        h2me_ATLAS_EESZ_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESZ_UP_value)
+			h2me_ATLAS_EER_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EER_DOWN_value)
+                        h2me_ATLAS_EER_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EER_UP_value)
+			h2me_ATLAS_EESLOW_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESLOW_DOWN_value)
+                        h2me_ATLAS_EESLOW_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESLOW_UP_value)
+			h2me_ATLAS_EESMAT_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESMAT_DOWN_value)
+                        h2me_ATLAS_EESMAT_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESMAT_UP_value)
+			h2me_ATLAS_EESPS_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESPS_DOWN_value)
+                        h2me_ATLAS_EESPS_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_EESPS_UP_value)
+			h2me_ATLAS_ID_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_ID_DOWN_value)
+                        h2me_ATLAS_ID_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_ID_UP_value)
+
+
+
+	## Rebin uniformly to indices
+	
+	nbinsx = h2me.GetXaxis().GetNbins()
+	nbinsy = h2me.GetNbinsY()
+	
+	bpme = array.array('f',(0,)*(nbinsx+1))
+	bmme = array.array('f',(0,)*(nbinsy+1))
+	
+	for j in range(nbinsx+1):
+		bpme[j] = h2me.GetXaxis().GetBinLowEdge(j+1)
+	for k in range(nbinsy+1):
+		bmme[k] = h2me.GetYaxis().GetBinLowEdge(k+1)
+	
+	
+	c3 = ROOT.TCanvas("c3_%s"%jet,"Mcol_%s"%jet,800,800)
+	c3.Divide(3,len(l1b)-1)
+	for i in range(len(l1b)-1):
+		hme1 = ROOT.TH1F("Mcoll_data_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hem1 = ROOT.TH1F("Mcoll_data_EM_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+	
+		hsg1 = ROOT.TH1F("Mcoll_signal_ME_l1pt%i_%s"%(i,jet),";Mcoll (GeV)",len(bmme)-1,bmme)
+		hwrsg1 = ROOT.TH1F("Mcoll_wrong_signal_ME_l1pt%i_%s"%(i,jet),";Mcoll (GeV)",len(bmme)-1,bmme)
+
+		hmeATLAS_MS_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_MS_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hmeATLAS_MS_UP1 = ROOT.TH1F("Mcoll_ATLAS_MS_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)		
+		hmeATLAS_EESZ_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_EESZ_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+                hmeATLAS_EESZ_UP1 = ROOT.TH1F("Mcoll_ATLAS_EESZ_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hmeATLAS_EER_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_EER_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+                hmeATLAS_EER_UP1 = ROOT.TH1F("Mcoll_ATLAS_EER_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hmeATLAS_EESLOW_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_EESLOW_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+                hmeATLAS_EESLOW_UP1 = ROOT.TH1F("Mcoll_ATLAS_EESLOW_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hmeATLAS_EESMAT_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_EESMAT_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+                hmeATLAS_EESMAT_UP1 = ROOT.TH1F("Mcoll_ATLAS_EESMAT_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hmeATLAS_EESPS_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_EESPS_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+                hmeATLAS_EESPS_UP1 = ROOT.TH1F("Mcoll_ATLAS_EESPS_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+		hmeATLAS_ID_DOWN1 = ROOT.TH1F("Mcoll_ATLAS_ID_DOWN_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+                hmeATLAS_ID_UP1 = ROOT.TH1F("Mcoll_ATLAS_ID_UP_ME_l1pt%i_%s"%(i,jet),  ";Mcoll (GeV)",len(bmme)-1,bmme)
+
+
+		mem.append(hme1)
+		mem.append(hem1)
+		mem.append(hsg1)
+		mem.append(hwrsg1)
+		for pt in bpme:
+			htme = ROOT.TH1F("htme","htme",len(bmme)-1,bmme)
+			htem = ROOT.TH1F("htem","htem",len(bmme)-1,bmme)
+			
+			htmeATLAS_MS_DOWN = ROOT.TH1F("htmeATLAS_MS_DOWN","htmeATLAS_MS_DOWN",len(bmme)-1,bmme)
+			htmeATLAS_MS_UP = ROOT.TH1F("htmeATLAS_MS_UP","htmeATLAS_MS_UP",len(bmme)-1,bmme)
+			htmeATLAS_EESZ_DOWN = ROOT.TH1F("htmeATLAS_EESZ_DOWN","htmeATLAS_EESZ_DOWN",len(bmme)-1,bmme)
+                        htmeATLAS_EESZ_UP = ROOT.TH1F("htmeATLAS_EESZ_UP","htmeATLAS_EESZ_UP",len(bmme)-1,bmme)
+			htmeATLAS_EER_DOWN = ROOT.TH1F("htmeATLAS_EER_DOWN","htmeATLAS_EER_DOWN",len(bmme)-1,bmme)
+                        htmeATLAS_EER_UP = ROOT.TH1F("htmeATLAS_EER_UP","htmeATLAS_EER_UP",len(bmme)-1,bmme)
+			htmeATLAS_EESLOW_DOWN = ROOT.TH1F("htmeATLAS_EESLOW_DOWN","htmeATLAS_EESLOW_DOWN",len(bmme)-1,bmme)
+                        htmeATLAS_EESLOW_UP = ROOT.TH1F("htmeATLAS_EESLOW_UP","htmeATLAS_EESLOW_UP",len(bmme)-1,bmme)
+			htmeATLAS_EESMAT_DOWN = ROOT.TH1F("htmeATLAS_EESMAT_DOWN","htmeATLAS_EESMAT_DOWN",len(bmme)-1,bmme)
+                        htmeATLAS_EESMAT_UP = ROOT.TH1F("htmeATLAS_EESMAT_UP","htmeATLAS_EESMAT_UP",len(bmme)-1,bmme)
+			htmeATLAS_EESPS_DOWN = ROOT.TH1F("htmeATLAS_EESPS_DOWN","htmeATLAS_EESPS_DOWN",len(bmme)-1,bmme)
+                        htmeATLAS_EESPS_UP = ROOT.TH1F("htmeATLAS_EESPS_UP","htmeATLAS_EESPS_UP",len(bmme)-1,bmme)
+			htmeATLAS_ID_DOWN = ROOT.TH1F("htmeATLAS_ID_DOWN","htmeATLAS_ID_DOWN",len(bmme)-1,bmme)
+                        htmeATLAS_ID_UP = ROOT.TH1F("htmeATLAS_ID_UP","htmeATLAS_ID_UP",len(bmme)-1,bmme)
+
+
+			htsg = ROOT.TH1F("htsg","htsg",len(bmme)-1,bmme)
+			htwrsg = ROOT.TH1F("htwrsg","htwrsg",len(bmme)-1,bmme)
+
+			if pt<l1b[i+1] and pt>=l1b[i]:
+				if False: print "add pt: %.2f" %pt
+				for mass in bmme:
+					if False: print "mass:",mass,"pt:",pt,"pt_bin:",l1b[i]
+					htme.SetBinContent(htme.FindBin(mass),h2me.GetBinContent(h2me.FindBin(pt,mass)))
+					htem.SetBinContent(htem.FindBin(mass),h2em.GetBinContent(h2em.FindBin(pt,mass)))
+	
+					htsg.SetBinContent(htsg.FindBin(mass),h2sg.GetBinContent(h2sg.FindBin(pt,mass)))
+					htwrsg.SetBinContent(htwrsg.FindBin(mass),h2wrsg.GetBinContent(h2wrsg.FindBin(pt,mass)))
+					
+					htmeATLAS_MS_DOWN.SetBinContent(htmeATLAS_MS_DOWN.FindBin(mass),h2me_ATLAS_MS_DOWN.GetBinContent(h2me_ATLAS_MS_DOWN.FindBin(pt,mass)))
+					htmeATLAS_MS_UP.SetBinContent(htmeATLAS_MS_UP.FindBin(mass),h2me_ATLAS_MS_UP.GetBinContent(h2me_ATLAS_MS_UP.FindBin(pt,mass)))
+					htmeATLAS_EESZ_DOWN.SetBinContent(htmeATLAS_EESZ_DOWN.FindBin(mass),h2me_ATLAS_EESZ_DOWN.GetBinContent(h2me_ATLAS_EESZ_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESZ_UP.SetBinContent(htmeATLAS_EESZ_UP.FindBin(mass),h2me_ATLAS_EESZ_UP.GetBinContent(h2me_ATLAS_EESZ_UP.FindBin(pt,mass)))
+					htmeATLAS_EER_DOWN.SetBinContent(htmeATLAS_EER_DOWN.FindBin(mass),h2me_ATLAS_EER_DOWN.GetBinContent(h2me_ATLAS_EER_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EER_UP.SetBinContent(htmeATLAS_EER_UP.FindBin(mass),h2me_ATLAS_EER_UP.GetBinContent(h2me_ATLAS_EER_UP.FindBin(pt,mass)))
+					htmeATLAS_EESLOW_DOWN.SetBinContent(htmeATLAS_EESLOW_DOWN.FindBin(mass),h2me_ATLAS_EESLOW_DOWN.GetBinContent(h2me_ATLAS_EESLOW_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESLOW_UP.SetBinContent(htmeATLAS_EESLOW_UP.FindBin(mass),h2me_ATLAS_EESLOW_UP.GetBinContent(h2me_ATLAS_EESLOW_UP.FindBin(pt,mass)))
+					htmeATLAS_EESMAT_DOWN.SetBinContent(htmeATLAS_EESMAT_DOWN.FindBin(mass),h2me_ATLAS_EESMAT_DOWN.GetBinContent(h2me_ATLAS_EESMAT_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESMAT_UP.SetBinContent(htmeATLAS_EESMAT_UP.FindBin(mass),h2me_ATLAS_EESMAT_UP.GetBinContent(h2me_ATLAS_EESMAT_UP.FindBin(pt,mass)))
+					htmeATLAS_EESPS_DOWN.SetBinContent(htmeATLAS_EESPS_DOWN.FindBin(mass),h2me_ATLAS_EESPS_DOWN.GetBinContent(h2me_ATLAS_EESPS_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESPS_UP.SetBinContent(htmeATLAS_EESPS_UP.FindBin(mass),h2me_ATLAS_EESPS_UP.GetBinContent(h2me_ATLAS_EESPS_UP.FindBin(pt,mass)))
+					htmeATLAS_ID_DOWN.SetBinContent(htmeATLAS_ID_DOWN.FindBin(mass),h2me_ATLAS_ID_DOWN.GetBinContent(h2me_ATLAS_ID_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_ID_UP.SetBinContent(htmeATLAS_ID_UP.FindBin(mass),h2me_ATLAS_ID_UP.GetBinContent(h2me_ATLAS_ID_UP.FindBin(pt,mass)))
+
+
+
+					htme.SetBinError(htme.FindBin(mass),h2me.GetBinError(h2me.FindBin(pt,mass)))
+					htem.SetBinError(htem.FindBin(mass),h2em.GetBinError(h2em.FindBin(pt,mass)))
+	
+					htsg.SetBinError(htsg.FindBin(mass),h2sg.GetBinError(h2sg.FindBin(pt,mass)))
+					htwrsg.SetBinError(htwrsg.FindBin(mass),h2wrsg.GetBinError(h2wrsg.FindBin(pt,mass)))
+
+
+					htmeATLAS_MS_DOWN.SetBinError(htmeATLAS_MS_DOWN.FindBin(mass),h2me_ATLAS_MS_DOWN.GetBinError(h2me_ATLAS_MS_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_MS_UP.SetBinError(htmeATLAS_MS_UP.FindBin(mass),h2me_ATLAS_MS_UP.GetBinError(h2me_ATLAS_MS_UP.FindBin(pt,mass)))
+
+					htmeATLAS_EESZ_DOWN.SetBinError(htmeATLAS_EESZ_DOWN.FindBin(mass),h2me_ATLAS_EESZ_DOWN.GetBinError(h2me_ATLAS_EESZ_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESZ_UP.SetBinError(htmeATLAS_EESZ_UP.FindBin(mass),h2me_ATLAS_EESZ_UP.GetBinError(h2me_ATLAS_EESZ_UP.FindBin(pt,mass)))
+					htmeATLAS_EER_DOWN.SetBinError(htmeATLAS_EER_DOWN.FindBin(mass),h2me_ATLAS_EER_DOWN.GetBinError(h2me_ATLAS_EER_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EER_UP.SetBinError(htmeATLAS_EER_UP.FindBin(mass),h2me_ATLAS_EER_UP.GetBinError(h2me_ATLAS_EER_UP.FindBin(pt,mass)))
+					htmeATLAS_EESLOW_DOWN.SetBinError(htmeATLAS_EESLOW_DOWN.FindBin(mass),h2me_ATLAS_EESLOW_DOWN.GetBinError(h2me_ATLAS_EESLOW_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESLOW_UP.SetBinError(htmeATLAS_EESLOW_UP.FindBin(mass),h2me_ATLAS_EESLOW_UP.GetBinError(h2me_ATLAS_EESLOW_UP.FindBin(pt,mass)))
+					htmeATLAS_EESMAT_DOWN.SetBinError(htmeATLAS_EESMAT_DOWN.FindBin(mass),h2me_ATLAS_EESMAT_DOWN.GetBinError(h2me_ATLAS_EESMAT_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESMAT_UP.SetBinError(htmeATLAS_EESMAT_UP.FindBin(mass),h2me_ATLAS_EESMAT_UP.GetBinError(h2me_ATLAS_EESMAT_UP.FindBin(pt,mass)))
+					htmeATLAS_EESPS_DOWN.SetBinError(htmeATLAS_EESPS_DOWN.FindBin(mass),h2me_ATLAS_EESPS_DOWN.GetBinError(h2me_ATLAS_EESPS_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_EESPS_UP.SetBinError(htmeATLAS_EESPS_UP.FindBin(mass),h2me_ATLAS_EESPS_UP.GetBinError(h2me_ATLAS_EESPS_UP.FindBin(pt,mass)))
+					htmeATLAS_ID_DOWN.SetBinError(htmeATLAS_ID_DOWN.FindBin(mass),h2me_ATLAS_ID_DOWN.GetBinError(h2me_ATLAS_ID_DOWN.FindBin(pt,mass)))
+                                        htmeATLAS_ID_UP.SetBinError(htmeATLAS_ID_UP.FindBin(mass),h2me_ATLAS_ID_UP.GetBinError(h2me_ATLAS_ID_UP.FindBin(pt,mass)))
+
+
+
+
+				hme1.Add(htme)
+				hem1.Add(htem)
+				hsg1.Add(htsg)
+				hwrsg1.Add(htwrsg)
+				hmeATLAS_MS_DOWN1.Add(htmeATLAS_MS_DOWN)
+				hmeATLAS_MS_UP1.Add(htmeATLAS_MS_UP)
+				hmeATLAS_EESZ_DOWN1.Add(htmeATLAS_EESZ_DOWN)
+                                hmeATLAS_EESZ_UP1.Add(htmeATLAS_EESZ_UP)
+				hmeATLAS_EER_DOWN1.Add(htmeATLAS_EER_DOWN)
+                                hmeATLAS_EER_UP1.Add(htmeATLAS_EER_UP)
+				hmeATLAS_EESLOW_DOWN1.Add(htmeATLAS_EESLOW_DOWN)
+                                hmeATLAS_EESLOW_UP1.Add(htmeATLAS_EESLOW_UP)
+				hmeATLAS_EESMAT_DOWN1.Add(htmeATLAS_EESMAT_DOWN)
+                                hmeATLAS_EESMAT_UP1.Add(htmeATLAS_EESMAT_UP)
+				hmeATLAS_EESPS_DOWN1.Add(htmeATLAS_EESPS_DOWN)
+                                hmeATLAS_EESPS_UP1.Add(htmeATLAS_EESPS_UP)
+				hmeATLAS_ID_DOWN1.Add(htmeATLAS_ID_DOWN)
+                                hmeATLAS_ID_UP1.Add(htmeATLAS_ID_UP)
+
+			
+			htme.Clear()
+			htem.Clear()
+			htsg.Clear()
+			htwrsg.Clear()
+			htmeATLAS_MS_DOWN.Clear()
+			htmeATLAS_MS_UP.Clear()
+			htmeATLAS_EESZ_DOWN.Clear()
+                        htmeATLAS_EESZ_UP.Clear()
+			htmeATLAS_EER_DOWN.Clear()
+                        htmeATLAS_EER_UP.Clear()
+			htmeATLAS_EESLOW_DOWN.Clear()
+                        htmeATLAS_EESLOW_UP.Clear()
+			htmeATLAS_EESMAT_DOWN.Clear()
+                        htmeATLAS_EESMAT_UP.Clear()
+			htmeATLAS_EESPS_DOWN.Clear()
+                        htmeATLAS_EESPS_UP.Clear()
+			htmeATLAS_ID_DOWN.Clear()
+                        htmeATLAS_ID_UP.Clear()
+
+		
+		#### ADD SIGNAL TO SUM MC ###
+		hme1.Add(hsg1,strength)
+		hem1.Add(hwrsg1,strength)
+		####
+	
+		c3.cd(3*i+1)
+		hme1.Draw()
+		#tla.DrawLatexNDC(0.3,0.8,"Mcoll data ME %s l1pt %i-%i"%(jet,l1b[i],l1b[i+1]))
+		c3.cd(3*i+2)
+		hem1.Draw()
+		#tla.DrawLatexNDC(0.3,0.8,"Mcoll data EM %s l1pt %i-%i"%(jet,l1b[i],l1b[i+1]))
+		c3.cd(3*i+3)
+		hsg1.Draw()
+		#tla.DrawLatexNDC(0.3,0.8,"Mcoll signal ME %s l1pt %i-%i"%(jet,l1b[i],l1b[i+1]))
+		fw1.cd()
+		hme1.Write()
+		hem1.Write()
+		hsg1.Write()
+		hwrsg1.Write()
+		if False: print "Rebin histos"
+		##throw away first bins
+		nthrow = 0
+		hme2 = ROOT.TH1F("Mcoll_data_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hem2 = ROOT.TH1F("Mcoll_data_EM_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hsg2 = ROOT.TH1F("Mcoll_signal_ME_l1pt%i_%s_rebin"%(i,jet),";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hwrsg2 = ROOT.TH1F("Mcoll_wrong_signal_ME_l1pt%i_%s_rebin"%(i,jet),";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+
+		hmeATLAS_MS_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_MS_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_MS_UP2 = ROOT.TH1F("Mcoll_ATLAS_MS_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_EESZ_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_EESZ_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+                hmeATLAS_EESZ_UP2 = ROOT.TH1F("Mcoll_ATLAS_EESZ_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_EER_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_EER_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+                hmeATLAS_EER_UP2 = ROOT.TH1F("Mcoll_ATLAS_EER_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_EESLOW_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_EESLOW_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+                hmeATLAS_EESLOW_UP2 = ROOT.TH1F("Mcoll_ATLAS_EESLOW_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_EESMAT_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_EESMAT_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+                hmeATLAS_EESMAT_UP2 = ROOT.TH1F("Mcoll_ATLAS_EESMAT_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_EESPS_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_EESPS_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+                hmeATLAS_EESPS_UP2 = ROOT.TH1F("Mcoll_ATLAS_EESPS_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+		hmeATLAS_ID_DOWN2 = ROOT.TH1F("Mcoll_ATLAS_ID_DOWN_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+                hmeATLAS_ID_UP2 = ROOT.TH1F("Mcoll_ATLAS_ID_UP_ME_l1pt%i_%s_rebin"%(i,jet),  ";Mcoll (index)",len(bmme)-nthrow,0,len(bmme)-nthrow)
+
+
+		mem.append(hme2)
+		mem.append(hem2)
+		mem.append(hsg2)
+		mem.append(hwrsg2)
+		
+		for b in range(len(bmme)-nthrow):
+			if hme1.GetBinContent(b+1+nthrow)>0:
+				hme2.SetBinContent(b+1,hme1.GetBinContent(b+1+nthrow))
+				hme2.SetBinError(b+1,hme1.GetBinError(b+1+nthrow))
+			else:
+				hme2.SetBinContent(b+1,0.001)
+				hme2.SetBinError(b+1,0.00001)
+			if hem1.GetBinContent(b+1+nthrow)>0:
+				hem2.SetBinContent(b+1,hem1.GetBinContent(b+1+nthrow))
+				hem2.SetBinError(b+1,hem1.GetBinError(b+1+nthrow))
+			else:
+				hem2.SetBinContent(b+1,0.001)
+				hem2.SetBinError(b+1,0.00001)
+			if hsg1.GetBinContent(b+1+nthrow)>0:
+				hsg2.SetBinContent(b+1,hsg1.GetBinContent(b+1+nthrow))
+				hsg2.SetBinError(b+1,hsg1.GetBinError(b+1+nthrow))
+			else:
+				hsg2.SetBinContent(b+1,0.001)
+				hsg2.SetBinError(b+1,0.00001)
+			if hwrsg1.GetBinContent(b+1+nthrow)>0:
+	                        hwrsg2.SetBinContent(b+1,hwrsg1.GetBinContent(b+1+nthrow))
+	                        hwrsg2.SetBinError(b+1,hwrsg1.GetBinError(b+1+nthrow))
+	                else:
+	                        hwrsg2.SetBinContent(b+1,0.001)
+	                        hwrsg2.SetBinError(b+1,0.00001)
+			if hwrsg2.GetBinContent(b+1)<0:
+				print "NEGATIVE VALUES in wrong signal sample!"
+
+
+			if hmeATLAS_MS_DOWN1.GetBinContent(b+1+nthrow)>0:
+				hmeATLAS_MS_DOWN2.SetBinContent(b+1,hmeATLAS_MS_DOWN1.GetBinContent(b+1+nthrow))
+				hmeATLAS_MS_DOWN2.SetBinError(b+1,hmeATLAS_MS_DOWN1.GetBinError(b+1+nthrow))
+			else:
+				hmeATLAS_MS_DOWN2.SetBinContent(b+1,0.001)
+				hmeATLAS_MS_DOWN2.SetBinError(b+1,0.00001)
+			if hmeATLAS_MS_UP1.GetBinContent(b+1+nthrow)>0:
+				hmeATLAS_MS_UP2.SetBinContent(b+1,hmeATLAS_MS_UP1.GetBinContent(b+1+nthrow))
+				hmeATLAS_MS_UP2.SetBinError(b+1,hmeATLAS_MS_UP1.GetBinError(b+1+nthrow))
+			else:
+				hmeATLAS_MS_UP2.SetBinContent(b+1,0.001)
+				hmeATLAS_MS_UP2.SetBinError(b+1,0.00001)
+			if hmeATLAS_EESZ_DOWN1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESZ_DOWN2.SetBinContent(b+1,hmeATLAS_EESZ_DOWN1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESZ_DOWN2.SetBinError(b+1,hmeATLAS_EESZ_DOWN1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESZ_DOWN2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESZ_DOWN2.SetBinError(b+1,0.00001)
+                        if hmeATLAS_EESZ_UP1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESZ_UP2.SetBinContent(b+1,hmeATLAS_EESZ_UP1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESZ_UP2.SetBinError(b+1,hmeATLAS_EESZ_UP1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESZ_UP2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESZ_UP2.SetBinError(b+1,0.00001)
+			if hmeATLAS_EER_DOWN1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EER_DOWN2.SetBinContent(b+1,hmeATLAS_EER_DOWN1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EER_DOWN2.SetBinError(b+1,hmeATLAS_EER_DOWN1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EER_DOWN2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EER_DOWN2.SetBinError(b+1,0.00001)
+                        if hmeATLAS_EER_UP1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EER_UP2.SetBinContent(b+1,hmeATLAS_EER_UP1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EER_UP2.SetBinError(b+1,hmeATLAS_EER_UP1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EER_UP2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EER_UP2.SetBinError(b+1,0.00001)
+			if hmeATLAS_EESLOW_DOWN1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESLOW_DOWN2.SetBinContent(b+1,hmeATLAS_EESLOW_DOWN1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESLOW_DOWN2.SetBinError(b+1,hmeATLAS_EESLOW_DOWN1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESLOW_DOWN2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESLOW_DOWN2.SetBinError(b+1,0.00001)
+                        if hmeATLAS_EESLOW_UP1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESLOW_UP2.SetBinContent(b+1,hmeATLAS_EESLOW_UP1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESLOW_UP2.SetBinError(b+1,hmeATLAS_EESLOW_UP1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESLOW_UP2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESLOW_UP2.SetBinError(b+1,0.00001)
+			if hmeATLAS_EESMAT_DOWN1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESMAT_DOWN2.SetBinContent(b+1,hmeATLAS_EESMAT_DOWN1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESMAT_DOWN2.SetBinError(b+1,hmeATLAS_EESMAT_DOWN1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESMAT_DOWN2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESMAT_DOWN2.SetBinError(b+1,0.00001)
+                        if hmeATLAS_EESMAT_UP1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESMAT_UP2.SetBinContent(b+1,hmeATLAS_EESMAT_UP1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESMAT_UP2.SetBinError(b+1,hmeATLAS_EESMAT_UP1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESMAT_UP2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESMAT_UP2.SetBinError(b+1,0.00001)
+			if hmeATLAS_EESPS_DOWN1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESPS_DOWN2.SetBinContent(b+1,hmeATLAS_EESPS_DOWN1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESPS_DOWN2.SetBinError(b+1,hmeATLAS_EESPS_DOWN1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESPS_DOWN2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESPS_DOWN2.SetBinError(b+1,0.00001)
+                        if hmeATLAS_EESPS_UP1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_EESPS_UP2.SetBinContent(b+1,hmeATLAS_EESPS_UP1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_EESPS_UP2.SetBinError(b+1,hmeATLAS_EESPS_UP1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_EESPS_UP2.SetBinContent(b+1,0.001)
+                                hmeATLAS_EESPS_UP2.SetBinError(b+1,0.00001)
+			if hmeATLAS_ID_DOWN1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_ID_DOWN2.SetBinContent(b+1,hmeATLAS_ID_DOWN1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_ID_DOWN2.SetBinError(b+1,hmeATLAS_ID_DOWN1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_ID_DOWN2.SetBinContent(b+1,0.001)
+                                hmeATLAS_ID_DOWN2.SetBinError(b+1,0.00001)
+                        if hmeATLAS_ID_UP1.GetBinContent(b+1+nthrow)>0:
+                                hmeATLAS_ID_UP2.SetBinContent(b+1,hmeATLAS_ID_UP1.GetBinContent(b+1+nthrow))
+                                hmeATLAS_ID_UP2.SetBinError(b+1,hmeATLAS_ID_UP1.GetBinError(b+1+nthrow))
+                        else:
+                                hmeATLAS_ID_UP2.SetBinContent(b+1,0.001)
+                                hmeATLAS_ID_UP2.SetBinError(b+1,0.00001)
+
+								
+
+
+	
+		### scaling for signal systmatics
+
+		nomSig = hsg2.Integral()
+		yield_ATLAS_MS_DOWN = hmeATLAS_MS_DOWN2.Integral()
+		yield_ATLAS_MS_UP = hmeATLAS_MS_UP2.Integral()
+		DNScale_ATLAS_MS = yield_ATLAS_MS_DOWN/nomSig
+		UPScale_ATLAS_MS = yield_ATLAS_MS_UP/nomSig
+
+		hmeATLAS_MS_DOWN2.Scale(1./DNScale_ATLAS_MS)
+		hmeATLAS_MS_UP2.Scale(1./UPScale_ATLAS_MS)
+		
+		yield_ATLAS_EESZ_DOWN = hmeATLAS_EESZ_DOWN2.Integral()
+                yield_ATLAS_EESZ_UP = hmeATLAS_EESZ_UP2.Integral()
+                DNScale_ATLAS_EESZ = yield_ATLAS_EESZ_DOWN/nomSig
+                UPScale_ATLAS_EESZ = yield_ATLAS_EESZ_UP/nomSig
+
+                hmeATLAS_EESZ_DOWN2.Scale(1./DNScale_ATLAS_EESZ)
+                hmeATLAS_EESZ_UP2.Scale(1./UPScale_ATLAS_EESZ)
+		yield_ATLAS_EER_DOWN = hmeATLAS_EER_DOWN2.Integral()
+                yield_ATLAS_EER_UP = hmeATLAS_EER_UP2.Integral()
+
+                DNScale_ATLAS_EER = yield_ATLAS_EER_DOWN/nomSig
+                UPScale_ATLAS_EER = yield_ATLAS_EER_UP/nomSig
+
+                hmeATLAS_EER_DOWN2.Scale(1./DNScale_ATLAS_EER)
+                hmeATLAS_EER_UP2.Scale(1./UPScale_ATLAS_EER)
+		yield_ATLAS_EESLOW_DOWN = hmeATLAS_EESLOW_DOWN2.Integral()
+                yield_ATLAS_EESLOW_UP = hmeATLAS_EESLOW_UP2.Integral()
+
+                DNScale_ATLAS_EESLOW = yield_ATLAS_EESLOW_DOWN/nomSig
+                UPScale_ATLAS_EESLOW = yield_ATLAS_EESLOW_UP/nomSig
+
+                hmeATLAS_EESLOW_DOWN2.Scale(1./DNScale_ATLAS_EESLOW)
+                hmeATLAS_EESLOW_UP2.Scale(1./UPScale_ATLAS_EESLOW)
+		yield_ATLAS_EESMAT_DOWN = hmeATLAS_EESMAT_DOWN2.Integral()
+                yield_ATLAS_EESMAT_UP = hmeATLAS_EESMAT_UP2.Integral()
+
+                DNScale_ATLAS_EESMAT = yield_ATLAS_EESMAT_DOWN/nomSig
+                UPScale_ATLAS_EESMAT = yield_ATLAS_EESMAT_UP/nomSig
+
+                hmeATLAS_EESMAT_DOWN2.Scale(1./DNScale_ATLAS_EESMAT)
+                hmeATLAS_EESMAT_UP2.Scale(1./UPScale_ATLAS_EESMAT)
+		yield_ATLAS_EESPS_DOWN = hmeATLAS_EESPS_DOWN2.Integral()
+                yield_ATLAS_EESPS_UP = hmeATLAS_EESPS_UP2.Integral()
+
+                DNScale_ATLAS_EESPS = yield_ATLAS_EESPS_DOWN/nomSig
+                UPScale_ATLAS_EESPS = yield_ATLAS_EESPS_UP/nomSig
+
+                hmeATLAS_EESPS_DOWN2.Scale(1./DNScale_ATLAS_EESPS)
+                hmeATLAS_EESPS_UP2.Scale(1./UPScale_ATLAS_EESPS)
+		yield_ATLAS_ID_DOWN = hmeATLAS_ID_DOWN2.Integral()
+                yield_ATLAS_ID_UP = hmeATLAS_ID_UP2.Integral()
+
+                DNScale_ATLAS_ID = yield_ATLAS_ID_DOWN/nomSig
+                UPScale_ATLAS_ID = yield_ATLAS_ID_UP/nomSig
+
+                hmeATLAS_ID_DOWN2.Scale(1./DNScale_ATLAS_ID)
+                hmeATLAS_ID_UP2.Scale(1./UPScale_ATLAS_ID)
+
+	
+	
+	
+		print "ATLAS_MS = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_MS,DNScale_ATLAS_MS)
+		print "ATLAS_EESZ = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_EESZ,DNScale_ATLAS_EESZ)
+		print "ATLAS_EER = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_EER,DNScale_ATLAS_EER)
+		print "ATLAS_EESLOW = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_EESLOW,DNScale_ATLAS_EESLOW)
+		print "ATLAS_EESMAT = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_EESMAT,DNScale_ATLAS_EESMAT)
+		print "ATLAS_EESPS = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_EESPS,DNScale_ATLAS_EESPS)
+		print "ATLAS_ID = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_ATLAS_ID,DNScale_ATLAS_ID)
+
+
+
+		### Create baseline Bkg histo as average
+		h_BaseBkg = hme2.Clone("Base_Bkg_l1pt%i_%s"%(i,jet))
+	        h_BaseBkg.Add(hem2)
+	        h_BaseBkg.Scale(0.5)
+	
+	
+		print "Bins : " ,ybinsnew[nthrow:]
+		if strength>0 : print "**** Signal of %.2f was added ************" %strength
+	
+	
+		hme2.Write()
+		hem2.Write()
+		h_BaseBkg.Write()
+		hsg2.Write()
+		hwrsg2.Write()
+		hmeATLAS_MS_DOWN2.Write()
+		hmeATLAS_MS_UP2.Write()
+		hmeATLAS_EESZ_DOWN2.Write()
+                hmeATLAS_EESZ_UP2.Write()
+		hmeATLAS_EER_DOWN2.Write()
+                hmeATLAS_EER_UP2.Write()
+		hmeATLAS_EESLOW_DOWN2.Write()
+                hmeATLAS_EESLOW_UP2.Write()
+		hmeATLAS_EESMAT_DOWN2.Write()
+                hmeATLAS_EESMAT_UP2.Write()
+		hmeATLAS_EESPS_DOWN2.Write()
+                hmeATLAS_EESPS_UP2.Write()
+		hmeATLAS_ID_DOWN2.Write()
+                hmeATLAS_ID_UP2.Write()
+
+	
+	if strength>0 : print "**** Signal of %.2f was added ************" %strength
+			
+	#c3.Update()
+	c3.SaveAs("data/Mcoll_SR%s.pdf"%jet)
+		
+	#mem.append(frME)
+	#mem.append(frEM)
+	#mem.append(frSig)
+	#mem.append(c3)
+	
+#raw_input()
+
+fw1.Close()
+	
+while len(mem)>0:
+	item = mem.pop(0)
+	del item
+	
