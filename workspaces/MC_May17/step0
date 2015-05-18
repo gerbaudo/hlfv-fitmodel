@@ -398,8 +398,12 @@ for jet in ('0j','jets'):
 
 		
 		#### ADD SIGNAL TO SUM MC ###
-		hme1.Add(hsg1,strength)
-		hem1.Add(hwrsg1,strength)
+		if strength>=0:
+                        hme1.Add(hsg1,strength)
+                        hem1.Add(hwrsg1,strength)
+                else:
+                        hem1.Add(hsg1,-1.*strength)
+                        hme1.Add(hwrsg1,-1*strength)
 		####
 	
 		c3.cd(3*i+1)
