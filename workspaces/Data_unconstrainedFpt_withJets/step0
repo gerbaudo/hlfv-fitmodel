@@ -43,6 +43,7 @@ mem = []
 for jet in ('','_jets'):
 #for jet in(''):
 
+
 ### FINAL BINNING ############
         target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
 	target_m_bins = (array.array('f', [0] + range(60, 250, 5) + [250,260,270,280,290,300,320,350,400,450]) if jet=='' else
@@ -53,80 +54,49 @@ for jet in ('','_jets'):
                            'EL_RE_UP', 'EL_RE_DOWN', 'EL_FR_UP', 'EL_FR_DOWN',
                            'MU_RE_UP', 'MU_RE_DOWN', 'MU_FR_UP', 'MU_FR_DOWN']
         sign_variations = ['NOM']
-	#### Get EM Files ####
-        files_em = {}
-        histos_em = {}
+	#### Get Files and histograms ####
+        files = {}
+        histos = {}
         for sample, variations in [('data', data_variations),
                                    ('fake', fake_variations),
-                                   ('signaltaue', sign_variations)]:
+                                   ('signaltaue', sign_variations),
+                                   ('signaltaumu', sign_variations)]:
                 for variation in variations:
-                        key = sample+'_'+variation+'_sr_emu_os'+jet
-                        files_em[key] = ROOT.TFile(DIR+'/'+key+'.root')
-                        histoname = 'h_mcoll_vs_pt1_'+sample+'_'+variation+'_sr_emu_os'+jet
-                        clonename = ""
-                        histos_em[key] = files_em[key].Get(histoname).Clone()
-
-	frEM                 = ROOT.TFile(DIR+"data_NOM_sr_emu_os%s.root"%jet)
-	frME_signaltaue      = ROOT.TFile(DIR+"signaltaue_NOM_sr_mue_os%s.root"%jet)
-	frEM_fake            = ROOT.TFile(DIR+"fake_NOM_sr_emu_os%s.root"%jet)
-	frEM_fake_EL_RE_UP   = ROOT.TFile(DIR+"fake_EL_RE_UP_sr_emu_os%s.root"%jet)
-	frEM_fake_EL_RE_DOWN = ROOT.TFile(DIR+"fake_EL_RE_DOWN_sr_emu_os%s.root"%jet)
-	frEM_fake_EL_FR_UP   = ROOT.TFile(DIR+"fake_EL_FR_UP_sr_emu_os%s.root"%jet)
-	frEM_fake_EL_FR_DOWN = ROOT.TFile(DIR+"fake_EL_FR_DOWN_sr_emu_os%s.root"%jet)
-	frEM_fake_MU_RE_UP   = ROOT.TFile(DIR+"fake_MU_RE_UP_sr_emu_os%s.root"%jet)
-	frEM_fake_MU_RE_DOWN = ROOT.TFile(DIR+"fake_MU_RE_DOWN_sr_emu_os%s.root"%jet)
-	frEM_fake_MU_FR_UP   = ROOT.TFile(DIR+"fake_MU_FR_UP_sr_emu_os%s.root"%jet)
-	frEM_fake_MU_FR_DOWN = ROOT.TFile(DIR+"fake_MU_FR_DOWN_sr_emu_os%s.root"%jet)
-
-
-	### Get ME files
-	frME                 = ROOT.TFile(DIR+"data_NOM_sr_mue_os%s.root"%jet)
-	frME_signaltaumu     = ROOT.TFile(DIR+"signaltaumu_NOM_sr_mue_os%s.root"%jet)
-	frME_fake            = ROOT.TFile(DIR+"fake_NOM_sr_mue_os%s.root"%jet)
-	frME_fake_EL_RE_UP   = ROOT.TFile(DIR+"fake_EL_RE_UP_sr_mue_os%s.root"%jet)
-	frME_fake_EL_RE_DOWN = ROOT.TFile(DIR+"fake_EL_RE_DOWN_sr_mue_os%s.root"%jet)
-	frME_fake_EL_FR_UP   = ROOT.TFile(DIR+"fake_EL_FR_UP_sr_mue_os%s.root"%jet)
-	frME_fake_EL_FR_DOWN = ROOT.TFile(DIR+"fake_EL_FR_DOWN_sr_mue_os%s.root"%jet)
-	frME_fake_MU_RE_UP   = ROOT.TFile(DIR+"fake_MU_RE_UP_sr_mue_os%s.root"%jet)
-	frME_fake_MU_RE_DOWN = ROOT.TFile(DIR+"fake_MU_RE_DOWN_sr_mue_os%s.root"%jet)
-	frME_fake_MU_FR_UP   = ROOT.TFile(DIR+"fake_MU_FR_UP_sr_mue_os%s.root"%jet)
-	frME_fake_MU_FR_DOWN = ROOT.TFile(DIR+"fake_MU_FR_DOWN_sr_mue_os%s.root"%jet)
-
-
-	### Get EM histograms
-
-	h2emOrig                 = frEM.Get("h_mcoll_vs_pt1_data_NOM_sr_emu_os%s"%jet).Clone("EM%s"%jet)
-	h2emOrig_fake            = frEM_fake.Get("h_mcoll_vs_pt1_fake_NOM_sr_emu_os%s"%jet).Clone("EM_fake%s"%jet)
-	h2emOrig_fake_EL_RE_UP   = frEM_fake_EL_RE_UP.Get("h_mcoll_vs_pt1_fake_EL_RE_UP_sr_emu_os%s"%jet
-                                                         ).Clone("EM_fake_EL_RE_UP%s"%jet)
-	h2emOrig_fake_EL_RE_DOWN = frEM_fake_EL_RE_DOWN.Get("h_mcoll_vs_pt1_fake_EL_RE_DOWN_sr_emu_os%s"%jet
-                                                            ).Clone("EM_fake_EL_RE_DOWN%s"%jet)
-	h2emOrig_fake_EL_FR_UP   = frEM_fake_EL_FR_UP.Get("h_mcoll_vs_pt1_fake_EL_FR_UP_sr_emu_os%s"%jet
-                                                          ).Clone("EM_fake_EL_FR_UP%s"%jet)
-	h2emOrig_fake_EL_FR_DOWN = frEM_fake_EL_FR_DOWN.Get("h_mcoll_vs_pt1_fake_EL_FR_DOWN_sr_emu_os%s"%jet
-                                                            ).Clone("EM_fake_EL_FR_DOWN%s"%jet)
-	h2emOrig_fake_MU_RE_UP   = frEM_fake_MU_RE_UP.Get("h_mcoll_vs_pt1_fake_MU_RE_UP_sr_emu_os%s"%jet
-                                                          ).Clone("EM_fake_MU_RE_UP%s"%jet)
-	h2emOrig_fake_MU_RE_DOWN = frEM_fake_MU_RE_DOWN.Get("h_mcoll_vs_pt1_fake_MU_RE_DOWN_sr_emu_os%s"%jet).Clone("EM_fake_MU_RE_DOWN%s"%jet)
-	h2emOrig_fake_MU_FR_UP   = frEM_fake_MU_FR_UP.Get("h_mcoll_vs_pt1_fake_MU_FR_UP_sr_emu_os%s"%jet
-                                                          ).Clone("EM_fake_MU_FR_UP%s"%jet)
-	h2emOrig_fake_MU_FR_DOWN = frEM_fake_MU_FR_DOWN.Get("h_mcoll_vs_pt1_fake_MU_FR_DOWN_sr_emu_os%s"%jet
-                                                            ).Clone("EM_fake_MU_FR_DOWN%s"%jet)
-	h2wrsgOrig               = frME_signaltaue.Get("h_mcoll_vs_pt1_signaltaue_NOM_sr_mue_os%s"%jet).Clone("ME_signaltaue%s"%jet)
-
+                        for em_me in ['emu', 'mue']:
+                                key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                                filename = DIR+'/'+key+'.root'
+                                files[key] = ROOT.TFile(filename)
+                                histoname = 'h_mcoll_vs_pt1_'+sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                                clonename = ""
+                                histo = files[key].Get(histoname)
+                                if not histo:
+                                    print "missing %s from %s"%(histoname, filename)
+                                else:
+                                    histos[key] = histo
 	### Get ME histograms
+	h2meOrig                 = histos['data_NOM_sr_mue_os'+jet]
+	h2meOrig_fake            = histos['fake_NOM_sr_mue_os'+jet]
+	h2meOrig_fake_EL_RE_UP   = histos['fake_EL_RE_UP_sr_mue_os'+jet]
+	h2meOrig_fake_EL_RE_DOWN = histos['fake_EL_RE_DOWN_sr_mue_os'+jet]
+	h2meOrig_fake_EL_FR_UP   = histos['fake_EL_FR_UP_sr_mue_os'+jet]
+	h2meOrig_fake_EL_FR_DOWN = histos['fake_EL_FR_DOWN_sr_mue_os'+jet]
+	h2meOrig_fake_MU_RE_UP   = histos['fake_MU_RE_UP_sr_mue_os'+jet]
+	h2meOrig_fake_MU_RE_DOWN = histos['fake_MU_RE_DOWN_sr_mue_os'+jet]
+	h2meOrig_fake_MU_FR_UP   = histos['fake_MU_FR_UP_sr_mue_os'+jet]
+	h2meOrig_fake_MU_FR_DOWN = histos['fake_MU_FR_DOWN_sr_mue_os'+jet]
+	h2sgOrig                 = histos['signaltaumu_NOM_sr_mue_os'+jet]
 
-	h2meOrig =                 frME.Get("h_mcoll_vs_pt1_data_NOM_sr_mue_os%s"%jet).Clone("ME%s"%jet)
-	h2meOrig_fake =            frME_fake.Get("h_mcoll_vs_pt1_fake_NOM_sr_mue_os%s"%jet).Clone("ME_fake%s"%jet)
-	h2meOrig_fake_EL_RE_UP =   frME_fake_EL_RE_UP.Get("h_mcoll_vs_pt1_fake_EL_RE_UP_sr_mue_os%s"%jet).Clone("ME_fake_EL_RE_UP%s"%jet)
-	h2meOrig_fake_EL_RE_DOWN = frME_fake_EL_RE_DOWN.Get("h_mcoll_vs_pt1_fake_EL_RE_DOWN_sr_mue_os%s"%jet).Clone("ME_fake_EL_RE_DOWN%s"%jet)
-	h2meOrig_fake_EL_FR_UP =   frME_fake_EL_FR_UP.Get("h_mcoll_vs_pt1_fake_EL_FR_UP_sr_mue_os%s"%jet).Clone("ME_fake_EL_FR_UP%s"%jet)
-	h2meOrig_fake_EL_FR_DOWN = frME_fake_EL_FR_DOWN.Get("h_mcoll_vs_pt1_fake_EL_FR_DOWN_sr_mue_os%s"%jet).Clone("ME_fake_EL_FR_DOWN%s"%jet)
-	h2meOrig_fake_MU_RE_UP =   frME_fake_MU_RE_UP.Get("h_mcoll_vs_pt1_fake_MU_RE_UP_sr_mue_os%s"%jet).Clone("ME_fake_MU_RE_UP%s"%jet)
-	h2meOrig_fake_MU_RE_DOWN = frME_fake_MU_RE_DOWN.Get("h_mcoll_vs_pt1_fake_MU_RE_DOWN_sr_mue_os%s"%jet).Clone("ME_fake_MU_RE_DOWN%s"%jet)
-	h2meOrig_fake_MU_FR_UP =   frME_fake_MU_FR_UP.Get("h_mcoll_vs_pt1_fake_MU_FR_UP_sr_mue_os%s"%jet).Clone("ME_fake_MU_FR_UP%s"%jet)
-	h2meOrig_fake_MU_FR_DOWN = frME_fake_MU_FR_DOWN.Get("h_mcoll_vs_pt1_fake_MU_FR_DOWN_sr_mue_os%s"%jet).Clone("ME_fake_MU_FR_DOWN%s"%jet)
-	h2sgOrig = frME_signaltaumu.Get("h_mcoll_vs_pt1_signaltaumu_NOM_sr_mue_os%s"%jet).Clone("ME_signaltaumu%s"%jet)
+	h2emOrig                 = histos['data_NOM_sr_emu_os'+jet]
+	h2emOrig_fake            = histos['fake_NOM_sr_emu_os'+jet]
+	h2emOrig_fake_EL_RE_UP   = histos['fake_EL_RE_UP_sr_emu_os'+jet]
+	h2emOrig_fake_EL_RE_DOWN = histos['fake_EL_RE_DOWN_sr_emu_os'+jet]
+	h2emOrig_fake_EL_FR_UP   = histos['fake_EL_FR_UP_sr_emu_os'+jet]
+	h2emOrig_fake_EL_FR_DOWN = histos['fake_EL_FR_DOWN_sr_emu_os'+jet]
+	h2emOrig_fake_MU_RE_UP   = histos['fake_MU_RE_UP_sr_emu_os'+jet]
+	h2emOrig_fake_MU_RE_DOWN = histos['fake_MU_RE_DOWN_sr_emu_os'+jet]
+	h2emOrig_fake_MU_FR_UP   = histos['fake_MU_FR_UP_sr_emu_os'+jet]
+	h2emOrig_fake_MU_FR_DOWN = histos['fake_MU_FR_DOWN_sr_emu_os'+jet]
+	h2wrsgOrig               = histos['signaltaue_NOM_sr_mue_os'+jet]
 
 	## Rebin 2D histos ###
 
@@ -137,67 +107,90 @@ for jet in ('','_jets'):
         n_xbin = len(target_pt1_bins)-1
         n_ybin = len(target_m_bins)-1
 
-        templ_h_name = 'h_SR_%s_Rebinned_mcollCorr_x_pt1_%s'
+        def rebinned_histoname(sample='', variation='', em_me=''):
+            "note that the naming here is slightly different; but use the same key"
+            templ_h_name = 'h_SR_%s_Rebinned_mcollCorr_x_pt1_%s'
+            hname = templ_h_name%('EM' if em_me=='emu' else
+                                  'ME' if em_me=='mue' else 'unknown',
+                                  sample+('' if variation=='NOM' else ('_'+variation)))
+            return hname
+
+        def slice_histo_in_pt(h_m_vs_pt, h_m, pt_min, pt_max):
+            "project 2D histo m_vs_pt on 1D m slicing a pt interval [pt_min, pt_max["
+            xaxis = h_m_vs_pt.GetXaxis()
+            yaxis = h_m_vs_pt.GetYaxis()
+            nbinsx = xaxis.GetNbins()
+            nbinsy = yaxis.GetNbins()
+            origin_pt_bins = array.array('f', [xaxis.GetBinLowEdge(j+1) for j in range(nbinsx+1)])
+            origin_m_bins  = array.array('f', [yaxis.GetBinLowEdge(k+1) for k in range(nbinsy+1)])
+            n_m_bins = len(origin_m_bins)-1
+            m_binning = (n_m_bins, origin_m_bins)
+            dummy_histo = ROOT.TH1F("dummy", '', *m_binning)
+            for pt in origin_pt_bins:
+    		if pt_min <= pt < pt_max:
+    		    for mass in origin_m_bins:
+                        dest_bin = dummy_histo.FindBin(mass)
+                        orig_bin = h_m_vs_pt.FindBin(pt, mass)
+                        dummy_histo.SetBinContent(dest_bin, h_m_vs_pt.GetBinContent(orig_bin))
+                        dummy_histo.SetBinError  (dest_bin, h_m_vs_pt.GetBinError  (orig_bin))
+                    h_m.Add(dummy_histo)
+
         title = "l_1 p^{T};Mcoll (GeV)"
         binning = (n_xbin,target_pt1_bins,n_ybin,target_m_bins)
-	h2me                 = ROOT.TH2F(templ_h_name % ('ME', 'Data'            +jet), title, *binning)
-	h2em                 = ROOT.TH2F(templ_h_name % ('EM', 'Data'            +jet), title, *binning)
-	h2emFakes            = ROOT.TH2F(templ_h_name % ('EM', 'Fakes'           +jet), title, *binning)
-	h2meFakes            = ROOT.TH2F(templ_h_name % ('ME', 'Fakes'           +jet), title, *binning)
-	h2emFakes_EL_RE_UP   = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_EL_RE_UP'  +jet), title, *binning)
-	h2meFakes_EL_RE_UP   = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_EL_RE_UP'  +jet), title, *binning)
-	h2emFakes_EL_RE_DOWN = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_EL_RE_DOWN'+jet), title, *binning)
-	h2meFakes_EL_RE_DOWN = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_EL_RE_DOWN'+jet), title, *binning)
-	h2emFakes_EL_FR_UP   = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_EL_FR_UP'  +jet), title, *binning)
-	h2meFakes_EL_FR_UP   = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_EL_FR_UP'  +jet), title, *binning)
-	h2emFakes_EL_FR_DOWN = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_EL_FR_DOWN'+jet), title, *binning)
-	h2meFakes_EL_FR_DOWN = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_EL_FR_DOWN'+jet), title, *binning)
-	h2emFakes_MU_RE_UP   = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_MU_RE_UP'  +jet), title, *binning)
-	h2meFakes_MU_RE_UP   = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_MU_RE_UP'  +jet), title, *binning)
-	h2emFakes_MU_RE_DOWN = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_MU_RE_DOWN'+jet), title, *binning)
-	h2meFakes_MU_RE_DOWN = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_MU_RE_DOWN'+jet), title, *binning)
-	h2emFakes_MU_FR_UP   = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_MU_FR_UP'  +jet), title, *binning)
-	h2meFakes_MU_FR_UP   = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_MU_FR_UP'  +jet), title, *binning)
-	h2emFakes_MU_FR_DOWN = ROOT.TH2F(templ_h_name % ('EM', 'Fakes_MU_FR_DOWN'+jet), title, *binning)
-	h2meFakes_MU_FR_DOWN = ROOT.TH2F(templ_h_name % ('ME', 'Fakes_MU_FR_DOWN'+jet), title, *binning)
-	h2sg      = ROOT.TH2F("h_SR_Sig_Rebinned_mcollCorr_x_pt1%s"%jet,      title, *binning)
-	h2wrsg    = ROOT.TH2F("h_SR_WrongSig_Rebinned_mcollCorr_x_pt1%s"%jet, title, *binning)
+        rebinned_histos = {}
+        for sample, variations in [('data', data_variations),
+                                   ('fake', fake_variations)]:
+            for variation in variations:
+                for em_me in ['emu', 'mue']:
+                    key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                    hname = rebinned_histoname(sample, variation, em_me)
+                    rebinned_histos[key] = ROOT.TH2F(hname, title, *binning)
+        rebinned_histos['signaltaumu_NOM_sr_mue_os'+jet] = ROOT.TH2F("h_SR_Sig_Rebinned_mcollCorr_x_pt1%s"%jet,      title, *binning)
+	rebinned_histos['signaltaue_NOM_sr_mue_os'+jet] =  ROOT.TH2F("h_SR_WrongSig_Rebinned_mcollCorr_x_pt1%s"%jet, title, *binning)
 
+	h2me                 = rebinned_histos['data_NOM_sr_mue_os'+jet]
+	h2meFakes            = rebinned_histos['fake_NOM_sr_mue_os'+jet]
+	h2meFakes_EL_RE_UP   = rebinned_histos['fake_EL_RE_UP_sr_mue_os'+jet]
+	h2meFakes_EL_RE_DOWN = rebinned_histos['fake_EL_RE_DOWN_sr_mue_os'+jet]
+	h2meFakes_EL_FR_UP   = rebinned_histos['fake_EL_FR_UP_sr_mue_os'+jet]
+	h2meFakes_EL_FR_DOWN = rebinned_histos['fake_EL_FR_DOWN_sr_mue_os'+jet]
+	h2meFakes_MU_RE_UP   = rebinned_histos['fake_MU_RE_UP_sr_mue_os'+jet]
+	h2meFakes_MU_RE_DOWN = rebinned_histos['fake_MU_RE_DOWN_sr_mue_os'+jet]
+	h2meFakes_MU_FR_UP   = rebinned_histos['fake_MU_FR_UP_sr_mue_os'+jet]
+	h2meFakes_MU_FR_DOWN = rebinned_histos['fake_MU_FR_DOWN_sr_mue_os'+jet]
 
+	h2em                 = rebinned_histos['data_NOM_sr_emu_os'+jet]
+	h2emFakes            = rebinned_histos['fake_NOM_sr_emu_os'+jet]
+	h2emFakes_EL_RE_UP   = rebinned_histos['fake_EL_RE_UP_sr_emu_os'+jet]
+	h2emFakes_EL_RE_DOWN = rebinned_histos['fake_EL_RE_DOWN_sr_emu_os'+jet]
+	h2emFakes_EL_FR_UP   = rebinned_histos['fake_EL_FR_UP_sr_emu_os'+jet]
+	h2emFakes_EL_FR_DOWN = rebinned_histos['fake_EL_FR_DOWN_sr_emu_os'+jet]
+	h2emFakes_MU_RE_UP   = rebinned_histos['fake_MU_RE_UP_sr_emu_os'+jet]
+	h2emFakes_MU_RE_DOWN = rebinned_histos['fake_MU_RE_DOWN_sr_emu_os'+jet]
+	h2emFakes_MU_FR_UP   = rebinned_histos['fake_MU_FR_UP_sr_emu_os'+jet]
+	h2emFakes_MU_FR_DOWN = rebinned_histos['fake_MU_FR_DOWN_sr_emu_os'+jet]
 
-        for h_orig, h_clone in [(h2meOrig                , h2me                ),
-                                (h2emOrig                , h2em                ),
-                                (h2emOrig_fake           , h2emFakes           ),
-                                (h2meOrig_fake           , h2meFakes           ),
-                                (h2emOrig_fake_EL_RE_UP  , h2emFakes_EL_RE_UP  ),
-                                (h2meOrig_fake_EL_RE_UP  , h2meFakes_EL_RE_UP  ),
-                                (h2emOrig_fake_EL_RE_DOWN, h2emFakes_EL_RE_DOWN),
-                                (h2meOrig_fake_EL_RE_DOWN, h2meFakes_EL_RE_DOWN),
-                                (h2emOrig_fake_EL_FR_UP  , h2emFakes_EL_FR_UP  ),
-                                (h2meOrig_fake_EL_FR_UP  , h2meFakes_EL_FR_UP  ),
-                                (h2emOrig_fake_EL_FR_DOWN, h2emFakes_EL_FR_DOWN),
-                                (h2meOrig_fake_EL_FR_DOWN, h2meFakes_EL_FR_DOWN),
-                                (h2emOrig_fake_MU_RE_UP  , h2emFakes_MU_RE_UP  ),
-                                (h2meOrig_fake_MU_RE_UP  , h2meFakes_MU_RE_UP  ),
-                                (h2emOrig_fake_MU_RE_DOWN, h2emFakes_MU_RE_DOWN),
-                                (h2meOrig_fake_MU_RE_DOWN, h2meFakes_MU_RE_DOWN),
-                                (h2emOrig_fake_MU_FR_UP  , h2emFakes_MU_FR_UP  ),
-                                (h2meOrig_fake_MU_FR_UP  , h2meFakes_MU_FR_UP  ),
-                                (h2emOrig_fake_MU_FR_DOWN, h2emFakes_MU_FR_DOWN),
-                                (h2meOrig_fake_MU_FR_DOWN, h2meFakes_MU_FR_DOWN),
-                                (h2sgOrig                , h2sg                ), # why was this outside of the loop?
-                                (h2wrsgOrig              , h2wrsg              ),
-                                ]:
-                xaxis = h_orig.GetXaxis()
-                yaxis = h_orig.GetYaxis()
-                for x in range(xaxis.GetNbins()):
+	h2sg                 = rebinned_histos['signaltaumu_NOM_sr_mue_os'+jet]
+	h2wrsg               = rebinned_histos['signaltaue_NOM_sr_mue_os'+jet]
+
+        for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
+                                           ('fake', fake_variations, ('emu', 'mue')),
+                                           ('signaltaumu', ('NOM',),    ('mue',)),
+                                           ('signaltaue',  ('NOM',),    ('mue',))]:
+            for variation in variations:
+                for em_me in em_mes:
+                    key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                    h_orig =          histos[key]
+                    h_rebn = rebinned_histos[key]
+                    xaxis = h_orig.GetXaxis()
+                    yaxis = h_orig.GetYaxis()
+                    for x in range(xaxis.GetNbins()):
                         for y in range(yaxis.GetNbins()):
-                                i=x+1
-                                j=y+1
-                                ix = xaxis.GetBinCenter(i)
-                                jy = yaxis.GetBinCenter(j)
-                                h_clone.Fill(ix, jy, h_orig.GetBinContent(i, j))
-
+                            i=x+1
+                            j=y+1
+                            ix = xaxis.GetBinCenter(i)
+                            jy = yaxis.GetBinCenter(j)
+                            h_rebn.Fill(ix, jy, h_orig.GetBinContent(i, j))
 
 	## Rebin uniformly to indices
         xaxis = h2me.GetXaxis()
@@ -240,8 +233,7 @@ for jet in ('','_jets'):
 		mem.append(hsg1)
 		mem.append(hwrsg1)
 
-                dummy_histo = ROOT.TH1F("dummy", '', *m_binning)
-                for h_dest, h_orig in [(hme1,                h2me),
+                for h_m, h_m_vs_pt in [(hme1,                h2me),
                                        (hem1,                h2em),
                                        (hsg1,                h2sg),
                                        (hwrsg1,              h2wrsg),
@@ -264,17 +256,11 @@ for jet in ('','_jets'):
                                        (hemFakes_MU_FR_DOWN1,h2emFakes_MU_FR_DOWN),
                                        (hmeFakes_MU_FR_DOWN1,h2meFakes_MU_FR_DOWN),
                                        ]:
-                        dummy_histo.Clear()
-                        for pt in origin_pt_bins:
-				if target_pt1_bins[i] <= pt < target_pt1_bins[i+1]:
-					for mass in origin_m_bins:
-                                                dest_bin = dummy_histo.FindBin(mass)
-                                                orig_bin = h_orig.FindBin(pt, mass)
-                                                dummy_histo.SetBinContent(dest_bin, h_orig.GetBinContent(orig_bin))
-                                                dummy_histo.SetBinError  (dest_bin, h_orig.GetBinError  (orig_bin))
-                                        h_dest.Add(dummy_histo)
 
-		#### ADD SIGNAL TO SUM MC ###
+                        pt_min = target_pt1_bins[i]
+                        pt_max = target_pt1_bins[i+1]
+                        slice_histo_in_pt(h_m_vs_pt, h_m, pt_min, pt_max)
+		#### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
 		hme1.Add(hsg1,strength)
 		hem1.Add(hwrsg1,strength)
 		####
@@ -301,30 +287,30 @@ for jet in ('','_jets'):
                 n_m_bins_pruned = len(origin_m_bins)-nthrow
                 pre_name = 'Mcoll_'
                 suf_name = "l1pt%i%s_rebin"%(i,jet)
-		hme2                 = ROOT.TH1F(pre_name+'_data_ME_'        +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hem2                 = ROOT.TH1F(pre_name+'_data_EM_'        +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hsg2                 = ROOT.TH1F(pre_name+'_signal_ME_'      +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hwrsg2               = ROOT.TH1F(pre_name+'_wrong_signal_ME_'+suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
+                binning = (n_m_bins_pruned,0,n_m_bins_pruned)
+		hme2                 = ROOT.TH1F(pre_name+'_data_ME_'        +suf_name, title,*binning)
+		hem2                 = ROOT.TH1F(pre_name+'_data_EM_'        +suf_name, title,*binning)
+		hsg2                 = ROOT.TH1F(pre_name+'_signal_ME_'      +suf_name, title,*binning)
+		hwrsg2               = ROOT.TH1F(pre_name+'_wrong_signal_ME_'+suf_name, title,*binning)
                 pre_name = 'Mcoll_Fakes'
-		hemFakes2            = ROOT.TH1F(pre_name+'_Fakes_EM_'       +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hmeFakes2            = ROOT.TH1F(pre_name+'_Fakes_ME_'       +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_EL_RE_UP2   = ROOT.TH1F(pre_name+'_EL_RE_UP_EM_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_EL_RE_UP2   = ROOT.TH1F(pre_name+'_EL_RE_UP_ME_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_EL_RE_DOWN2 = ROOT.TH1F(pre_name+'_EL_RE_DOWN_EM_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_EL_RE_DOWN2 = ROOT.TH1F(pre_name+'_EL_RE_DOWN_ME_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_EL_FR_UP2   = ROOT.TH1F(pre_name+'_EL_FR_UP_EM_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_EL_FR_UP2   = ROOT.TH1F(pre_name+'_EL_FR_UP_ME_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_EL_FR_DOWN2 = ROOT.TH1F(pre_name+'_EL_FR_DOWN_EM_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_EL_FR_DOWN2 = ROOT.TH1F(pre_name+'_EL_FR_DOWN_ME_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_MU_RE_UP2   = ROOT.TH1F(pre_name+'_MU_RE_UP_EM_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_MU_RE_UP2   = ROOT.TH1F(pre_name+'_MU_RE_UP_ME_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_MU_RE_DOWN2 = ROOT.TH1F(pre_name+'_MU_RE_DOWN_EM_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_MU_RE_DOWN2 = ROOT.TH1F(pre_name+'_MU_RE_DOWN_ME_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_MU_FR_UP2   = ROOT.TH1F(pre_name+'_MU_FR_UP_EM_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_MU_FR_UP2   = ROOT.TH1F(pre_name+'_MU_FR_UP_ME_'    +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-		hemFakes_MU_FR_DOWN2 = ROOT.TH1F(pre_name+'_MU_FR_DOWN_EM_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-	        hmeFakes_MU_FR_DOWN2 = ROOT.TH1F(pre_name+'_MU_FR_DOWN_ME_'  +suf_name, title,n_m_bins_pruned,0,n_m_bins_pruned)
-
+		hemFakes2            = ROOT.TH1F(pre_name+'_Fakes_EM_'       +suf_name, title,*binning)
+		hmeFakes2            = ROOT.TH1F(pre_name+'_Fakes_ME_'       +suf_name, title,*binning)
+		hemFakes_EL_RE_UP2   = ROOT.TH1F(pre_name+'_EL_RE_UP_EM_'    +suf_name, title,*binning)
+	        hmeFakes_EL_RE_UP2   = ROOT.TH1F(pre_name+'_EL_RE_UP_ME_'    +suf_name, title,*binning)
+		hemFakes_EL_RE_DOWN2 = ROOT.TH1F(pre_name+'_EL_RE_DOWN_EM_'  +suf_name, title,*binning)
+	        hmeFakes_EL_RE_DOWN2 = ROOT.TH1F(pre_name+'_EL_RE_DOWN_ME_'  +suf_name, title,*binning)
+		hemFakes_EL_FR_UP2   = ROOT.TH1F(pre_name+'_EL_FR_UP_EM_'    +suf_name, title,*binning)
+	        hmeFakes_EL_FR_UP2   = ROOT.TH1F(pre_name+'_EL_FR_UP_ME_'    +suf_name, title,*binning)
+		hemFakes_EL_FR_DOWN2 = ROOT.TH1F(pre_name+'_EL_FR_DOWN_EM_'  +suf_name, title,*binning)
+	        hmeFakes_EL_FR_DOWN2 = ROOT.TH1F(pre_name+'_EL_FR_DOWN_ME_'  +suf_name, title,*binning)
+		hemFakes_MU_RE_UP2   = ROOT.TH1F(pre_name+'_MU_RE_UP_EM_'    +suf_name, title,*binning)
+	        hmeFakes_MU_RE_UP2   = ROOT.TH1F(pre_name+'_MU_RE_UP_ME_'    +suf_name, title,*binning)
+		hemFakes_MU_RE_DOWN2 = ROOT.TH1F(pre_name+'_MU_RE_DOWN_EM_'  +suf_name, title,*binning)
+	        hmeFakes_MU_RE_DOWN2 = ROOT.TH1F(pre_name+'_MU_RE_DOWN_ME_'  +suf_name, title,*binning)
+		hemFakes_MU_FR_UP2   = ROOT.TH1F(pre_name+'_MU_FR_UP_EM_'    +suf_name, title,*binning)
+	        hmeFakes_MU_FR_UP2   = ROOT.TH1F(pre_name+'_MU_FR_UP_ME_'    +suf_name, title,*binning)
+		hemFakes_MU_FR_DOWN2 = ROOT.TH1F(pre_name+'_MU_FR_DOWN_EM_'  +suf_name, title,*binning)
+	        hmeFakes_MU_FR_DOWN2 = ROOT.TH1F(pre_name+'_MU_FR_DOWN_ME_'  +suf_name, title,*binning)
 
 		mem.append(hme2)
 		mem.append(hem2)
@@ -413,8 +399,8 @@ for jet in ('','_jets'):
 	#c3.Update()
 	c3.SaveAs("data/Mcoll_SR%s.pdf"%jet)
 
-	mem.append(frME)
-	mem.append(frEM)
+	# mem.append(frME)
+	# mem.append(frEM)
 	#mem.append(frSig)
 	#mem.append(c3)
 
