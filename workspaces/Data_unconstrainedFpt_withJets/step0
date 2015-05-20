@@ -6,7 +6,11 @@
 # January 2014
 
 import ROOT
+ROOT.gROOT.SetBatch(True)
+from collections import defaultdict
+import datetime
 import os
+import pprint
 import sys
 #import AtlasStyle
 import array
@@ -30,30 +34,75 @@ tla = ROOT.TLatex()
 
 ### INPUT DIR ##################
 
-# DIR = "~/HistosApr30/"
-# DIR = "/scratch/gerbaudo/hlfv_fit_tests/take1/R54_histos/"
-# DIR = "/scratch/gerbaudo/hlfv_fit_tests/take1/FitModel/May_10_histos/"
-DIR = "/scratch/gerbaudo/hlfv_fit_tests/take1/FitModel/Apr_26_histos/"
+input_dir = "/scratch/gerbaudo/hlfv_fit_tests/take1/FitModel/Apr_26_histos/"
+output_dir = "data/"
+
 ### SIGNAL STRENGTH ###########
 strength = 0.0
+#############################
+data_variations = ['NOM']
+fake_variations = ['NOM',
+                   'EL_RE_UP', 'EL_RE_DOWN', 'EL_FR_UP', 'EL_FR_DOWN',
+                   'MU_RE_UP', 'MU_RE_DOWN', 'MU_FR_UP', 'MU_FR_DOWN']
+sign_variations = ['NOM']
 ### OUTPUT FILE ##############
-fw1 = ROOT.TFile("data/simple.root","RECREATE")
+fw1 = ROOT.TFile(output_dir+"/simple.root","RECREATE")
+jet_variations = ['', '_jets']
 mem = []
 
-for jet in ('','_jets'):
-#for jet in(''):
+class Variation(object):
+    """
+    Hold up/down normalization in fake variations
+    """
+    def __init__(self, emu_mue='', sysname='', jetvariation='', l1pt='', updown=(1.0, 1.0)):
+        self.emme = emu_mue
+        self.sys = sysname
+        self.jet = jetvariation
+        self.l1pt = l1pt
+        self.up = updown[0]
+        self.do = updown[1]
+    def as_dict(self, precision=6):
+        "stringified dictionary, so that we can set the precision"
+        def as_string(f, precision=precision):
+            precision = str(precision)
+            return ("{0:."+precision+"f}").format(f)
+        return {'UPvalue': self.up, 'DNvalue': self.do}
+        # return "{'UPvalue': %s, 'DNvalue': %s}" % (as_string(self.up), as_string(self.do))
 
+class FakeSystematicRegister(object):
+    """
+    Holder for the normalization scales of the fake systematics.
+    Store the values and print them out to a file that is then fed to
+    step1.
+    """
+    def __init__(self):
+        self._variations = []
+    def add(self, emu_mue='', sysname='', jetvariation='', l1pt='', updown=(1.0, 1.0)):
+        self._variations.append(Variation(emu_mue, sysname, jetvariation, l1pt, updown))
+    def as_dict(self):
+        "example keys : [emu_MU_FR][_jets][l1pt0][UPvalue]"
+        emu_mue        =  sorted(list(set(v.emme for v in self._variations)))
+        systematics    = sorted(list(set(v.sys for v in self._variations)))
+        jet_variations = sorted(list(set(v.jet for v in self._variations)))
+        l1pts          = sorted(list(set(v.l1pt for v in self._variations)))
+        # I could use a nested defaultdict, but then pprint doesn't work nicely
+        out_dict = dict([(emme+'_'+sys,
+                          dict([(j,
+                                 dict([(l1pt, {})
+                                       for l1pt in l1pts]))
+                                for j in jet_variations]))
+                          for emme in emu_mue for sys in systematics])
+        for var in self._variations:
+            out_dict[var.emme+'_'+var.sys][var.jet][var.l1pt] = var.as_dict()
+        return out_dict
 
-### FINAL BINNING ############
+fake_systematics = FakeSystematicRegister()
+
+for jet in jet_variations:
+        ### FINAL BINNING ############
         target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
-	target_m_bins = (array.array('f', [0] + range(60, 250, 5) + [250,260,270,280,290,300,320,350,400,450]) if jet=='' else
+        target_m_bins = (array.array('f', [0] + range(60, 250, 5) + [250,260,270,280,290,300,320,350,400,450]) if jet=='' else
                          array.array('f', (0,60,80,100,120,130,140,150,160,180,200,230,260,300,350,400,450)))
-#############################
-        data_variations = ['NOM']
-        fake_variations = ['NOM',
-                           'EL_RE_UP', 'EL_RE_DOWN', 'EL_FR_UP', 'EL_FR_DOWN',
-                           'MU_RE_UP', 'MU_RE_DOWN', 'MU_FR_UP', 'MU_FR_DOWN']
-        sign_variations = ['NOM']
 	#### Get Files and histograms ####
         files = {}
         histos = {}
@@ -64,7 +113,7 @@ for jet in ('','_jets'):
                 for variation in variations:
                         for em_me in ['emu', 'mue']:
                                 key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
-                                filename = DIR+'/'+key+'.root'
+                                filename = input_dir+'/'+key+'.root'
                                 files[key] = ROOT.TFile(filename)
                                 histoname = 'h_mcoll_vs_pt1_'+sample+'_'+variation+'_sr_'+em_me+'_os'+jet
                                 clonename = ""
@@ -356,26 +405,26 @@ for jet in ('','_jets'):
 
 		### Get scaling for fake systematics
 		nomFakes_emu = hemFakes2.Integral()
-                for h in [hemFakes_EL_RE_DOWN2, hemFakes_EL_RE_UP2,
-                          hemFakes_EL_FR_DOWN2, hemFakes_EL_FR_UP2,
-                          hemFakes_MU_RE_DOWN2, hemFakes_MU_RE_UP2,
-                          hemFakes_MU_FR_DOWN2, hemFakes_MU_FR_UP2]:
-                        h.Scale(1.0/(h.Integral()/nomFakes_emu))
 		nomFakes_mue = hmeFakes2.Integral()
-                for h in [hmeFakes_EL_RE_DOWN2, hmeFakes_EL_RE_UP2,
-                          hmeFakes_EL_FR_DOWN2, hmeFakes_EL_FR_UP2,
-                          hmeFakes_MU_RE_DOWN2, hmeFakes_MU_RE_UP2,
-                          hmeFakes_MU_FR_DOWN2, hmeFakes_MU_FR_UP2]:
-                        h.Scale(1.0/(h.Integral()/nomFakes_mue))
-		# print " ***************************************8"
-		# print "emu_EL_RE = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_emu_EL_RE,DNScale_emu_EL_RE)
-		# print "emu_EL_FR = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_emu_EL_FR,DNScale_emu_EL_FR)
-		# print "emu_MU_RE = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_emu_MU_RE,DNScale_emu_MU_RE)
-	        # print "emu_MU_FR = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_emu_MU_FR,DNScale_emu_MU_FR)
-		# print "mue_EL_RE = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_mue_EL_RE,DNScale_mue_EL_RE)
-	        # print "mue_EL_FR = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_mue_EL_FR,DNScale_mue_EL_FR)
-	        # print "mue_MU_RE = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_mue_MU_RE,DNScale_mue_MU_RE)
-	        # print "mue_MU_FR = {'%s':{'l1pt%i':{'UPvalue':%f,'DNvalue':%f}," %(jet,i,UPScale_mue_MU_FR,DNScale_mue_MU_FR)
+                l1pt_label = "l1pt{0:d}".format(i)
+                for sys, hdo, hup in [('EL_RE', hemFakes_EL_RE_DOWN2, hemFakes_EL_RE_UP2),
+                                      ('EL_FR', hemFakes_EL_FR_DOWN2, hemFakes_EL_FR_UP2),
+                                      ('MU_RE', hemFakes_MU_RE_DOWN2, hemFakes_MU_RE_UP2),
+                                      ('MU_FR', hemFakes_MU_FR_DOWN2, hemFakes_MU_FR_UP2)]:
+                        norm_do = hdo.Integral()/nomFakes_emu
+                        norm_up = hup.Integral()/nomFakes_emu
+                        fake_systematics.add(emu_mue='emu', sysname=sys, jetvariation=jet, l1pt=l1pt_label, updown=(norm_up, norm_do))
+                        hdo.Scale(1.0/norm_do)
+                        hup.Scale(1.0/norm_up)
+                for sys, hdo, hup in [('EL_RE', hmeFakes_EL_RE_DOWN2, hmeFakes_EL_RE_UP2),
+                                      ('EL_FR', hmeFakes_EL_FR_DOWN2, hmeFakes_EL_FR_UP2),
+                                      ('MU_RE', hmeFakes_MU_RE_DOWN2, hmeFakes_MU_RE_UP2),
+                                      ('MU_FR', hmeFakes_MU_FR_DOWN2, hmeFakes_MU_FR_UP2)]:
+                        norm_do = hdo.Integral()/nomFakes_mue
+                        norm_up = hup.Integral()/nomFakes_mue
+                        fake_systematics.add(emu_mue='mue', sysname=sys, jetvariation=jet, l1pt=l1pt_label, updown=(norm_up, norm_do))
+                        hdo.Scale(1.0/norm_do)
+                        hup.Scale(1.0/norm_up)
 
 		### Create baseline Bkg histo as average
 		h_BaseBkg = average_histogram(hme2, hem2, "Base_Bkg_l1pt%i%s"%(i,jet))
@@ -397,7 +446,7 @@ for jet in ('','_jets'):
 
 
 	#c3.Update()
-	c3.SaveAs("data/Mcoll_SR%s.pdf"%jet)
+	c3.SaveAs(output_dir+"/Mcoll_SR%s.pdf"%jet)
 
 	# mem.append(frME)
 	# mem.append(frEM)
@@ -407,6 +456,10 @@ for jet in ('','_jets'):
 #raw_input()
 
 fw1.Close()
+with open(output_dir+'/fake_systematics.py', 'w') as out_sys_file:
+    out_sys_file.write(("# fake systematics evaluated on {0}\n".format(datetime.date.today().isoformat())
+                       +pprint.pformat(fake_systematics.as_dict())
+                       +'\n'))
 
 while len(mem)>0:
 	item = mem.pop(0)
