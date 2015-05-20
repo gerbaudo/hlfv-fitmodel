@@ -18,7 +18,153 @@ import array
 """
 Prepare a dataset based on the inputs from Suneet (TH2D l1pt vs Mcoll).
 """
+def main():
+    input_dir = "/scratch/gerbaudo/hlfv_fit_tests/take1/FitModel/Apr_26_histos/"
+    output_dir = "data/"
+    signal_strength = 0.0
+    jet_variations = ['', '_jets']
+    data_variations = ['NOM']
+    fake_variations = ['NOM',
+                       'EL_RE_UP', 'EL_RE_DOWN', 'EL_FR_UP', 'EL_FR_DOWN',
+                       'MU_RE_UP', 'MU_RE_DOWN', 'MU_FR_UP', 'MU_FR_DOWN']
+    sign_variations = ['NOM']
+    output_file = ROOT.TFile(output_dir+"/simple.root","RECREATE")
+    fake_systematics = FakeSystematicRegister()
 
+    for jet in jet_variations:
+        # Target binning
+        # DG todo : add check that target_bin < orig_bin
+        target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
+        target_m_bins = (array.array('f', [0] + range(60, 250, 5) + [250,260,270,280,290,300,320,350,400,450]) if jet=='' else
+                         array.array('f', (0,60,80,100,120,130,140,150,160,180,200,230,260,300,350,400,450)))
+        # Get Files and histograms
+        files = {}
+        histos = {}
+        for sample, variations in [('data', data_variations),
+                                   ('fake', fake_variations),
+                                   ('signaltaue', sign_variations),
+                                   ('signaltaumu', sign_variations)]:
+            for variation in variations:
+                for em_me in ['emu', 'mue']:
+                    key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                    filename = input_dir+'/'+key+'.root'
+                    files[key] = ROOT.TFile(filename)
+                    histoname = 'h_mcoll_vs_pt1_'+sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                    clonename = ""
+                    histo = files[key].Get(histoname)
+                    if not histo:
+                        print "missing %s from %s"%(histoname, filename)
+                    else:
+                        histos[key] = histo
+
+        # Rebin 2D histos ###
+        print "Rebinning {0}...".format(jet)
+        n_target_pt1_bins = len(target_pt1_bins)-1
+        n_target_m_bins = len(target_m_bins)-1
+
+        title = "l_1 p^{T};Mcoll (GeV)"
+        binning = (n_target_pt1_bins, target_pt1_bins, n_target_m_bins, target_m_bins)
+        rebinned_histos = {}
+        for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
+                                           ('fake', fake_variations, ('emu', 'mue')),
+                                           ('signaltaumu', ('NOM',),    ('mue',)),
+                                           ('signaltaue',  ('NOM',),    ('mue',))]:
+            for variation in variations:
+                for em_me in em_mes:
+                    key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                    h_rebin_name = rebinned_histoname(sample, variation, em_me)
+                    rebinned_histos[key] = ROOT.TH2F(h_rebin_name, title, *binning)
+                    h_orig =          histos[key]
+                    h_rebn = rebinned_histos[key]
+                    xaxis = h_orig.GetXaxis()
+                    yaxis = h_orig.GetYaxis()
+                    # DG todo propagate error
+                    for ix in range(1, 1+xaxis.GetNbins()):
+                        for iy in range(1, 1+yaxis.GetNbins()):
+                            x = xaxis.GetBinCenter(ix)
+                            y = yaxis.GetBinCenter(iy)
+                            h_rebn.Fill(x, y, h_orig.GetBinContent(ix, iy))
+                    def format_h2_summary(h):
+                        return "{0}[{1}][{2}] ({3:.4f})".format(h.GetName(), h.GetNbinsX(), h.GetNbinsY(), h.Integral())
+                    print "rebin {0} to {1}".format(format_h2_summary(h_orig), format_h2_summary(h_rebn))
+                    if sample=='data': # DG draw data as a check?
+                        c = ROOT.TCanvas(key, '')
+                        c.Divide(2,1)
+                        c.cd(1)
+                        h_orig.Draw('col3z text')
+                        ROOT.gPad.SetLogx()
+                        c.cd(2)
+                        h_rebn.Draw('col3z text')
+                        ROOT.gPad.SetLogx()
+                        c.Update()
+                        c.SaveAs(c.GetName()+'.png')
+	## Rebin uniformly to indices
+        template_histo = rebinned_histos['data_NOM_sr_mue_os'+jet]
+        xaxis = template_histo.GetXaxis()
+        yaxis = template_histo.GetYaxis()
+	nbinsx = xaxis.GetNbins()
+	nbinsy = yaxis.GetNbins()
+	origin_pt_bins = array.array('f', [xaxis.GetBinLowEdge(j+1) for j in range(nbinsx+1)])
+	origin_m_bins  = array.array('f', [yaxis.GetBinLowEdge(k+1) for k in range(nbinsy+1)])
+	n_m_bins = len(origin_m_bins)-1
+        title = ";Mcoll (GeV)"
+        m_binning = (n_m_bins, origin_m_bins)
+        sliced_histos = {}
+	for i in range(len(target_pt1_bins)-1):
+            pt_min = target_pt1_bins[i]
+            pt_max = target_pt1_bins[i+1]
+            l1pt_key = "l1pt{0:d}".format(i)
+            sliced_histos_this_pt = {}
+            for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
+                                               ('fake', fake_variations, ('emu', 'mue')),
+                                               ('signaltaumu', ('NOM',),    ('mue',)),
+                                               ('signaltaue',  ('NOM',),    ('mue',))]:
+                for variation in variations:
+                    for em_me in em_mes:
+                        key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                        h_m_vs_pt = rebinned_histos[key]
+                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_bin=i, jet=jet)
+                        h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
+                        fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
+                        sliced_histos_this_pt[key] = h_m
+                        shift_nonpositive_bins(h_m) # we might want to do this after adding the signal?
+            sliced_histos[l1pt_key] = sliced_histos_this_pt
+            hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
+            hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
+            hsg1   = sliced_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
+            hwrsg1 = sliced_histos_this_pt['signaltaue_NOM_sr_mue_os'+jet]
+            ### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
+            hme1.Add(hsg1,signal_strength)
+            hem1.Add(hwrsg1,signal_strength)
+
+            output_file.cd()
+            hme1.Write()
+            hem1.Write()
+            hsg1.Write()
+            hwrsg1.Write()
+	# Get scaling for fake systematics
+	for i in range(len(target_pt1_bins)-1):
+            l1pt_key = "l1pt{0:d}".format(i)
+            histos =  sliced_histos[l1pt_key]
+            for em_me in ['emu', 'mue']:
+                h_nom = histos['fake_NOM_sr_mue_os'+jet]
+                norm_nom = h_nom.Integral()
+                for sys in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
+                    h_up = histos['fake_'+sys+'_UP_sr_'+em_me+'_os'+jet]
+                    h_do = histos['fake_'+sys+'_DOWN_sr_'+em_me+'_os'+jet]
+                    norm_do = h_do.Integral()/norm_nom
+                    norm_up = h_up.Integral()/norm_nom
+                    fake_systematics.add(emu_mue=em_me, sysname=sys, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
+                    h_do.Scale(1.0/norm_do)
+                    h_up.Scale(1.0/norm_up)
+
+    output_file.Close()
+    # write
+    with open(output_dir+'/fake_systematics.py', 'w') as out_sys_file:
+        out_sys_file.write(("# fake systematics evaluated on {0}\n".format(datetime.date.today().isoformat())
+                           +pprint.pformat(fake_systematics.as_dict())
+                           +'\n'))
+#___________________________________________________________
 
 def average_histogram(h1, h2, target_name='average_histo'):
     "Clone the first histograms and fill it with the bin-by-bin average of h1 and h2"
@@ -80,23 +226,6 @@ def shift_nonpositive_bins(h, value=0.001, error=0.00001):
     # if hwrsg2.GetBinContent(b+1)<0: # why a different treatment for hwrsg2 ?
     #     print "NEGATIVE VALUES in wrong signal sample!"
 
-### INPUT DIR ##################
-
-input_dir = "/scratch/gerbaudo/hlfv_fit_tests/take1/FitModel/Apr_26_histos/"
-output_dir = "data/"
-
-### SIGNAL STRENGTH ###########
-strength = 0.0
-#############################
-data_variations = ['NOM']
-fake_variations = ['NOM',
-                   'EL_RE_UP', 'EL_RE_DOWN', 'EL_FR_UP', 'EL_FR_DOWN',
-                   'MU_RE_UP', 'MU_RE_DOWN', 'MU_FR_UP', 'MU_FR_DOWN']
-sign_variations = ['NOM']
-### OUTPUT FILE ##############
-fw1 = ROOT.TFile(output_dir+"/simple.root","RECREATE")
-jet_variations = ['', '_jets']
-
 class Variation(object):
     """
     Hold up/down normalization in fake variations
@@ -143,147 +272,5 @@ class FakeSystematicRegister(object):
             out_dict[var.emme+'_'+var.sys][var.jet][var.l1pt] = var.as_dict()
         return out_dict
 
-fake_systematics = FakeSystematicRegister()
-
-for jet in jet_variations:
-        ### FINAL BINNING ############
-        target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
-        target_m_bins = (array.array('f', [0] + range(60, 250, 5) + [250,260,270,280,290,300,320,350,400,450]) if jet=='' else
-                         array.array('f', (0,60,80,100,120,130,140,150,160,180,200,230,260,300,350,400,450)))
-	#### Get Files and histograms ####
-        files = {}
-        histos = {}
-        for sample, variations in [('data', data_variations),
-                                   ('fake', fake_variations),
-                                   ('signaltaue', sign_variations),
-                                   ('signaltaumu', sign_variations)]:
-                for variation in variations:
-                        for em_me in ['emu', 'mue']:
-                                key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
-                                filename = input_dir+'/'+key+'.root'
-                                files[key] = ROOT.TFile(filename)
-                                histoname = 'h_mcoll_vs_pt1_'+sample+'_'+variation+'_sr_'+em_me+'_os'+jet
-                                clonename = ""
-                                histo = files[key].Get(histoname)
-                                if not histo:
-                                    print "missing %s from %s"%(histoname, filename)
-                                else:
-                                    histos[key] = histo
-
-	## Rebin 2D histos ###
-
-	print "Rebinning {0}...".format(jet)
-
-        n_target_pt1_bins = len(target_pt1_bins)-1
-        n_target_m_bins = len(target_m_bins)-1
-
-        title = "l_1 p^{T};Mcoll (GeV)"
-        binning = (n_target_pt1_bins, target_pt1_bins, n_target_m_bins, target_m_bins)
-        rebinned_histos = {}
-        for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
-                                           ('fake', fake_variations, ('emu', 'mue')),
-                                           ('signaltaumu', ('NOM',),    ('mue',)),
-                                           ('signaltaue',  ('NOM',),    ('mue',))]:
-            for variation in variations:
-                for em_me in em_mes:
-                    key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
-                    h_rebin_name = rebinned_histoname(sample, variation, em_me)
-                    rebinned_histos[key] = ROOT.TH2F(h_rebin_name, title, *binning)
-                    h_orig =          histos[key]
-                    h_rebn = rebinned_histos[key]
-                    xaxis = h_orig.GetXaxis()
-                    yaxis = h_orig.GetYaxis()
-
-                    for ix in range(1, 1+xaxis.GetNbins()):
-                        for iy in range(1, 1+yaxis.GetNbins()):
-                            x = xaxis.GetBinCenter(ix)
-                            y = yaxis.GetBinCenter(iy)
-                            h_rebn.Fill(x, y, h_orig.GetBinContent(ix, iy))
-                    # for x in range(xaxis.GetNbins()):
-                    #     for y in range(yaxis.GetNbins()):
-                    #         i=x+1
-                    #         j=y+1
-                    #         ix = xaxis.GetBinCenter(i)
-                    #         jy = yaxis.GetBinCenter(j)
-                    #         h_rebn.Fill(ix, jy, h_orig.GetBinContent(i, j))
-                    #         print "fill (%d, %d) -> (%d, %d)"%(i, j, ix, jy)
-                    def format_h2_summary(h):
-                        return "{0}[{1}][{2}] ({3:.4f})".format(h.GetName(), h.GetNbinsX(), h.GetNbinsY(), h.Integral())
-                    print "rebin {0} to {1}".format(format_h2_summary(h_orig), format_h2_summary(h_rebn))
-                    if sample=='data':
-                        c = ROOT.TCanvas(key, '')
-                        c.Divide(2,1)
-                        c.cd(1)
-                        h_orig.Draw('col3z text')
-                        ROOT.gPad.SetLogx()
-                        c.cd(2)
-                        h_rebn.Draw('col3z text')
-                        ROOT.gPad.SetLogx()
-                        c.Update()
-                        c.SaveAs(c.GetName()+'.png')
-	## Rebin uniformly to indices
-        template_histo = rebinned_histos['data_NOM_sr_mue_os'+jet]
-        xaxis = template_histo.GetXaxis()
-        yaxis = template_histo.GetYaxis()
-	nbinsx = xaxis.GetNbins()
-	nbinsy = yaxis.GetNbins()
-	origin_pt_bins = array.array('f', [xaxis.GetBinLowEdge(j+1) for j in range(nbinsx+1)])
-	origin_m_bins  = array.array('f', [yaxis.GetBinLowEdge(k+1) for k in range(nbinsy+1)])
-	n_m_bins = len(origin_m_bins)-1
-        title = ";Mcoll (GeV)"
-        m_binning = (n_m_bins, origin_m_bins)
-        sliced_histos = {}
-	for i in range(len(target_pt1_bins)-1):
-            pt_min = target_pt1_bins[i]
-            pt_max = target_pt1_bins[i+1]
-            l1pt_key = "l1pt{0:d}".format(i)
-            sliced_histos_this_pt = {}
-            for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
-                                               ('fake', fake_variations, ('emu', 'mue')),
-                                               ('signaltaumu', ('NOM',),    ('mue',)),
-                                               ('signaltaue',  ('NOM',),    ('mue',))]:
-                for variation in variations:
-                    for em_me in em_mes:
-                        key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
-                        h_m_vs_pt = rebinned_histos[key]
-                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_bin=i, jet=jet)
-                        h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
-                        fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
-                        sliced_histos_this_pt[key] = h_m
-                        shift_nonpositive_bins(h_m) # we might want to do this after adding the signal?
-            sliced_histos[l1pt_key] = sliced_histos_this_pt
-            hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
-            hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
-            hsg1   = sliced_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
-            hwrsg1 = sliced_histos_this_pt['signaltaue_NOM_sr_mue_os'+jet]
-            ### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
-            hme1.Add(hsg1,strength)
-            hem1.Add(hwrsg1,strength)
-
-            fw1.cd()
-            hme1.Write()
-            hem1.Write()
-            hsg1.Write()
-            hwrsg1.Write()
-	# Get scaling for fake systematics
-	for i in range(len(target_pt1_bins)-1):
-            l1pt_key = "l1pt{0:d}".format(i)
-            histos =  sliced_histos[l1pt_key]
-            for em_me in ['emu', 'mue']:
-                h_nom = histos['fake_NOM_sr_mue_os'+jet]
-                norm_nom = h_nom.Integral()
-                for sys in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
-                    h_up = histos['fake_'+sys+'_UP_sr_'+em_me+'_os'+jet]
-                    h_do = histos['fake_'+sys+'_DOWN_sr_'+em_me+'_os'+jet]
-                    norm_do = h_do.Integral()/norm_nom
-                    norm_up = h_up.Integral()/norm_nom
-                    fake_systematics.add(emu_mue=em_me, sysname=sys, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
-                    h_do.Scale(1.0/norm_do)
-                    h_up.Scale(1.0/norm_up)
-
-fw1.Close()
-
-with open(output_dir+'/fake_systematics.py', 'w') as out_sys_file:
-    out_sys_file.write(("# fake systematics evaluated on {0}\n".format(datetime.date.today().isoformat())
-                       +pprint.pformat(fake_systematics.as_dict())
-                       +'\n'))
+if __name__=='__main__':
+    main()
