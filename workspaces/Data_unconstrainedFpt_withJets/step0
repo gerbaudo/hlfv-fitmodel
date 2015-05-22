@@ -129,7 +129,7 @@ def main():
                     for em_me in em_mes:
                         key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
                         h_m_vs_pt = rebinned_histos[key]
-                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_bin=i, jet=jet)
+                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_label=l1pt_key, jet=jet)
                         h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
                         fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
                         sliced_histos_this_pt[key] = h_m
@@ -313,7 +313,7 @@ def fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max):
                 dummy_histo.SetBinError  (dest_bin, h_m_vs_pt.GetBinError  (orig_bin))
             h_m.Add(dummy_histo)
 
-def pt_slice_histoname(sample='', variation='', em_me='', pt_bin=0, jet=''):
+def pt_slice_histoname(sample='', variation='', em_me='', pt_label=0, jet=''):
     "note again a slightly different convention; still use the same standard keys"
     templ_h_name = 'Mcoll_{sample}_{emme}{variation}_{l1pt}{jet}'
     sample = ('data' if sample=='data' else
@@ -323,7 +323,7 @@ def pt_slice_histoname(sample='', variation='', em_me='', pt_bin=0, jet=''):
     emme = ('EM' if em_me=='emu' else
             'ME' if em_me=='mue' else 'unknown')
     variation = ('' if variation=='NOM' else ('_'+variation)) # todo: use _NOM also
-    return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_bin, 'jet':jet})
+    return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_label, 'jet':jet})
 
 def shift_nonpositive_bins(h, value=0.001, error=0.00001):
     """
