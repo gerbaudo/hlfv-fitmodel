@@ -10,6 +10,7 @@ import os
 import sys
 #import AtlasStyle
 import array
+from math import sqrt
 
 """
 Prepare a dataset based on the inputs from Suneet (TH2D l1pt vs Mcoll).
@@ -42,6 +43,49 @@ def fill_old_way(h_orig, h_dest):
             x = xaxis.GetBinCenter(ix)
             y = yaxis.GetBinCenter(iy)
             h_dest.Fill(x, y, h_orig.GetBinContent(ix, iy))
+
+def fill_rebinned_histo(h_orig, h_rebn, verbose=False):
+    "Fill the rebinned histogram; assumes you have already called check_target_binning()"
+
+    class MacroBin:
+        "A bin whose content is the sum of smaller bins, and whose error is the sum in quadrature of the errors"
+        def __init__(self, ix=None, iy=None, w=0.0, err2=0.0):
+            assert ix is not None and iy is not None,"MacroBin specify at least the coordinates"
+            self.ix = ix
+            self.iy = iy
+            self.sumw = w
+            self.sumerr2 = err2
+        def add(self, other):
+            self.sumw += other.sumw
+            self.sumerr2 += other.sumerr2
+        @property
+        def err(self):
+            return sqrt(self.sumerr2)
+        def same_bin(self, other):
+            return self.ix==other.ix and self.iy==other.iy
+
+    xbins_orig = range(0, 1+1+h_orig.GetXaxis().GetNbins()) # also include underflow and overflow
+    ybins_orig = range(0, 1+1+h_orig.GetYaxis().GetNbins())
+    xcenters_orig = [h_orig.GetXaxis().GetBinCenter(b) for b in xbins_orig]
+    ycenters_orig = [h_orig.GetYaxis().GetBinCenter(b) for b in ybins_orig]
+    macrobins = []
+    last_macrobin = None # cache it, since it will likely be used for the next bin as well (30% speedup)
+    for i, x in zip(xbins_orig, xcenters_orig):
+        k = h_rebn.GetXaxis().FindBin(x)
+        for j, y in zip(ybins_orig, ycenters_orig):
+            l = h_rebn.GetYaxis().FindBin(y)
+            macrobin = MacroBin(ix=k, iy=l, w=h_orig.GetBinContent(i, j), err2=h_orig.GetBinError(i, j)**2)
+            existing_macrobin = next((m for m in (([last_macrobin] if last_macrobin else [])
+                                                  + macrobins)
+                                      if m.same_bin(macrobin)), None)
+            if existing_macrobin:
+                existing_macrobin.add(macrobin)
+            else:
+                macrobins.append(macrobin)
+            last_macrobin = existing_macrobin if existing_macrobin else macrobin
+    for m in macrobins:
+        h_rebn.SetBinContent(m.ix, m.iy, m.sumw)
+        h_rebn.SetBinError(m.ix, m.iy, m.err)
 
 
 for jet in ('','_jets'):
@@ -204,7 +248,8 @@ for jet in ('','_jets'):
                                (h2meOrig_fake_MU_FR_DOWN, h2meFakes_MU_FR_DOWN),
                                (h2wrsgOrig,               h2wrsg),
                                (h2sgOrig,                 h2sg)]:
-                fill_old_way(h_orig, h_dest)
+                # fill_old_way(h_orig, h_dest)
+                fill_rebinned_histo(h_orig, h_dest)
 
 	## Rebin uniformly to indices
 	
