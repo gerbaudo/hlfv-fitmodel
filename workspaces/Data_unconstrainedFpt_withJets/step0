@@ -33,6 +33,17 @@ l1b = array.array('d',(12,15,20,25,30,35,1000))
 tla = ROOT.TLatex()
 
 
+def fill_old_way(h_orig, h_dest):
+    "fill using TH1::Fill"
+    xaxis = h_orig.GetXaxis()
+    yaxis = h_orig.GetYaxis()
+    for ix in range(1, 1+xaxis.GetNbins()):
+        for iy in range(1, 1+yaxis.GetNbins()):
+            x = xaxis.GetBinCenter(ix)
+            y = yaxis.GetBinCenter(iy)
+            h_dest.Fill(x, y, h_orig.GetBinContent(ix, iy))
+
+
 for jet in ('','_jets'):
 #for jet in(''):
 
@@ -171,85 +182,29 @@ for jet in ('','_jets'):
 	#h2me_ATLAS_MET_RESOSOFT_DOWN = ROOT.TH2F("h_ME_Rebinned_ATLAS_MET_RESOSOFT_DOWN%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
 	#h2me_ATLAS_MET_RESOSOFT_UP = ROOT.TH2F("h_ME_Rebinned_ATLAS_MET_RESOSOFT_UP%s"%jet, "l_1 p^{T};Mcoll (GeV)",len(xbinsnew)-1,xbinsnew,len(ybinsnew)-1,ybinsnew)
 	
-
-
-	for x in range(xaxis.GetNbins()):
-		for y in range(yaxis.GetNbins()):
-			i=x+1
-			j=y+1
-			mevalue = h2meOrig.GetBinContent(i,j)
-			emvalue = h2emOrig.GetBinContent(i,j)
-			emFakesvalue = h2emOrig_fake.GetBinContent(i,j)
-			meFakesvalue = h2meOrig_fake.GetBinContent(i,j)
-			emFakes_EL_RE_UP = h2emOrig_fake_EL_RE_UP.GetBinContent(i,j)
-			meFakes_EL_RE_UP = h2meOrig_fake_EL_RE_UP.GetBinContent(i,j)
-			emFakes_EL_RE_DOWN = h2emOrig_fake_EL_RE_DOWN.GetBinContent(i,j)
-	                meFakes_EL_RE_DOWN = h2meOrig_fake_EL_RE_DOWN.GetBinContent(i,j)
-			emFakes_EL_FR_UP = h2emOrig_fake_EL_FR_UP.GetBinContent(i,j)
-	                meFakes_EL_FR_UP = h2meOrig_fake_EL_FR_UP.GetBinContent(i,j)
-			emFakes_EL_FR_DOWN = h2emOrig_fake_EL_FR_DOWN.GetBinContent(i,j)
-	                meFakes_EL_FR_DOWN = h2meOrig_fake_EL_FR_DOWN.GetBinContent(i,j)
-			emFakes_MU_RE_UP = h2emOrig_fake_MU_RE_UP.GetBinContent(i,j)
-	                meFakes_MU_RE_UP = h2meOrig_fake_MU_RE_UP.GetBinContent(i,j)
-			emFakes_MU_RE_DOWN = h2emOrig_fake_MU_RE_DOWN.GetBinContent(i,j)
-	                meFakes_MU_RE_DOWN = h2meOrig_fake_MU_RE_DOWN.GetBinContent(i,j)
-			emFakes_MU_FR_UP = h2emOrig_fake_MU_FR_UP.GetBinContent(i,j)
-	                meFakes_MU_FR_UP = h2meOrig_fake_MU_FR_UP.GetBinContent(i,j)
-			emFakes_MU_FR_DOWN = h2emOrig_fake_MU_FR_DOWN.GetBinContent(i,j)
-	                meFakes_MU_FR_DOWN = h2meOrig_fake_MU_FR_DOWN.GetBinContent(i,j)
-			#sgvalue = h2sgOrig.GetBinContent(i,j)
-			wrsgvalue = h2wrsgOrig.GetBinContent(i,j)
-			
-			#ATLAS_MU_SCALE_DOWN_value = h2meOrig_ATLAS_MU_SCALE_DOWN.GetBinContent(i,j)
-			#ATLAS_MU_SCALE_UP_value = h2meOrig_ATLAS_MU_SCALE_UP.GetBinContent(i,j)
-			#ATLAS_MET_RESOSOFT_DOWN_value = h2meOrig_ATLAS_MET_RESOSOFT_DOWN.GetBinContent(i,j)
-			#ATLAS_MET_RESOSOFT_UP_value = h2meOrig_ATLAS_MET_RESOSOFT_UP.GetBinContent(i,j)
-
-			
-			h2me.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),mevalue)
-			h2em.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emvalue)
-			h2emFakes.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakesvalue)
-			h2meFakes.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakesvalue)
-			h2emFakes_EL_RE_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_EL_RE_UP)
-	                h2meFakes_EL_RE_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_EL_RE_UP)
-			h2emFakes_EL_RE_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_EL_RE_DOWN)
-	                h2meFakes_EL_RE_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_EL_RE_DOWN)
-			h2emFakes_EL_FR_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_EL_FR_UP)
-	                h2meFakes_EL_FR_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_EL_FR_UP)
-			h2emFakes_EL_FR_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_EL_FR_DOWN)
-	                h2meFakes_EL_FR_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_EL_FR_DOWN)
-			h2emFakes_MU_RE_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_MU_RE_UP)
-	                h2meFakes_MU_RE_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_MU_RE_UP)
-			h2emFakes_MU_RE_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_MU_RE_DOWN)
-	                h2meFakes_MU_RE_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_MU_RE_DOWN)
-			h2emFakes_MU_FR_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_MU_FR_UP)
-	                h2meFakes_MU_FR_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_MU_FR_UP)
-			h2emFakes_MU_FR_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),emFakes_MU_FR_DOWN)
-	                h2meFakes_MU_FR_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),meFakes_MU_FR_DOWN)
-			#h2sg.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),sgvalue)
-			h2wrsg.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),wrsgvalue)
-			
-			#h2me_ATLAS_MU_SCALE_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_MU_SCALE_DOWN_value)
-			#h2me_ATLAS_MU_SCALE_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_MU_SCALE_UP_value)
-			#h2me_ATLAS_MET_RESOSOFT_DOWN.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_MET_RESOSOFT_DOWN_value)
-			#h2me_ATLAS_MET_RESOSOFT_UP.Fill(xaxis.GetBinCenter(i),yaxis.GetBinCenter(j),ATLAS_MET_RESOSOFT_UP_value)
-
-	for x in range(Sig_xaxis.GetNbins()):
-                for y in range(Sig_yaxis.GetNbins()):	
-			i=x+1
-                        j=y+1
-			sgvalue = h2sgOrig.GetBinContent(i,j)
-			#ATLAS_MU_SCALE_DOWN_value = h2meOrig_ATLAS_MU_SCALE_DOWN.GetBinContent(i,j)
-                        #ATLAS_MU_SCALE_UP_value = h2meOrig_ATLAS_MU_SCALE_UP.GetBinContent(i,j)
-			#ATLAS_MET_RESOSOFT_DOWN_value = h2meOrig_ATLAS_MET_RESOSOFT_DOWN.GetBinContent(i,j)
-                        #ATLAS_MET_RESOSOFT_UP_value = h2meOrig_ATLAS_MET_RESOSOFT_UP.GetBinContent(i,j)
-
-			h2sg.Fill(Sig_xaxis.GetBinCenter(i),Sig_yaxis.GetBinCenter(j),sgvalue)
-			#h2me_ATLAS_MU_SCALE_DOWN.Fill(Sig_xaxis.GetBinCenter(i),Sig_yaxis.GetBinCenter(j),ATLAS_MU_SCALE_DOWN_value)
-                        #h2me_ATLAS_MU_SCALE_UP.Fill(Sig_xaxis.GetBinCenter(i),Sig_yaxis.GetBinCenter(j),ATLAS_MU_SCALE_UP_value)
-                        #h2me_ATLAS_MET_RESOSOFT_DOWN.Fill(Sig_xaxis.GetBinCenter(i),Sig_yaxis.GetBinCenter(j),ATLAS_MET_RESOSOFT_DOWN_value)
-                        #h2me_ATLAS_MET_RESOSOFT_UP.Fill(Sig_xaxis.GetBinCenter(i),Sig_yaxis.GetBinCenter(j),ATLAS_MET_RESOSOFT_UP_value)
-
+        for h_orig, h_dest in [(h2meOrig,                 h2me),
+                               (h2emOrig,                 h2em),
+                               (h2emOrig_fake,            h2emFakes),
+                               (h2meOrig_fake,            h2meFakes),
+                               (h2emOrig_fake_EL_RE_UP,   h2emFakes_EL_RE_UP),
+                               (h2meOrig_fake_EL_RE_UP,   h2meFakes_EL_RE_UP),
+                               (h2emOrig_fake_EL_RE_DOWN, h2emFakes_EL_RE_DOWN),
+                               (h2meOrig_fake_EL_RE_DOWN, h2meFakes_EL_RE_DOWN),
+                               (h2emOrig_fake_EL_FR_UP,   h2emFakes_EL_FR_UP),
+                               (h2meOrig_fake_EL_FR_UP,   h2meFakes_EL_FR_UP),
+                               (h2emOrig_fake_EL_FR_DOWN, h2emFakes_EL_FR_DOWN),
+                               (h2meOrig_fake_EL_FR_DOWN, h2meFakes_EL_FR_DOWN),
+                               (h2emOrig_fake_MU_RE_UP,   h2emFakes_MU_RE_UP),
+                               (h2meOrig_fake_MU_RE_UP,   h2meFakes_MU_RE_UP),
+                               (h2emOrig_fake_MU_RE_DOWN, h2emFakes_MU_RE_DOWN),
+                               (h2meOrig_fake_MU_RE_DOWN, h2meFakes_MU_RE_DOWN),
+                               (h2emOrig_fake_MU_FR_UP,   h2emFakes_MU_FR_UP),
+                               (h2meOrig_fake_MU_FR_UP,   h2meFakes_MU_FR_UP),
+                               (h2emOrig_fake_MU_FR_DOWN, h2emFakes_MU_FR_DOWN),
+                               (h2meOrig_fake_MU_FR_DOWN, h2meFakes_MU_FR_DOWN),
+                               (h2wrsgOrig,               h2wrsg),
+                               (h2sgOrig,                 h2sg)]:
+                fill_old_way(h_orig, h_dest)
 
 	## Rebin uniformly to indices
 	
