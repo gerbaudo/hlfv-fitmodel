@@ -19,7 +19,8 @@ Prepare a dataset based on the inputs from Suneet (TH2D l1pt vs Mcoll).
 
 ### INPUT DIR ##################
 
-DIR = "~/HistosApr30/"
+# DIR = "~/HistosApr30/"
+DIR = '/scratch/gerbaudo/hlfv_fit_tests/take1/FitModel_reproduce/Apr_26_histos/'
 
 ### SIGNAL STRENGTH ###########
 strength = 0.0
