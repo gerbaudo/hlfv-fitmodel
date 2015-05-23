@@ -55,9 +55,9 @@ def fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max):
                 dummy_histo.SetBinError  (dest_bin, h_m_vs_pt.GetBinError  (orig_bin))
             h_m.Add(dummy_histo)
 
-def pt_slice_histoname(sample='', variation='', em_me='', pt_bin=0, jet=''):
+def pt_slice_histoname(sample='', variation='', em_me='', l1pt_key='', jet=''):
     "note again a slightly different convention; still use the same standard keys"
-    templ_h_name = 'Mcoll_{sample}_{emme}{variation}_{l1pt}{jet}'
+    templ_h_name = 'Mcoll_{sample}{variation}_{emme}_{l1pt}{jet}'
     sample = ('data' if sample=='data' else
               'Fakes' if sample=='fake' else
               'signal' if sample=='signaltaue' else
@@ -65,7 +65,7 @@ def pt_slice_histoname(sample='', variation='', em_me='', pt_bin=0, jet=''):
     emme = ('EM' if em_me=='emu' else
             'ME' if em_me=='mue' else 'unknown')
     variation = ('' if variation=='NOM' else ('_'+variation)) # todo: use _NOM also
-    return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_bin, 'jet':jet})
+    return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': l1pt_key, 'jet':jet})
 
 def shift_nonpositive_bins(h, value=0.001, error=0.00001):
     """
@@ -79,6 +79,24 @@ def shift_nonpositive_bins(h, value=0.001, error=0.00001):
     # # DG-2015-05-19 : is this obsolete or needed? ask Avital
     # if hwrsg2.GetBinContent(b+1)<0: # why a different treatment for hwrsg2 ?
     #     print "NEGATIVE VALUES in wrong signal sample!"
+
+def transform_to_0_n_bins(h_orig):
+    "transform histo binning from [m_min, m_max] to [0, n]"
+    name = h_orig.GetName()+'_rebin'
+    title = h_orig.GetTitle()
+    nthrow = 0
+    n_m_bins_pruned = len(origin_m_bins)-nthrow
+    h_dest = ROOT.TH1F(name, title, n_m_bins_pruned, 0, n_m_bins_pruned)
+    for b in range(n_m_bins_pruned):
+        bin_orig = b+1+nthrow
+        bin_dest = b+1
+        if h_orig.GetBinContent(bin_orig)>0:
+            h_dest.SetBinContent(bin_dest, h_orig.GetBinContent(bin_orig))
+            h_dest.SetBinError (bin_dest, h_orig.GetBinError   (bin_orig))
+        else:
+            h_dest.SetBinContent(bin_dest, 0.001)
+            h_dest.SetBinError (bin_dest, 0.00001)
+    return h_dest
 
 ### INPUT DIR ##################
 
@@ -170,6 +188,7 @@ for jet in jet_variations:
                                 else:
                                     histos[key] = histo
 
+        fw1.cd()
 	## Rebin 2D histos ###
 
 	print "Rebinning {0}...".format(jet)
@@ -233,11 +252,13 @@ for jet in jet_variations:
         title = ";Mcoll (GeV)"
         m_binning = (n_m_bins, origin_m_bins)
         sliced_histos = {}
+        sliced_rebinned_histos = {}
 	for i in range(len(target_pt1_bins)-1):
             pt_min = target_pt1_bins[i]
             pt_max = target_pt1_bins[i+1]
             l1pt_key = "l1pt{0:d}".format(i)
             sliced_histos_this_pt = {}
+            sliced_rebinned_histos_this_pt = {}
             for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
                                                ('fake', fake_variations, ('emu', 'mue')),
                                                ('signaltaumu', ('NOM',),    ('mue',)),
@@ -246,29 +267,44 @@ for jet in jet_variations:
                     for em_me in em_mes:
                         key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
                         h_m_vs_pt = rebinned_histos[key]
-                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_bin=i, jet=jet)
+                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, l1pt_key=l1pt_key, jet=jet)
                         h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
                         fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
                         sliced_histos_this_pt[key] = h_m
-                        shift_nonpositive_bins(h_m) # we might want to do this after adding the signal?
-            sliced_histos[l1pt_key] = sliced_histos_this_pt
-            hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
-            hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
-            hsg1   = sliced_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
-            hwrsg1 = sliced_histos_this_pt['signaltaue_NOM_sr_mue_os'+jet]
+                        # shift_nonpositive_bins(h_m) # we might want to do this after adding the signal?
+
+            # throw away first bins
+            # DG what he means is: map to a binning 0.N
+            for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
+                                               ('fake', fake_variations, ('emu', 'mue')),
+                                               ('signaltaumu', ('NOM',),    ('mue',)),
+                                               ('signaltaue',  ('NOM',),    ('mue',))]:
+                for variation in variations:
+                    for em_me in em_mes:
+                        key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
+                        h_rebin = transform_to_0_n_bins(sliced_histos_this_pt[key])
+                        h_rebin.Write()
+                        sliced_rebinned_histos_this_pt[key] = h_rebin
+            sliced_rebinned_histos[l1pt_key] = sliced_rebinned_histos_this_pt
+
+            hme1   = sliced_rebinned_histos_this_pt['data_NOM_sr_mue_os'+jet]
+            hem1   = sliced_rebinned_histos_this_pt['data_NOM_sr_emu_os'+jet]
+            hsg1   = sliced_rebinned_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
+            hwrsg1 = sliced_rebinned_histos_this_pt['signaltaue_NOM_sr_mue_os'+jet]
             ### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
             hme1.Add(hsg1,strength)
             hem1.Add(hwrsg1,strength)
-
-            fw1.cd()
+            h_BaseBkg = average_histogram(hme1, hem1, "Base_Bkg_{0}{1}".format(l1pt_key, jet))
             hme1.Write()
             hem1.Write()
             hsg1.Write()
             hwrsg1.Write()
+            h_BaseBkg.Write()
+
 	# Get scaling for fake systematics
 	for i in range(len(target_pt1_bins)-1):
             l1pt_key = "l1pt{0:d}".format(i)
-            histos =  sliced_histos[l1pt_key]
+            histos =  sliced_rebinned_histos[l1pt_key]
             for em_me in ['emu', 'mue']:
                 h_nom = histos['fake_NOM_sr_mue_os'+jet]
                 norm_nom = h_nom.Integral()
@@ -280,6 +316,8 @@ for jet in jet_variations:
                     fake_systematics.add(emu_mue=em_me, sysname=sys, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
                     h_do.Scale(1.0/norm_do)
                     h_up.Scale(1.0/norm_up)
+                    h_do.Write() #overwrite with normalized histo?
+                    h_up.Write()
 
 fw1.Close()
 
