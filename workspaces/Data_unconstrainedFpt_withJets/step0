@@ -51,7 +51,8 @@ def main():
                                ('signaltaumu', ('NOM',),    ('mue',)), # signal only goes in mue
                                ('signaltaue',  ('NOM',),    ('mue',))]
     output_file = ROOT.TFile(output_dir+"/simple.root","RECREATE")
-    fake_systematics = FakeSystematicRegister()
+    fake_systematics_register = FakeSystematicRegister()
+
     if verbose:
         print "being called as {0}".format(' '.join(os.sys.argv))
     for jet in jet_variations:
@@ -67,6 +68,7 @@ def main():
                                           290,300,320,350,400,450)) if jet=='' else
                          array.array('f',(0,60,80,100,120,130,140,150,160,180,200,230,260,300,350,400,450)))
         target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
+        l1pt_keys = ["l1pt{0:d}".format(i) for i in range(len(target_pt1_bins)-1)]
 
         files, histos = collect_inputs(input_dir, samples_with_variations, jet)
 
@@ -121,10 +123,9 @@ def main():
         title = ";Mcoll (GeV)"
         m_binning = (n_m_bins, origin_m_bins)
         sliced_histos = {}
-	for i in range(len(target_pt1_bins)-1):
+        for i, l1pt_key in enumerate(l1pt_keys):
             pt_min = target_pt1_bins[i]
             pt_max = target_pt1_bins[i+1]
-            l1pt_key = "l1pt{0:d}".format(i)
             sliced_histos_this_pt = {}
             for sample, variations, em_mes in samples_with_variations:
                 for variation in variations:
@@ -138,6 +139,13 @@ def main():
                         sliced_histos_this_pt[key] = transform_to_0_n_bins(h_orig=shift_negative_bins(h_m),
                                                                            origin_m_bins=origin_m_bins)
             sliced_histos[l1pt_key] = sliced_histos_this_pt
+        record_scaling_fake_systematics(fake_systematics_register=fake_systematics_register,
+                                        jet_variation=jet,
+                                        l1pt_keys=l1pt_keys, sliced_histos=sliced_histos)
+        # write histograms
+        output_file.cd()
+        for l1pt_key in l1pt_keys:
+            sliced_histos_this_pt = sliced_histos[l1pt_key]
             hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
             hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
             hsg1   = sliced_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
@@ -146,41 +154,16 @@ def main():
             ### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
             hme1.Add(hsg1,signal_strength)
             hem1.Add(hwrsg1,signal_strength)
-
-            output_file.cd()
             for k, h in sliced_histos_this_pt.iteritems():
                 h.Write()
             h_BaseBkg.Write()
-	# Get scaling for fake systematics
-	for i in range(len(target_pt1_bins)-1):
-            l1pt_key = "l1pt{0:d}".format(i)
-            histos =  sliced_histos[l1pt_key]
-            for em_me in ['emu', 'mue']:
-                h_nom = histos['fake_NOM_sr_mue_os'+jet]
-                norm_nom = h_nom.Integral()
-                for syst in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
-                    h_up = histos['fake_'+syst+'_UP_sr_'+em_me+'_os'+jet]
-                    h_do = histos['fake_'+syst+'_DOWN_sr_'+em_me+'_os'+jet]
-                    norm_do = h_do.Integral()
-                    norm_up = h_up.Integral()
-                    try:
-                        scale_do = (norm_do/norm_nom)
-                        scale_up = (norm_up/norm_nom)
-                    except ZeroDivisionError as zde:
-                        if norm_up or norm_nom:
-                            raise ZeroDivisionError("{0} but syst has non-zero normalization".format(zde))
-                        scale_do = 1.0
-                        scale_up = 1.0
-                    fake_systematics.add(emu_mue=em_me, sysname=syst, jetvariation=jet, l1pt=l1pt_key, updown=(scale_up, scale_do))
-                    h_do.Scale(1.0/scale_do)
-                    h_up.Scale(1.0/scale_up)
 
     output_file.Close()
     out_fake_sys_filename = output_dir+'/'+args.fake_sys
     if verbose: print "saving fake systematic normalizations to {0}".format(out_fake_sys_filename)
     with open(out_fake_sys_filename, 'w') as out_sys_file:
         out_sys_file.write(("# fake systematics evaluated on {0}\n".format(datetime.date.today().isoformat())
-                           +pprint.pformat(fake_systematics.as_dict())
+                           +pprint.pformat(fake_systematics_register.as_dict())
                            +'\n'))
 #___________________________________________________________
 
@@ -415,6 +398,36 @@ class FakeSystematicRegister(object):
         for var in self._variations:
             out_dict[var.emme+'_'+var.sys][var.jet][var.l1pt] = var.as_dict()
         return out_dict
+
+def record_scaling_fake_systematics(fake_systematics_register=None, jet_variation= None, l1pt_keys=None, sliced_histos=None):
+    """
+    Compute and record the normalization scaling for fake systematics;
+    note that this modifies the histograms in sliced_histo.
+    """
+    for l1pt_key in l1pt_keys:
+        histos =  sliced_histos[l1pt_key]
+        for em_me in ['emu', 'mue']:
+            h_nom = histos['fake_NOM_sr_'+em_me+'_os'+jet_variation]
+            norm_nom = h_nom.Integral()
+            for syst in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
+                h_up = histos['fake_'+syst+'_UP_sr_'+em_me+'_os'+jet_variation]
+                h_do = histos['fake_'+syst+'_DOWN_sr_'+em_me+'_os'+jet_variation]
+                norm_do = h_do.Integral()
+                norm_up = h_up.Integral()
+                try:
+                    scale_do = (norm_do/norm_nom)
+                    scale_up = (norm_up/norm_nom)
+                except ZeroDivisionError as zde:
+                    if norm_up or norm_nom:
+                        raise ZeroDivisionError("{0} but syst has non-zero normalization".format(zde))
+                    scale_do = 1.0
+                    scale_up = 1.0
+                fake_systematics_register.add(emu_mue=em_me, sysname=syst, jetvariation=jet_variation,
+                                              l1pt=l1pt_key,
+                                              updown=(scale_up, scale_do))
+                h_do.Scale(1.0/scale_do)
+                h_up.Scale(1.0/scale_up)
+    return True # perhaps should return smth more meaningful
 
 def getBinIndices(h) :
     "Return a list of the internal indices used by TH1/TH2/TH3; see TH1::GetBin for info on internal mapping"
