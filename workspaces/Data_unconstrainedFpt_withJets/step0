@@ -321,17 +321,18 @@ def fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max):
                 dummy_histo.SetBinError  (dest_bin, h_m_vs_pt.GetBinError  (orig_bin))
             h_m.Add(dummy_histo)
 
-def pt_slice_histoname(sample='', variation='', em_me='', pt_label=0, jet=''):
+def pt_slice_histoname(sample='', variation='', em_me='', pt_label='', jet=''):
     "note again a slightly different convention; still use the same standard keys"
-    templ_h_name = 'Mcoll_{sample}_{emme}{variation}_{l1pt}{jet}_rebin'
+    templ_h_name = 'Mcoll_{sample}{variation}_{emme}_{l1pt}{jet}_rebin'
     sample = ('data' if sample=='data' else
               'Fakes' if sample=='fake' else
               'signal' if sample=='signaltaue' else
               'wrong_signal' if sample=='signaltaumu' else 'unknown')
     emme = ('EM' if em_me=='emu' else
             'ME' if em_me=='mue' else 'unknown')
-    variation = ('' if variation=='NOM' else ('_'+variation)) # todo: use _NOM also
-    return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_label, 'jet':jet})
+    variation = '' if variation=='NOM' else ('_'+variation) # todo: use _NOM also
+    h_name = templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_label, 'jet':jet})
+    return h_name
 
 def shift_negative_bins(h, value=0.001, error=0.00001):
     """
