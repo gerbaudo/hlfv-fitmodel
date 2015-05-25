@@ -9,6 +9,7 @@ import ROOT
 ROOT.gROOT.SetBatch(True)
 import argparse
 from collections import defaultdict
+from math import sqrt
 import datetime
 import os
 import pprint
@@ -31,6 +32,7 @@ def main():
     parser.add_argument('-v', '--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('-d', '--debug', action='store_true', help='increase output (useful only to debug things)')
     parser.add_argument('-n', '--negative', action='store_true', help='allow negative bin contents')
+    parser.add_argument('--rebin-without-err', action='store_true', help='do not propagate errors when rebinning')
     parser.add_argument('--fake-sys', default='fake_systematics.py', help='where the normalization of the fake sys will be saved')
     args = parser.parse_args()
     input_dir = args.input_dir
@@ -50,7 +52,8 @@ def main():
                                ('signaltaue',  ('NOM',),    ('mue',))]
     output_file = ROOT.TFile(output_dir+"/simple.root","RECREATE")
     fake_systematics = FakeSystematicRegister()
-
+    if verbose:
+        print "being called as {0}".format(' '.join(os.sys.argv))
     for jet in jet_variations:
         # Target binning
         target_pt1_bins = array.array('f',(0,10,15,20,25,30,35,240))
@@ -82,15 +85,23 @@ def main():
                     xaxis = h_orig.GetXaxis()
                     yaxis = h_orig.GetYaxis()
                     check_target_binning(h_orig, h_rebn, debug)
-                    # DG todo propagate error
-                    for ix in range(1, 1+xaxis.GetNbins()):
-                        for iy in range(1, 1+yaxis.GetNbins()):
-                            x = xaxis.GetBinCenter(ix)
-                            y = yaxis.GetBinCenter(iy)
-                            h_rebn.Fill(x, y, h_orig.GetBinContent(ix, iy))
+                    if args.rebin_without_err:
+                        # this was the original rebinning, I think the error is wrong...leave it just for reference
+                        for ix in range(1, 1+xaxis.GetNbins()):
+                            for iy in range(1, 1+yaxis.GetNbins()):
+                                x = xaxis.GetBinCenter(ix)
+                                y = yaxis.GetBinCenter(iy)
+                                h_rebn.Fill(x, y, h_orig.GetBinContent(ix, iy))
+                    else:
+                        fill_rebinned_histo(h_orig, h_rebn, debug)
                     def format_h2_summary(h):
                         return "{0}[{1}][{2}] ({3:.4f})".format(h.GetName(), h.GetNbinsX(), h.GetNbinsY(), h.Integral())
+                    def format_h2_contents(h):
+                        return ', '.join("%6.3f"%v for v in getBinContents(h))
+                    def format_h2_errors(h):
+                        return ', '.join("%6.3f"%v for v in getBinErrors(h))
                     if verbose: print "rebin {0} to {1}".format(format_h2_summary(h_orig), format_h2_summary(h_rebn))
+                    if debug: print "rebinned:\n contents: {0}\n errors:   {1}".format(format_h2_contents(h_rebn), format_h2_errors(h_rebn))
                     if args.plot and sample=='data':
                         plot_2d_before_after(h_orig, h_rebn, output_dir+'/'+key)
 	## Rebin uniformly to indices
@@ -144,12 +155,12 @@ def main():
             for em_me in ['emu', 'mue']:
                 h_nom = histos['fake_NOM_sr_mue_os'+jet]
                 norm_nom = h_nom.Integral()
-                for sys in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
-                    h_up = histos['fake_'+sys+'_UP_sr_'+em_me+'_os'+jet]
-                    h_do = histos['fake_'+sys+'_DOWN_sr_'+em_me+'_os'+jet]
+                for syst in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
+                    h_up = histos['fake_'+syst+'_UP_sr_'+em_me+'_os'+jet]
+                    h_do = histos['fake_'+syst+'_DOWN_sr_'+em_me+'_os'+jet]
                     norm_do = h_do.Integral()/norm_nom
                     norm_up = h_up.Integral()/norm_nom
-                    fake_systematics.add(emu_mue=em_me, sysname=sys, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
+                    fake_systematics.add(emu_mue=em_me, sysname=syst, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
                     h_do.Scale(1.0/norm_do)
                     h_up.Scale(1.0/norm_up)
 
@@ -205,17 +216,65 @@ def check_target_binning(h_orig, h_rebin, verbose=False):
                                       "{0}: {1}\n".format(h_rebin.GetName(), bins_rebin)+
                                       "unmatched: {0}".format(wrong_bin_edges))
 
+def fill_rebinned_histo(h_orig, h_rebn, verbose=False):
+    "Fill the rebinned histogram; assumes you have already called check_target_binning()"
+
+    class MacroBin:
+        "A bin whose content is the sum of smaller bins, and whose error is the sum in quadrature of the errors"
+        def __init__(self, ix=None, iy=None, w=0.0, err2=0.0):
+            assert ix is not None and iy is not None,"MacroBin specify at least the coordinates"
+            self.ix = ix
+            self.iy = iy
+            self.sumw = w
+            self.sumerr2 = err2
+        def add(self, other):
+            self.sumw += other.sumw
+            self.sumerr2 += other.sumerr2
+        @property
+        def err(self):
+            return sqrt(self.sumerr2)
+        def same_bin(self, other):
+            return self.ix==other.ix and self.iy==other.iy
+
+    xbins_orig = range(0, 1+1+h_orig.GetXaxis().GetNbins()) # also include underflow and overflow
+    ybins_orig = range(0, 1+1+h_orig.GetYaxis().GetNbins())
+    xcenters_orig = [h_orig.GetXaxis().GetBinCenter(b) for b in xbins_orig]
+    ycenters_orig = [h_orig.GetYaxis().GetBinCenter(b) for b in ybins_orig]
+    macrobins = []
+    last_macrobin = None # cache it, since it will likely be used for the next bin as well (30% speedup)
+    for i, x in zip(xbins_orig, xcenters_orig):
+        k = h_rebn.GetXaxis().FindBin(x)
+        for j, y in zip(ybins_orig, ycenters_orig):
+            l = h_rebn.GetYaxis().FindBin(y)
+            macrobin = MacroBin(ix=k, iy=l, w=h_orig.GetBinContent(i, j), err2=h_orig.GetBinError(i, j)**2)
+            existing_macrobin = next((m for m in (([last_macrobin] if last_macrobin else [])
+                                                  + macrobins)
+                                      if m.same_bin(macrobin)), None)
+            if existing_macrobin:
+                existing_macrobin.add(macrobin)
+            else:
+                macrobins.append(macrobin)
+            last_macrobin = existing_macrobin if existing_macrobin else macrobin
+    for m in macrobins:
+        h_rebn.SetBinContent(m.ix, m.iy, m.sumw)
+        h_rebn.SetBinError(m.ix, m.iy, m.err)
 
 def plot_2d_before_after(h_before, h_after, output_file):
     "plot the 2d histo before/after rebinning side-by-side"
-    c = ROOT.TCanvas(output_file, '')
+    ROOT.gStyle.SetPadTickX(2)
+    ROOT.gStyle.SetPadTickY(2)
+    ROOT.gStyle.SetOptStat('meiour')
+    c = ROOT.TCanvas(output_file, '', 800, 600)
     c.Divide(2,1)
     c.cd(1)
-    h_before.Draw('col3z text')
-    ROOT.gPad.SetLogx()
+    h_before.Draw('col3z e text')
+    # ROOT.gPad.SetLogx()
+    h_before.GetXaxis().SetRangeUser(1.0e-6, 400.)
+    c.Update()
     c.cd(2)
-    h_after.Draw('col3z text')
-    ROOT.gPad.SetLogx()
+    h_after.Draw('col3z e text')
+    # ROOT.gPad.SetLogx()
+    h_after.GetXaxis().SetRangeUser(1.0e-6, 400.)
     c.Update()
     c.SaveAs(output_file+'.png')
 
@@ -315,15 +374,39 @@ class FakeSystematicRegister(object):
         jet_variations = sorted(list(set(v.jet for v in self._variations)))
         l1pts          = sorted(list(set(v.l1pt for v in self._variations)))
         # I could use a nested defaultdict, but then pprint doesn't work nicely
-        out_dict = dict([(emme+'_'+sys,
+        out_dict = dict([(emme+'_'+syst,
                           dict([(j,
                                  dict([(l1pt, {})
                                        for l1pt in l1pts]))
                                 for j in jet_variations]))
-                          for emme in emu_mue for sys in systematics])
+                          for emme in emu_mue for syst in systematics])
         for var in self._variations:
             out_dict[var.emme+'_'+var.sys][var.jet][var.l1pt] = var.as_dict()
         return out_dict
+
+def getBinIndices(h) :
+    "Return a list of the internal indices used by TH1/TH2/TH3; see TH1::GetBin for info on internal mapping"
+    cname = h.Class().GetName()
+    if   cname.startswith('TH1') :
+        return [h.GetBin(i)
+                for i in range(1, 1+h.GetNbinsX())]
+    elif cname.startswith('TH2') :
+        return [h.GetBin(i, j)
+                for i in range(1, 1+h.GetNbinsX())
+                for j in range(1, 1+h.GetNbinsY())]
+    elif cname.startswith('TH3') :
+        return [h.GetBin(i, j, k)
+                for i in range(1, 1+h.GetNbinsX())
+                for j in range(1, 1+h.GetNbinsY())
+                for k in range(1, 1+h.GetNbinsZ())]
+    else : return []
+
+def getBinContents(h) :
+    return [h.GetBinContent(b) for b in getBinIndices(h)]
+
+def getBinErrors(h) :
+    return [h.GetBinError(b) for b in getBinIndices(h)]
+
 
 if __name__=='__main__':
     main()
