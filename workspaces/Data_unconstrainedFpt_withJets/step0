@@ -329,8 +329,8 @@ def pt_slice_histoname(sample='', variation='', em_me='', pt_label='', jet=''):
     templ_h_name = 'Mcoll_{sample}{variation}_{emme}_{l1pt}{jet}_rebin'
     sample = ('data' if sample=='data' else
               'Fakes' if sample=='fake' else
-              'signal' if sample=='signaltaue' else
-              'wrong_signal' if sample=='signaltaumu' else 'unknown')
+              'signal' if sample=='signaltaumu' else
+              'wrong_signal' if sample=='signaltaue' else 'unknown')
     emme = ('EM' if em_me=='emu' else
             'ME' if em_me=='mue' else 'unknown')
     variation = '' if variation=='NOM' else ('_'+variation) # todo: use _NOM also
