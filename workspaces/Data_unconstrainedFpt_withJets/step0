@@ -9,6 +9,7 @@ import ROOT
 ROOT.gROOT.SetBatch(True)
 import argparse
 from collections import defaultdict
+from math import sqrt
 import datetime
 import os
 import pprint
@@ -29,12 +30,15 @@ def main():
     parser.add_argument('-p', '--plot', action='store_true', help='plot rebinned histograms')
     parser.add_argument('-s', '--strength', default=0.0, help='strength of the injected signal (used for spurious test)')
     parser.add_argument('-v', '--verbose', action='store_true', help='increase output verbosity')
+    parser.add_argument('-d', '--debug', action='store_true', help='increase output (useful only to debug things)')
     parser.add_argument('-n', '--negative', action='store_true', help='allow negative bin contents')
+    parser.add_argument('--rebin-without-err', action='store_true', help='do not propagate errors when rebinning')
     parser.add_argument('--fake-sys', default='fake_systematics.py', help='where the normalization of the fake sys will be saved')
     args = parser.parse_args()
     input_dir = args.input_dir
     output_dir = mkdir_if_needed(args.output_dir)
     verbose = args.verbose
+    debug = args.debug
     signal_strength = args.strength
     jet_variations = ['', '_jets']
     data_variations = ['NOM']
@@ -47,14 +51,24 @@ def main():
                                ('signaltaumu', ('NOM',),    ('mue',)), # signal only goes in mue
                                ('signaltaue',  ('NOM',),    ('mue',))]
     output_file = ROOT.TFile(output_dir+"/simple.root","RECREATE")
-    fake_systematics = FakeSystematicRegister()
+    fake_systematics_register = FakeSystematicRegister()
 
+    if verbose:
+        print "being called as {0}".format(' '.join(os.sys.argv))
     for jet in jet_variations:
         # Target binning
-        # DG todo : add check that target_bin < orig_bin
+        # target_pt1_bins = array.array('f',(0,10,15,20,25,30,35,240))
+        # target_m_bins = (array.array('f', [0] + range(60, 250,  5) + range(250, 300, 10) + [300,320,350,400]) if jet=='' else
+        #                  array.array('f', [0] + range(60, 120, 20) + range(120, 160, 10) + [160,180,200,230,260,300,350,400]))
+
+        target_m_bins = (array.array('f',(0,60,65,70,75,80,85,90,95,100,105,110,115,
+                                          120,125,130,135,140,145,150,155,160,165,
+                                          170,175,180,185,190,195,200,205,210,215,
+                                          220,225,230,235,240,245,250,260,270,280,
+                                          290,300,320,350,400,450)) if jet=='' else
+                         array.array('f',(0,60,80,100,120,130,140,150,160,180,200,230,260,300,350,400,450)))
         target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
-        target_m_bins = (array.array('f', [0] + range(60, 250,  5) + range(250, 300, 10) + [300,320,350,400,450]) if jet=='' else
-                         array.array('f', [0] + range(60, 120, 20) + range(120, 160, 10) + [160,180,200,230,260,300,350,400,450]))
+        l1pt_keys = ["l1pt{0:d}".format(i) for i in range(len(target_pt1_bins)-1)]
 
         files, histos = collect_inputs(input_dir, samples_with_variations, jet)
 
@@ -63,13 +77,11 @@ def main():
         n_target_pt1_bins = len(target_pt1_bins)-1
         n_target_m_bins = len(target_m_bins)-1
 
-        title = "l_1 p^{T};Mcoll (GeV)"
+        template_histo = histos['data_NOM_sr_mue_os'+jet]
+        title = ";{0};{1}".format(template_histo.GetXaxis().GetTitle(), template_histo.GetYaxis().GetTitle())
         binning = (n_target_pt1_bins, target_pt1_bins, n_target_m_bins, target_m_bins)
         rebinned_histos = {}
-        for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
-                                           ('fake', fake_variations, ('emu', 'mue')),
-                                           ('signaltaumu', ('NOM',),    ('mue',)), # signal only goes in mue
-                                           ('signaltaue',  ('NOM',),    ('mue',))]:
+        for sample, variations, em_mes in samples_with_variations:
             for variation in variations:
                 for em_me in em_mes:
                     key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
@@ -79,15 +91,24 @@ def main():
                     h_rebn = rebinned_histos[key]
                     xaxis = h_orig.GetXaxis()
                     yaxis = h_orig.GetYaxis()
-                    # DG todo propagate error
-                    for ix in range(1, 1+xaxis.GetNbins()):
-                        for iy in range(1, 1+yaxis.GetNbins()):
-                            x = xaxis.GetBinCenter(ix)
-                            y = yaxis.GetBinCenter(iy)
-                            h_rebn.Fill(x, y, h_orig.GetBinContent(ix, iy))
+                    # check_target_binning(h_orig, h_rebn, debug)
+                    if args.rebin_without_err:
+                        # this was the original rebinning, I think the error is wrong...leave it just for reference
+                        for ix in range(1, 1+xaxis.GetNbins()):
+                            for iy in range(1, 1+yaxis.GetNbins()):
+                                x = xaxis.GetBinCenter(ix)
+                                y = yaxis.GetBinCenter(iy)
+                                h_rebn.Fill(x, y, h_orig.GetBinContent(ix, iy))
+                    else:
+                        fill_rebinned_histo(h_orig, h_rebn, debug)
                     def format_h2_summary(h):
                         return "{0}[{1}][{2}] ({3:.4f})".format(h.GetName(), h.GetNbinsX(), h.GetNbinsY(), h.Integral())
+                    def format_h2_contents(h):
+                        return ', '.join("%6.3f"%v for v in getBinContents(h))
+                    def format_h2_errors(h):
+                        return ', '.join("%6.3f"%v for v in getBinErrors(h))
                     if verbose: print "rebin {0} to {1}".format(format_h2_summary(h_orig), format_h2_summary(h_rebn))
+                    if debug: print "rebinned:\n contents: {0}\n errors:   {1}".format(format_h2_contents(h_rebn), format_h2_errors(h_rebn))
                     if args.plot and sample=='data':
                         plot_2d_before_after(h_orig, h_rebn, output_dir+'/'+key)
 	## Rebin uniformly to indices
@@ -102,59 +123,47 @@ def main():
         title = ";Mcoll (GeV)"
         m_binning = (n_m_bins, origin_m_bins)
         sliced_histos = {}
-	for i in range(len(target_pt1_bins)-1):
+        for i, l1pt_key in enumerate(l1pt_keys):
             pt_min = target_pt1_bins[i]
             pt_max = target_pt1_bins[i+1]
-            l1pt_key = "l1pt{0:d}".format(i)
             sliced_histos_this_pt = {}
-            for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
-                                               ('fake', fake_variations, ('emu', 'mue')),
-                                               ('signaltaumu', ('NOM',),    ('mue',)),
-                                               ('signaltaue',  ('NOM',),    ('mue',))]:
+            for sample, variations, em_mes in samples_with_variations:
                 for variation in variations:
                     for em_me in em_mes:
                         key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
                         h_m_vs_pt = rebinned_histos[key]
-                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_bin=i, jet=jet)
+                        h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_label=l1pt_key, jet=jet)
                         h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
                         fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
-                        sliced_histos_this_pt[key] = h_m
-                        shift_nonpositive_bins(h_m) # we might want to do this after adding the signal?
+                        # we might want to shift_neg after adding the signal? and maybe only the fake histos?
+                        sliced_histos_this_pt[key] = transform_to_0_n_bins(h_orig=shift_negative_bins(h_m),
+                                                                           origin_m_bins=origin_m_bins)
             sliced_histos[l1pt_key] = sliced_histos_this_pt
+        record_scaling_fake_systematics(fake_systematics_register=fake_systematics_register,
+                                        jet_variation=jet,
+                                        l1pt_keys=l1pt_keys, sliced_histos=sliced_histos)
+        # write histograms
+        output_file.cd()
+        for l1pt_key in l1pt_keys:
+            sliced_histos_this_pt = sliced_histos[l1pt_key]
             hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
             hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
             hsg1   = sliced_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
             hwrsg1 = sliced_histos_this_pt['signaltaue_NOM_sr_mue_os'+jet]
+            h_BaseBkg = average_histogram(hme1, hem1, "Base_Bkg_{0}{1}".format(l1pt_key, jet))
             ### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
             hme1.Add(hsg1,signal_strength)
             hem1.Add(hwrsg1,signal_strength)
-
-            output_file.cd()
-            hme1.Write()
-            hem1.Write()
-            hsg1.Write()
-            hwrsg1.Write()
-	# Get scaling for fake systematics
-	for i in range(len(target_pt1_bins)-1):
-            l1pt_key = "l1pt{0:d}".format(i)
-            histos =  sliced_histos[l1pt_key]
-            for em_me in ['emu', 'mue']:
-                h_nom = histos['fake_NOM_sr_mue_os'+jet]
-                norm_nom = h_nom.Integral()
-                for sys in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
-                    h_up = histos['fake_'+sys+'_UP_sr_'+em_me+'_os'+jet]
-                    h_do = histos['fake_'+sys+'_DOWN_sr_'+em_me+'_os'+jet]
-                    norm_do = h_do.Integral()/norm_nom
-                    norm_up = h_up.Integral()/norm_nom
-                    fake_systematics.add(emu_mue=em_me, sysname=sys, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
-                    h_do.Scale(1.0/norm_do)
-                    h_up.Scale(1.0/norm_up)
+            for k, h in sliced_histos_this_pt.iteritems():
+                h.Write()
+            h_BaseBkg.Write()
 
     output_file.Close()
-    if verbose: print "saving fake systematic normalizations to {0}".format(args.fake_sys)
-    with open(output_dir+'/'+args.fake_sys, 'w') as out_sys_file:
+    out_fake_sys_filename = output_dir+'/'+args.fake_sys
+    if verbose: print "saving fake systematic normalizations to {0}".format(out_fake_sys_filename)
+    with open(out_fake_sys_filename, 'w') as out_sys_file:
         out_sys_file.write(("# fake systematics evaluated on {0}\n".format(datetime.date.today().isoformat())
-                           +pprint.pformat(fake_systematics.as_dict())
+                           +pprint.pformat(fake_systematics_register.as_dict())
                            +'\n'))
 #___________________________________________________________
 
@@ -187,16 +196,80 @@ def collect_inputs(input_dir, samples_with_variations, jet):
                     histos[key] = histo
     return files, histos
 
+def check_target_binning(h_orig, h_rebin, verbose=False):
+    "check that the target binning is a subset of the original binning"
+    for ax_orig, ax_rebin in [(h_orig.GetXaxis(), h_rebin.GetXaxis()),
+                              (h_orig.GetYaxis(), h_rebin.GetYaxis())]:
+        bins_orig  = array.array('f', [ax_orig.GetBinLowEdge(i+1)  for i in range(ax_orig.GetNbins()+1)])
+        bins_rebin = array.array('f', [ax_rebin.GetBinLowEdge(i+1) for i in range(ax_rebin.GetNbins()+1)])
+        if verbose:
+            print "checking axis {0}: orig[{1}] rebin[{2}]".format(ax_orig.GetTitle(), len(bins_orig), len(bins_rebin))
+        if not set(bins_rebin).issubset(set(bins_orig)):
+            wrong_bin_edges = set(bins_rebin) - set(bins_rebin).intersection(set(bins_orig))
+            raise NotImplementedError("Rebin can only be done with matching bin edges\n"+
+                                      "{0}: {1}\n".format(h_orig.GetName(), bins_orig)+
+                                      "{0}: {1}\n".format(h_rebin.GetName(), bins_rebin)+
+                                      "unmatched: {0}".format(wrong_bin_edges))
+
+def fill_rebinned_histo(h_orig, h_rebn, verbose=False):
+    "Fill the rebinned histogram; assumes you have already called check_target_binning()"
+
+    class MacroBin:
+        "A bin whose content is the sum of smaller bins, and whose error is the sum in quadrature of the errors"
+        def __init__(self, ix=None, iy=None, w=0.0, err2=0.0):
+            assert ix is not None and iy is not None,"MacroBin specify at least the coordinates"
+            self.ix = ix
+            self.iy = iy
+            self.sumw = w
+            self.sumerr2 = err2
+        def add(self, other):
+            self.sumw += other.sumw
+            self.sumerr2 += other.sumerr2
+        @property
+        def err(self):
+            return sqrt(self.sumerr2)
+        def same_bin(self, other):
+            return self.ix==other.ix and self.iy==other.iy
+
+    xbins_orig = range(0, 1+1+h_orig.GetXaxis().GetNbins()) # also include underflow and overflow
+    ybins_orig = range(0, 1+1+h_orig.GetYaxis().GetNbins())
+    xcenters_orig = [h_orig.GetXaxis().GetBinCenter(b) for b in xbins_orig]
+    ycenters_orig = [h_orig.GetYaxis().GetBinCenter(b) for b in ybins_orig]
+    macrobins = []
+    last_macrobin = None # cache it, since it will likely be used for the next bin as well (30% speedup)
+    for i, x in zip(xbins_orig, xcenters_orig):
+        k = h_rebn.GetXaxis().FindBin(x)
+        for j, y in zip(ybins_orig, ycenters_orig):
+            l = h_rebn.GetYaxis().FindBin(y)
+            macrobin = MacroBin(ix=k, iy=l, w=h_orig.GetBinContent(i, j), err2=h_orig.GetBinError(i, j)**2)
+            existing_macrobin = next((m for m in (([last_macrobin] if last_macrobin else [])
+                                                  + macrobins)
+                                      if m.same_bin(macrobin)), None)
+            if existing_macrobin:
+                existing_macrobin.add(macrobin)
+            else:
+                macrobins.append(macrobin)
+            last_macrobin = existing_macrobin if existing_macrobin else macrobin
+    for m in macrobins:
+        h_rebn.SetBinContent(m.ix, m.iy, m.sumw)
+        h_rebn.SetBinError(m.ix, m.iy, m.err)
+
 def plot_2d_before_after(h_before, h_after, output_file):
     "plot the 2d histo before/after rebinning side-by-side"
-    c = ROOT.TCanvas(output_file, '')
+    ROOT.gStyle.SetPadTickX(2)
+    ROOT.gStyle.SetPadTickY(2)
+    ROOT.gStyle.SetOptStat('meiour')
+    c = ROOT.TCanvas(output_file, '', 800, 600)
     c.Divide(2,1)
     c.cd(1)
-    h_before.Draw('col3z text')
-    ROOT.gPad.SetLogx()
+    h_before.Draw('col3z e text')
+    # ROOT.gPad.SetLogx()
+    h_before.GetXaxis().SetRangeUser(1.0e-6, 400.)
+    c.Update()
     c.cd(2)
-    h_after.Draw('col3z text')
-    ROOT.gPad.SetLogx()
+    h_after.Draw('col3z e text')
+    # ROOT.gPad.SetLogx()
+    h_after.GetXaxis().SetRangeUser(1.0e-6, 400.)
     c.Update()
     c.SaveAs(output_file+'.png')
 
@@ -235,30 +308,50 @@ def fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max):
                 dummy_histo.SetBinError  (dest_bin, h_m_vs_pt.GetBinError  (orig_bin))
             h_m.Add(dummy_histo)
 
-def pt_slice_histoname(sample='', variation='', em_me='', pt_bin=0, jet=''):
+def pt_slice_histoname(sample='', variation='', em_me='', pt_label='', jet=''):
     "note again a slightly different convention; still use the same standard keys"
-    templ_h_name = 'Mcoll_{sample}_{emme}{variation}_{l1pt}{jet}'
+    templ_h_name = 'Mcoll_{sample}{variation}_{emme}_{l1pt}{jet}'
     sample = ('data' if sample=='data' else
               'Fakes' if sample=='fake' else
-              'signal' if sample=='signaltaue' else
-              'wrong_signal' if sample=='signaltaumu' else 'unknown')
+              'signal' if sample=='signaltaumu' else
+              'wrong_signal' if sample=='signaltaue' else 'unknown')
     emme = ('EM' if em_me=='emu' else
             'ME' if em_me=='mue' else 'unknown')
-    variation = ('' if variation=='NOM' else ('_'+variation)) # todo: use _NOM also
-    return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_bin, 'jet':jet})
+    variation = '' if variation=='NOM' else ('_'+variation) # todo: use _NOM also
+    h_name = templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_label, 'jet':jet})
+    return h_name
 
-def shift_nonpositive_bins(h, value=0.001, error=0.00001):
+def shift_negative_bins(h, value=0.001, error=0.00001):
     """
-    For all bins with content <=0, force their content to value, error
+    For all bins with negative content, force their content to value, error
     """
     bins = range(1, 1+h.GetXaxis().GetNbins())
     for b in bins:
-        if h.GetBinContent(b)<=0.0:
+        if h.GetBinContent(b)<0.0:
             h.SetBinContent(b, value)
             h.SetBinError  (b, error)
     # # DG-2015-05-19 : is this obsolete or needed? ask Avital
     # if hwrsg2.GetBinContent(b+1)<0: # why a different treatment for hwrsg2 ?
     #     print "NEGATIVE VALUES in wrong signal sample!"
+    return h
+
+def transform_to_0_n_bins(h_orig=None, origin_m_bins=[]):
+    "transform histo binning from [m_min, m_max] to [0, n]"
+    name = h_orig.GetName()+'_rebin'
+    title = h_orig.GetTitle()
+    nthrow = 0
+    n_m_bins_pruned = len(origin_m_bins)-nthrow
+    h_dest = ROOT.TH1F(name, title, n_m_bins_pruned, 0, n_m_bins_pruned)
+    for b in range(n_m_bins_pruned):
+        bin_orig = b+1+nthrow
+        bin_dest = b+1
+        if h_orig.GetBinContent(bin_orig)>0:
+            h_dest.SetBinContent(bin_dest, h_orig.GetBinContent(bin_orig))
+            h_dest.SetBinError (bin_dest, h_orig.GetBinError   (bin_orig))
+        else:
+            h_dest.SetBinContent(bin_dest, 0.001)
+            h_dest.SetBinError (bin_dest, 0.00001)
+    return h_dest
 
 class Variation(object):
     """
@@ -296,15 +389,69 @@ class FakeSystematicRegister(object):
         jet_variations = sorted(list(set(v.jet for v in self._variations)))
         l1pts          = sorted(list(set(v.l1pt for v in self._variations)))
         # I could use a nested defaultdict, but then pprint doesn't work nicely
-        out_dict = dict([(emme+'_'+sys,
+        out_dict = dict([(emme+'_'+syst,
                           dict([(j,
                                  dict([(l1pt, {})
                                        for l1pt in l1pts]))
                                 for j in jet_variations]))
-                          for emme in emu_mue for sys in systematics])
+                          for emme in emu_mue for syst in systematics])
         for var in self._variations:
             out_dict[var.emme+'_'+var.sys][var.jet][var.l1pt] = var.as_dict()
         return out_dict
+
+def record_scaling_fake_systematics(fake_systematics_register=None, jet_variation= None, l1pt_keys=None, sliced_histos=None):
+    """
+    Compute and record the normalization scaling for fake systematics;
+    note that this modifies the histograms in sliced_histo.
+    """
+    for l1pt_key in l1pt_keys:
+        histos =  sliced_histos[l1pt_key]
+        for em_me in ['emu', 'mue']:
+            h_nom = histos['fake_NOM_sr_'+em_me+'_os'+jet_variation]
+            norm_nom = h_nom.Integral()
+            for syst in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
+                h_up = histos['fake_'+syst+'_UP_sr_'+em_me+'_os'+jet_variation]
+                h_do = histos['fake_'+syst+'_DOWN_sr_'+em_me+'_os'+jet_variation]
+                norm_do = h_do.Integral()
+                norm_up = h_up.Integral()
+                try:
+                    scale_do = (norm_do/norm_nom)
+                    scale_up = (norm_up/norm_nom)
+                except ZeroDivisionError as zde:
+                    if norm_up or norm_nom:
+                        raise ZeroDivisionError("{0} but syst has non-zero normalization".format(zde))
+                    scale_do = 1.0
+                    scale_up = 1.0
+                fake_systematics_register.add(emu_mue=em_me, sysname=syst, jetvariation=jet_variation,
+                                              l1pt=l1pt_key,
+                                              updown=(scale_up, scale_do))
+                h_do.Scale(1.0/scale_do)
+                h_up.Scale(1.0/scale_up)
+    return True # perhaps should return smth more meaningful
+
+def getBinIndices(h) :
+    "Return a list of the internal indices used by TH1/TH2/TH3; see TH1::GetBin for info on internal mapping"
+    cname = h.Class().GetName()
+    if   cname.startswith('TH1') :
+        return [h.GetBin(i)
+                for i in range(1, 1+h.GetNbinsX())]
+    elif cname.startswith('TH2') :
+        return [h.GetBin(i, j)
+                for i in range(1, 1+h.GetNbinsX())
+                for j in range(1, 1+h.GetNbinsY())]
+    elif cname.startswith('TH3') :
+        return [h.GetBin(i, j, k)
+                for i in range(1, 1+h.GetNbinsX())
+                for j in range(1, 1+h.GetNbinsY())
+                for k in range(1, 1+h.GetNbinsZ())]
+    else : return []
+
+def getBinContents(h) :
+    return [h.GetBinContent(b) for b in getBinIndices(h)]
+
+def getBinErrors(h) :
+    return [h.GetBinError(b) for b in getBinIndices(h)]
+
 
 if __name__=='__main__':
     main()
