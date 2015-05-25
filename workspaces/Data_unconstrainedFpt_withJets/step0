@@ -139,15 +139,15 @@ def main():
             hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
             hsg1   = sliced_histos_this_pt['signaltaumu_NOM_sr_mue_os'+jet]
             hwrsg1 = sliced_histos_this_pt['signaltaue_NOM_sr_mue_os'+jet]
+            h_BaseBkg = average_histogram(hme1, hem1, "Base_Bkg_{0}{1}".format(l1pt_key, jet))
             ### ADD SIGNAL TO SUM MC ### DG I think this is wrong; these are not the tot mc, but data
             hme1.Add(hsg1,signal_strength)
             hem1.Add(hwrsg1,signal_strength)
 
             output_file.cd()
-            hme1.Write()
-            hem1.Write()
-            hsg1.Write()
-            hwrsg1.Write()
+            for k, h in sliced_histos_this_pt.iteritems():
+                h.Write()
+            h_BaseBkg.Write()
 	# Get scaling for fake systematics
 	for i in range(len(target_pt1_bins)-1):
             l1pt_key = "l1pt{0:d}".format(i)
