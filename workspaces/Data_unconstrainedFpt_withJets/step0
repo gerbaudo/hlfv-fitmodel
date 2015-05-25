@@ -134,8 +134,9 @@ def main():
                         h_m_name = pt_slice_histoname(sample=sample, variation=variation, em_me=em_me, pt_label=l1pt_key, jet=jet)
                         h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
                         fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
-                        sliced_histos_this_pt[key] = h_m
-                        shift_negative_bins(h_m) # we might want to do this after adding the signal?
+                        # we might want to shift_neg after adding the signal? and maybe only the fake histos?
+                        sliced_histos_this_pt[key] = transform_to_0_n_bins(h_orig=shift_negative_bins(h_m),
+                                                                           origin_m_bins=origin_m_bins)
             sliced_histos[l1pt_key] = sliced_histos_this_pt
             hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
             hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
@@ -326,7 +327,7 @@ def fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max):
 
 def pt_slice_histoname(sample='', variation='', em_me='', pt_label='', jet=''):
     "note again a slightly different convention; still use the same standard keys"
-    templ_h_name = 'Mcoll_{sample}{variation}_{emme}_{l1pt}{jet}_rebin'
+    templ_h_name = 'Mcoll_{sample}{variation}_{emme}_{l1pt}{jet}'
     sample = ('data' if sample=='data' else
               'Fakes' if sample=='fake' else
               'signal' if sample=='signaltaumu' else
@@ -349,6 +350,25 @@ def shift_negative_bins(h, value=0.001, error=0.00001):
     # # DG-2015-05-19 : is this obsolete or needed? ask Avital
     # if hwrsg2.GetBinContent(b+1)<0: # why a different treatment for hwrsg2 ?
     #     print "NEGATIVE VALUES in wrong signal sample!"
+    return h
+
+def transform_to_0_n_bins(h_orig=None, origin_m_bins=[]):
+    "transform histo binning from [m_min, m_max] to [0, n]"
+    name = h_orig.GetName()+'_rebin'
+    title = h_orig.GetTitle()
+    nthrow = 0
+    n_m_bins_pruned = len(origin_m_bins)-nthrow
+    h_dest = ROOT.TH1F(name, title, n_m_bins_pruned, 0, n_m_bins_pruned)
+    for b in range(n_m_bins_pruned):
+        bin_orig = b+1+nthrow
+        bin_dest = b+1
+        if h_orig.GetBinContent(bin_orig)>0:
+            h_dest.SetBinContent(bin_dest, h_orig.GetBinContent(bin_orig))
+            h_dest.SetBinError (bin_dest, h_orig.GetBinError   (bin_orig))
+        else:
+            h_dest.SetBinContent(bin_dest, 0.001)
+            h_dest.SetBinError (bin_dest, 0.00001)
+    return h_dest
 
 class Variation(object):
     """
