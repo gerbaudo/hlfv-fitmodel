@@ -158,11 +158,19 @@ def main():
                 for syst in ['EL_RE', 'EL_FR', 'MU_RE', 'MU_FR']:
                     h_up = histos['fake_'+syst+'_UP_sr_'+em_me+'_os'+jet]
                     h_do = histos['fake_'+syst+'_DOWN_sr_'+em_me+'_os'+jet]
-                    norm_do = h_do.Integral()/norm_nom
-                    norm_up = h_up.Integral()/norm_nom
+                    norm_do = h_do.Integral()
+                    norm_up = h_up.Integral()
+                    try:
+                        scale_do = (norm_do/norm_nom)
+                        scale_up = (norm_up/norm_nom)
+                    except ZeroDivisionError as zde:
+                        if norm_up or norm_nom:
+                            raise ZeroDivisionError("{0} but syst has non-zero normalization".format(zde))
+                        scale_do = 1.0
+                        scale_up = 1.0
                     fake_systematics.add(emu_mue=em_me, sysname=syst, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
-                    h_do.Scale(1.0/norm_do)
-                    h_up.Scale(1.0/norm_up)
+                    h_do.Scale(1.0/scale_do)
+                    h_up.Scale(1.0/scale_up)
 
     output_file.Close()
     if verbose: print "saving fake systematic normalizations to {0}".format(args.fake_sys)
@@ -315,7 +323,7 @@ def fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max):
 
 def pt_slice_histoname(sample='', variation='', em_me='', pt_label=0, jet=''):
     "note again a slightly different convention; still use the same standard keys"
-    templ_h_name = 'Mcoll_{sample}_{emme}{variation}_{l1pt}{jet}'
+    templ_h_name = 'Mcoll_{sample}_{emme}{variation}_{l1pt}{jet}_rebin'
     sample = ('data' if sample=='data' else
               'Fakes' if sample=='fake' else
               'signal' if sample=='signaltaue' else
