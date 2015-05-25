@@ -29,12 +29,14 @@ def main():
     parser.add_argument('-p', '--plot', action='store_true', help='plot rebinned histograms')
     parser.add_argument('-s', '--strength', default=0.0, help='strength of the injected signal (used for spurious test)')
     parser.add_argument('-v', '--verbose', action='store_true', help='increase output verbosity')
+    parser.add_argument('-d', '--debug', action='store_true', help='increase output (useful only to debug things)')
     parser.add_argument('-n', '--negative', action='store_true', help='allow negative bin contents')
     parser.add_argument('--fake-sys', default='fake_systematics.py', help='where the normalization of the fake sys will be saved')
     args = parser.parse_args()
     input_dir = args.input_dir
     output_dir = mkdir_if_needed(args.output_dir)
     verbose = args.verbose
+    debug = args.debug
     signal_strength = args.strength
     jet_variations = ['', '_jets']
     data_variations = ['NOM']
@@ -51,10 +53,9 @@ def main():
 
     for jet in jet_variations:
         # Target binning
-        # DG todo : add check that target_bin < orig_bin
-        target_pt1_bins = array.array('f',(12,15,20,25,30,35,1000))
-        target_m_bins = (array.array('f', [0] + range(60, 250,  5) + range(250, 300, 10) + [300,320,350,400,450]) if jet=='' else
-                         array.array('f', [0] + range(60, 120, 20) + range(120, 160, 10) + [160,180,200,230,260,300,350,400,450]))
+        target_pt1_bins = array.array('f',(0,10,15,20,25,30,35,240))
+        target_m_bins = (array.array('f', [0] + range(60, 250,  5) + range(250, 300, 10) + [300,320,350,400]) if jet=='' else
+                         array.array('f', [0] + range(60, 120, 20) + range(120, 160, 10) + [160,180,200,230,260,300,350,400]))
 
         files, histos = collect_inputs(input_dir, samples_with_variations, jet)
 
@@ -63,7 +64,8 @@ def main():
         n_target_pt1_bins = len(target_pt1_bins)-1
         n_target_m_bins = len(target_m_bins)-1
 
-        title = "l_1 p^{T};Mcoll (GeV)"
+        template_histo = histos['data_NOM_sr_mue_os'+jet]
+        title = ";{0};{1}".format(template_histo.GetXaxis().GetTitle(), template_histo.GetYaxis().GetTitle())
         binning = (n_target_pt1_bins, target_pt1_bins, n_target_m_bins, target_m_bins)
         rebinned_histos = {}
         for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
@@ -79,6 +81,7 @@ def main():
                     h_rebn = rebinned_histos[key]
                     xaxis = h_orig.GetXaxis()
                     yaxis = h_orig.GetYaxis()
+                    check_target_binning(h_orig, h_rebn, debug)
                     # DG todo propagate error
                     for ix in range(1, 1+xaxis.GetNbins()):
                         for iy in range(1, 1+yaxis.GetNbins()):
@@ -186,6 +189,22 @@ def collect_inputs(input_dir, samples_with_variations, jet):
                 else:
                     histos[key] = histo
     return files, histos
+
+def check_target_binning(h_orig, h_rebin, verbose=False):
+    "check that the target binning is a subset of the original binning"
+    for ax_orig, ax_rebin in [(h_orig.GetXaxis(), h_rebin.GetXaxis()),
+                              (h_orig.GetYaxis(), h_rebin.GetYaxis())]:
+        bins_orig  = array.array('f', [ax_orig.GetBinLowEdge(i+1)  for i in range(ax_orig.GetNbins()+1)])
+        bins_rebin = array.array('f', [ax_rebin.GetBinLowEdge(i+1) for i in range(ax_rebin.GetNbins()+1)])
+        if verbose:
+            print "checking axis {0}: orig[{1}] rebin[{2}]".format(ax_orig.GetTitle(), len(bins_orig), len(bins_rebin))
+        if not set(bins_rebin).issubset(set(bins_orig)):
+            wrong_bin_edges = set(bins_rebin) - set(bins_rebin).intersection(set(bins_orig))
+            raise NotImplementedError("Rebin can only be done with matching bin edges\n"+
+                                      "{0}: {1}\n".format(h_orig.GetName(), bins_orig)+
+                                      "{0}: {1}\n".format(h_rebin.GetName(), bins_rebin)+
+                                      "unmatched: {0}".format(wrong_bin_edges))
+
 
 def plot_2d_before_after(h_before, h_after, output_file):
     "plot the 2d histo before/after rebinning side-by-side"
