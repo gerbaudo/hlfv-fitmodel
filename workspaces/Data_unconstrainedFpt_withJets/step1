@@ -17,139 +17,13 @@ chans=[]
 jetbins=["","_jets"]
 #jetbins=[""]
 l1ptbins=["l1pt0","l1pt1","l1pt2","l1pt3","l1pt4","l1pt5"]
+input_filename = 'data/simple.root'
+input_fake_sys = 'data/fake_systematics.py'
+
 
 ### values for Systematics ###############
 
-### FAKE SYSTEMATICS
-emu_EL_RE = {'':{'l1pt0':{'UPvalue':1.002322,'DNvalue':0.995928},
-		'l1pt1':{'UPvalue':1.003880,'DNvalue':0.993061},
-		'l1pt2':{'UPvalue':1.014695,'DNvalue':0.974285},
-		'l1pt3':{'UPvalue':1.016214,'DNvalue':0.971293},
-		'l1pt4':{'UPvalue':1.030615,'DNvalue':0.946051},
-		'l1pt5':{'UPvalue':1.014868,'DNvalue':0.973419},
-		},
-	    '_jets':{'l1pt0':{'UPvalue':0.999662,'DNvalue':1.001053},
-		'l1pt1':{'UPvalue':1.002355,'DNvalue':0.995975},
-		'l1pt2':{'UPvalue':1.006311,'DNvalue':0.988549},
-		'l1pt3':{'UPvalue':0.999566,'DNvalue':1.000814},
-		'l1pt4':{'UPvalue':1.019369,'DNvalue':0.965051},
-		'l1pt5':{'UPvalue':1.022439,'DNvalue':0.959844},
-		},
-	    }
-
-emu_EL_FR = {'':{'l1pt0':{'UPvalue':1.009608,'DNvalue':0.987954},
-		'l1pt1':{'UPvalue':1.016492,'DNvalue':0.979312},
-		'l1pt2':{'UPvalue':1.019051,'DNvalue':0.969388},
-		'l1pt3':{'UPvalue':1.021144,'DNvalue':0.965472},
-		'l1pt4':{'UPvalue':1.039665,'DNvalue':0.936135},
-		'l1pt5':{'UPvalue':1.026588,'DNvalue':0.913753},
-		},
-	    '_jets':{'l1pt0':{'UPvalue':0.998480,'DNvalue':1.004761},
-		'l1pt1':{'UPvalue':1.010617,'DNvalue':0.986718},
-		'l1pt2':{'UPvalue':1.009162,'DNvalue':0.985527},
-		'l1pt3':{'UPvalue':0.999903,'DNvalue':1.000413},
-		'l1pt4':{'UPvalue':1.021292,'DNvalue':0.964081},
-		'l1pt5':{'UPvalue':1.039339,'DNvalue':0.873836},
-		},
-	}		
-
-emu_MU_RE = {'':{'l1pt0':{'UPvalue':0.998837,'DNvalue':1.001112},
-		'l1pt1':{'UPvalue':0.998419,'DNvalue':1.001509},
-		'l1pt2':{'UPvalue':0.999697,'DNvalue':1.000366},
-		'l1pt3':{'UPvalue':1.012723,'DNvalue':0.987740},
-		'l1pt4':{'UPvalue':1.018250,'DNvalue':0.982556},
-		'l1pt5':{'UPvalue':1.005139,'DNvalue':0.995082},
-		},
-	'_jets':{'l1pt0':{'UPvalue':0.999755,'DNvalue':1.000457},
-		'l1pt1':{'UPvalue':1.006582,'DNvalue':0.993629},
-		'l1pt2':{'UPvalue':1.004975,'DNvalue':0.995141},
-		'l1pt3':{'UPvalue':1.002890,'DNvalue':0.997174},
-		'l1pt4':{'UPvalue':1.045403,'DNvalue':0.957137},
-		'l1pt5':{'UPvalue':1.009479,'DNvalue':0.990876},
-		},
-	}		
-
-emu_MU_FR = {'':{'l1pt0':{'UPvalue':1.018467,'DNvalue':0.981791},
-		'l1pt1':{'UPvalue':1.017527,'DNvalue':0.982720},
-		'l1pt2':{'UPvalue':1.115141,'DNvalue':0.894679},
-		'l1pt3':{'UPvalue':1.101712,'DNvalue':0.906168},
-		'l1pt4':{'UPvalue':1.097406,'DNvalue':0.909866},
-		'l1pt5':{'UPvalue':2.096548,'DNvalue':0.536525},
-		},
-	'_jets':{'l1pt0':{'UPvalue':1.018524,'DNvalue':0.981763},
-		'l1pt1':{'UPvalue':1.016160,'DNvalue':0.984065},
-		'l1pt2':{'UPvalue':1.121163,'DNvalue':0.888121},
-		'l1pt3':{'UPvalue':1.116307,'DNvalue':0.891576},
-		'l1pt4':{'UPvalue':1.113747,'DNvalue':0.895704},
-		'l1pt5':{'UPvalue':2.007412,'DNvalue':0.598183},
-		},
-	}		
-
-mue_EL_RE = {'':{'l1pt0':{'UPvalue':1.012022,'DNvalue':0.985508},
-		'l1pt1':{'UPvalue':1.015715,'DNvalue':0.981033},
-		'l1pt2':{'UPvalue':1.010617,'DNvalue':0.985354},	
-		'l1pt3':{'UPvalue':1.009680,'DNvalue':0.986458},
-		'l1pt4':{'UPvalue':1.018714,'DNvalue':0.974089},
-		'l1pt5':{'UPvalue':1.016152,'DNvalue':0.971271},
-		},
-	'_jets':{'l1pt0':{'UPvalue':1.007275,'DNvalue':0.991317},
-		'l1pt1':{'UPvalue':1.009672,'DNvalue':0.988301},
-		'l1pt2':{'UPvalue':1.007038,'DNvalue':0.990026},
-		'l1pt3':{'UPvalue':1.004965,'DNvalue':0.993113},
-		'l1pt4':{'UPvalue':1.008228,'DNvalue':0.988156},
-		'l1pt5':{'UPvalue':1.023034,'DNvalue':0.958145},
-		},
-	}
-				
-
-mue_EL_FR = {'':{'l1pt0':{'UPvalue':1.010489,'DNvalue':0.964592},
-		'l1pt1':{'UPvalue':1.013567,'DNvalue':0.955107},
-		'l1pt2':{'UPvalue':1.019220,'DNvalue':0.934756},
-		'l1pt3':{'UPvalue':1.019358,'DNvalue':0.935352},
-		'l1pt4':{'UPvalue':1.034732,'DNvalue':0.882748},
-		'l1pt5':{'UPvalue':1.030275,'DNvalue':0.897463},
-		},
-	'_jets':{'l1pt0':{'UPvalue':1.007725,'DNvalue':0.973600},	
-		'l1pt1':{'UPvalue':1.007377,'DNvalue':0.974180},
-		'l1pt2':{'UPvalue':1.014744,'DNvalue':0.960437},
-		'l1pt3':{'UPvalue':1.009588,'DNvalue':0.968472},
-		'l1pt4':{'UPvalue':1.017519,'DNvalue':0.957195},
-		'l1pt5':{'UPvalue':1.041240,'DNvalue':0.855502},
-		},
-	}
-
-mue_MU_RE = {'':{'l1pt0':{'UPvalue':1.011649,'DNvalue':0.988401},
-		'l1pt1':{'UPvalue':1.009533,'DNvalue':0.990508},
-		'l1pt2':{'UPvalue':1.022973,'DNvalue':0.977324},
-		'l1pt3':{'UPvalue':1.023721,'DNvalue':0.976626},
-		'l1pt4':{'UPvalue':1.024070,'DNvalue':0.976285},
-		'l1pt5':{'UPvalue':1.061146,'DNvalue':0.941153},
-		},
-	'_jets':{'l1pt0':{'UPvalue':1.011620,'DNvalue':0.988434},
-		'l1pt1':{'UPvalue':1.008955,'DNvalue':0.991083},
-		'l1pt2':{'UPvalue':1.026894,'DNvalue':0.973469},
-		'l1pt3':{'UPvalue':1.025117,'DNvalue':0.975223},
-		'l1pt4':{'UPvalue':1.024674,'DNvalue':0.975672},
-		'l1pt5':{'UPvalue':1.064906,'DNvalue':0.937564},
-		},
-	}
-
-mue_MU_FR = {'':{'l1pt0':{'UPvalue':1.052617,'DNvalue':0.977827},
-		'l1pt1':{'UPvalue':1.277875,'DNvalue':0.882703},
-		'l1pt2':{'UPvalue':1.215912,'DNvalue':0.908019},
-		'l1pt3':{'UPvalue':1.256100,'DNvalue':0.890794},
-		'l1pt4':{'UPvalue':1.246269,'DNvalue':0.898580},
-		'l1pt5':{'UPvalue':1.176679,'DNvalue':0.931055},
-		},
-	'_jets':{'l1pt0':{'UPvalue':1.145016,'DNvalue':0.938239},
-		'l1pt1':{'UPvalue':1.374978,'DNvalue':0.846111},
-		'l1pt2':{'UPvalue':1.181496,'DNvalue':0.923500},
-		'l1pt3':{'UPvalue':1.223380,'DNvalue':0.904864},
-		'l1pt4':{'UPvalue':1.326062,'DNvalue':0.869091},
-		'l1pt5':{'UPvalue':1.130615,'DNvalue':0.944383},
-		},
-	}
-
+fake_systematics_dict = eval(open(input_fake_sys).read())
 
 ### SIGNAL SYSTEMATICS ##########################
 
@@ -183,27 +57,29 @@ Fpt_params = {'':{'l1pt0':{'lower':0.01,'upper':10.0,'const':"False"},
 ### SET VALUES ###
 for jetbin in jetbins:
 	for l1ptbin in l1ptbins:
+                fsd = fake_systematics_dict
 		cdic = {'jet':jetbin,
 			'l1pt':l1ptbin,
+                        'input_filename' : input_filename,
 			'fptlow':Fpt_params[jetbin][l1ptbin]['lower'],
 			'fpthigh':Fpt_params[jetbin][l1ptbin]['upper'],
 			'fptconst':Fpt_params[jetbin][l1ptbin]['const'],
-        	        'emu_DNval_EL_RE':emu_EL_RE[jetbin][l1ptbin]['DNvalue'],
-			'emu_UPval_EL_RE':emu_EL_RE[jetbin][l1ptbin]['UPvalue'],
-			'emu_DNval_EL_FR':emu_EL_FR[jetbin][l1ptbin]['DNvalue'],
-        	        'emu_UPval_EL_FR':emu_EL_FR[jetbin][l1ptbin]['UPvalue'],                
-			'emu_DNval_MU_RE':emu_MU_RE[jetbin][l1ptbin]['DNvalue'],
-	                'emu_UPval_MU_RE':emu_MU_RE[jetbin][l1ptbin]['UPvalue'],
-			'emu_DNval_MU_FR':emu_MU_FR[jetbin][l1ptbin]['DNvalue'],
-	                'emu_UPval_MU_FR':emu_MU_FR[jetbin][l1ptbin]['UPvalue'],
-			'mue_DNval_EL_RE':mue_EL_RE[jetbin][l1ptbin]['DNvalue'],
-	                'mue_UPval_EL_RE':mue_EL_RE[jetbin][l1ptbin]['UPvalue'],
-	                'mue_DNval_EL_FR':mue_EL_FR[jetbin][l1ptbin]['DNvalue'],
-	                'mue_UPval_EL_FR':mue_EL_FR[jetbin][l1ptbin]['UPvalue'], 
-	                'mue_DNval_MU_RE':mue_MU_RE[jetbin][l1ptbin]['DNvalue'],
-	                'mue_UPval_MU_RE':mue_MU_RE[jetbin][l1ptbin]['UPvalue'],
-	                'mue_DNval_MU_FR':mue_MU_FR[jetbin][l1ptbin]['DNvalue'],
-	                'mue_UPval_MU_FR':mue_MU_FR[jetbin][l1ptbin]['UPvalue'],
+                        'emu_DNval_EL_RE':fsd['emu_EL_RE'][jetbin][l1ptbin]['DNvalue'],
+                        'emu_UPval_EL_RE':fsd['emu_EL_RE'][jetbin][l1ptbin]['UPvalue'],
+                        'emu_DNval_EL_FR':fsd['emu_EL_FR'][jetbin][l1ptbin]['DNvalue'],
+                        'emu_UPval_EL_FR':fsd['emu_EL_FR'][jetbin][l1ptbin]['UPvalue'],
+			'emu_DNval_MU_RE':fsd['emu_MU_RE'][jetbin][l1ptbin]['DNvalue'],
+	                'emu_UPval_MU_RE':fsd['emu_MU_RE'][jetbin][l1ptbin]['UPvalue'],
+			'emu_DNval_MU_FR':fsd['emu_MU_FR'][jetbin][l1ptbin]['DNvalue'],
+	                'emu_UPval_MU_FR':fsd['emu_MU_FR'][jetbin][l1ptbin]['UPvalue'],
+			'mue_DNval_EL_RE':fsd['mue_EL_RE'][jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_EL_RE':fsd['mue_EL_RE'][jetbin][l1ptbin]['UPvalue'],
+	                'mue_DNval_EL_FR':fsd['mue_EL_FR'][jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_EL_FR':fsd['mue_EL_FR'][jetbin][l1ptbin]['UPvalue'],
+	                'mue_DNval_MU_RE':fsd['mue_MU_RE'][jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_MU_RE':fsd['mue_MU_RE'][jetbin][l1ptbin]['UPvalue'],
+	                'mue_DNval_MU_FR':fsd['mue_MU_FR'][jetbin][l1ptbin]['DNvalue'],
+	                'mue_UPval_MU_FR':fsd['mue_MU_FR'][jetbin][l1ptbin]['UPvalue'],
 			#'DNval_ATLAS_MU_SCALE':ATLAS_MU_SCALE[jetbin][l1ptbin]['DNvalue'],
 			#'UPval_ATLAS_MU_SCALE':ATLAS_MU_SCALE[jetbin][l1ptbin]['UPvalue'],
 			#'DNval_ATLAS_MET_RESOSOFT':ATLAS_MET_RESOSOFT[jetbin][l1ptbin]['DNvalue'],
@@ -214,7 +90,7 @@ for jetbin in jetbins:
 	### DEFINE ME AND EM CHANNELS ###
         	print "Generate channel emu %s%s" % (l1ptbin,jetbin)
 	        cmd = "./make_histfactory_channel.py emu_%(l1pt)s%(jet)s "\
-	                  "-obs Obs_emu_%(l1pt)s%(jet)s:data/simple.root:Mcoll_data_EM_%(l1pt)s%(jet)s_rebin "\
+	                  "-obs Obs_emu_%(l1pt)s%(jet)s:%(input_filename)s:Mcoll_data_EM_%(l1pt)s%(jet)s_rebin "\
 	                  "-sig Sig_mue_onEmu_%(l1pt)s%(jet)s:Mcoll_signal_ME_%(l1pt)s%(jet)s_rebin "\
 			  "-sca MinHalfSig:Sig_mue_onEmu_%(l1pt)s%(jet)s:-0.5:-0.501:-0.499:True "\
 			  "-ddb B0_%(l1pt)s%(jet)s:Base_Bkg_%(l1pt)s%(jet)s "\
@@ -244,7 +120,7 @@ for jetbin in jetbins:
 	
 		print "Generate channel mue %s%s" % (l1ptbin,jetbin)
 		cmd = "./make_histfactory_channel.py mue_%(l1pt)s%(jet)s "\
-			  "-obs Obs_mue_%(l1pt)s%(jet)s:data/simple.root:Mcoll_data_ME_%(l1pt)s%(jet)s_rebin "\
+			  "-obs Obs_mue_%(l1pt)s%(jet)s:%(input_filename)s:Mcoll_data_ME_%(l1pt)s%(jet)s_rebin "\
 			  "-sig Sig_mue_%(l1pt)s%(jet)s:Mcoll_signal_ME_%(l1pt)s%(jet)s_rebin "\
 			  "-sca halfSig:Sig_mue_%(l1pt)s%(jet)s:0.5:0.499:0.501:True "\
 			  "-ddb B0_%(l1pt)s%(jet)s:Base_Bkg_%(l1pt)s%(jet)s "\
