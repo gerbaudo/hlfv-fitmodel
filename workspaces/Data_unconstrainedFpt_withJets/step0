@@ -176,13 +176,14 @@ def main():
                             raise ZeroDivisionError("{0} but syst has non-zero normalization".format(zde))
                         scale_do = 1.0
                         scale_up = 1.0
-                    fake_systematics.add(emu_mue=em_me, sysname=syst, jetvariation=jet, l1pt=l1pt_key, updown=(norm_up, norm_do))
+                    fake_systematics.add(emu_mue=em_me, sysname=syst, jetvariation=jet, l1pt=l1pt_key, updown=(scale_up, scale_do))
                     h_do.Scale(1.0/scale_do)
                     h_up.Scale(1.0/scale_up)
 
     output_file.Close()
-    if verbose: print "saving fake systematic normalizations to {0}".format(args.fake_sys)
-    with open(output_dir+'/'+args.fake_sys, 'w') as out_sys_file:
+    out_fake_sys_filename = output_dir+'/'+args.fake_sys
+    if verbose: print "saving fake systematic normalizations to {0}".format(out_fake_sys_filename)
+    with open(out_fake_sys_filename, 'w') as out_sys_file:
         out_sys_file.write(("# fake systematics evaluated on {0}\n".format(datetime.date.today().isoformat())
                            +pprint.pformat(fake_systematics.as_dict())
                            +'\n'))
