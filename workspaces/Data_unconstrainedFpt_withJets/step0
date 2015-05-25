@@ -133,7 +133,7 @@ def main():
                         h_m =  ROOT.TH1F(h_m_name, title, *m_binning)
                         fill_pt_slice_histo(h_m_vs_pt, h_m, pt_min, pt_max)
                         sliced_histos_this_pt[key] = h_m
-                        shift_nonpositive_bins(h_m) # we might want to do this after adding the signal?
+                        shift_negative_bins(h_m) # we might want to do this after adding the signal?
             sliced_histos[l1pt_key] = sliced_histos_this_pt
             hme1   = sliced_histos_this_pt['data_NOM_sr_mue_os'+jet]
             hem1   = sliced_histos_this_pt['data_NOM_sr_emu_os'+jet]
@@ -325,13 +325,13 @@ def pt_slice_histoname(sample='', variation='', em_me='', pt_label=0, jet=''):
     variation = ('' if variation=='NOM' else ('_'+variation)) # todo: use _NOM also
     return templ_h_name.format(**{'sample':sample, 'variation':variation, 'emme': emme, 'l1pt': pt_label, 'jet':jet})
 
-def shift_nonpositive_bins(h, value=0.001, error=0.00001):
+def shift_negative_bins(h, value=0.001, error=0.00001):
     """
-    For all bins with content <=0, force their content to value, error
+    For all bins with negative content, force their content to value, error
     """
     bins = range(1, 1+h.GetXaxis().GetNbins())
     for b in bins:
-        if h.GetBinContent(b)<=0.0:
+        if h.GetBinContent(b)<0.0:
             h.SetBinContent(b, value)
             h.SetBinError  (b, error)
     # # DG-2015-05-19 : is this obsolete or needed? ask Avital
