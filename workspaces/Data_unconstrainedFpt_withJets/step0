@@ -79,10 +79,7 @@ def main():
         title = ";{0};{1}".format(template_histo.GetXaxis().GetTitle(), template_histo.GetYaxis().GetTitle())
         binning = (n_target_pt1_bins, target_pt1_bins, n_target_m_bins, target_m_bins)
         rebinned_histos = {}
-        for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
-                                           ('fake', fake_variations, ('emu', 'mue')),
-                                           ('signaltaumu', ('NOM',),    ('mue',)), # signal only goes in mue
-                                           ('signaltaue',  ('NOM',),    ('mue',))]:
+        for sample, variations, em_mes in samples_with_variations:
             for variation in variations:
                 for em_me in em_mes:
                     key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
@@ -129,10 +126,7 @@ def main():
             pt_max = target_pt1_bins[i+1]
             l1pt_key = "l1pt{0:d}".format(i)
             sliced_histos_this_pt = {}
-            for sample, variations, em_mes in [('data', data_variations, ('emu', 'mue')),
-                                               ('fake', fake_variations, ('emu', 'mue')),
-                                               ('signaltaumu', ('NOM',),    ('mue',)),
-                                               ('signaltaue',  ('NOM',),    ('mue',))]:
+            for sample, variations, em_mes in samples_with_variations:
                 for variation in variations:
                     for em_me in em_mes:
                         key = sample+'_'+variation+'_sr_'+em_me+'_os'+jet
